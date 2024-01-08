@@ -1,0 +1,63 @@
+<div class="send-request">
+  <button
+    nz-button
+    nzType="primary"
+    [disabled]="setOfCheckedId.size === 0"
+    [nzLoading]="loading"
+    (click)="sendRequest()"
+  >
+    Send Request
+  </button>
+  <span>Selected {{ setOfCheckedId.size }} items</span>
+</div>
+
+<nz-table
+  #rowSelectionTable
+  nzShowPagination
+  nzShowSizeChanger
+  [nzData]="ingredientData"
+  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+>
+  <thead>
+    <tr>
+      <th
+        [nzChecked]="checked"
+        [nzIndeterminate]="indeterminate"
+        (nzCheckedChange)="onAllChecked($event)"
+      ></th>
+      <th>ID</th>
+      <th>Ingredient Name</th>
+      <th>Deducted Quantity</th>
+      <th>UOM</th>
+      <th>Cost Per Unit</th>
+      <th>Order Type</th>
+      <th>Deducted At</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data">
+      <td
+        [nzChecked]="setOfCheckedId.has(data.id)"
+        [nzDisabled]="data.disabled"
+        (nzCheckedChange)="onItemChecked(data.id, $event)"
+      ></td>
+      <td>{{ data.id }}</td>
+      <td>{{ data.ingredientName }}</td>
+      <td>{{ data.quantity }}</td>
+      <td>{{ data.unitOfStock }}</td>
+      <td>{{ data.costPerUnit }}</td>
+      <td>{{ data.orderType }}</td>
+      <td>{{ data.consumedAt }}</td>
+      <td>
+        <ng-container *ngIf="!editCache[data.id]?.edit; else editTemplate">
+          <a (click)="startEdit(data.id)">Edit</a>
+        </ng-container>
+        <ng-template #editTemplate>
+          <a (click)="saveEdit(data.id)" class="save">Save</a>
+          <a (click)="cancelEdit(data.id)">Cancel</a>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
