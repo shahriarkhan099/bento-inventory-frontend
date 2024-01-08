@@ -1,0 +1,1 @@
+# bento-inventory-frontend
