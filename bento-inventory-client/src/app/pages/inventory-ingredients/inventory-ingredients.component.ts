@@ -79,6 +79,10 @@ export class InventoryIngredientsComponent implements OnInit {
       next: (data) => {
         this.ingredientData = data.map(ingredient => ({
           ...ingredient,
+          updatedAt: new Date(ingredient.updatedAt).toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'medium',
+          })
         }));
         console.log('Ingredient data loaded', this.ingredientData);
       },

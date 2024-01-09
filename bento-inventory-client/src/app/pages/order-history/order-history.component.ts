@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConsumptionLog } from '../../models/consumptionLog.model';
 import { ConsumptionLogService } from '../../services/consumption-log/consumption-log.service';
+import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-order-history',
@@ -10,90 +11,35 @@ import { ConsumptionLogService } from '../../services/consumption-log/consumptio
 
 export class OrderHistoryComponent implements OnInit {
 
-  editCache: { [key: number]: { edit: boolean; data: ConsumptionLog } } = {};
+  frontPagination = true;
+  totalNumberOfData = 0;
+  pageIndex = 1;
+  pageSize = 10;
+  showPagination = true;
+  paginationPosition: NzTablePaginationPosition = 'bottom';
+  paginationType: NzTablePaginationType = 'small';
+  showBorder = true;
+  outerBordered = true;
+  sizeOfTable: NzTableSize = 'small';
+  loadingStatus = false;
+  tableTitle = 'Ingredient Table';
+  tableFooter = '';
+  noResult = 'No Data Present';
+  showQuickJumper = true;
+  hidePaginationOnSinglePage = true;
+  showDeleteButton = true;
+  showEditButton = true;
+  showAddButton = true;
   checked = false;
-  loading = false;
-  indeterminate = false;
   ingredientData: ConsumptionLog[] = [];
   listOfCurrentPageData: readonly ConsumptionLog[] = [];
-  setOfCheckedId = new Set<number>();
 
-  updateCheckedSet(id: number, checked: boolean): void {
-    if (checked) {
-      this.setOfCheckedId.add(id);
-    } else {
-      this.setOfCheckedId.delete(id);
-    }
-  }
+  disabledDate = (current: Date): boolean => {
+    return current < new Date();
+  };
 
   onCurrentPageDataChange(listOfCurrentPageData: readonly ConsumptionLog[]): void {
     this.listOfCurrentPageData = listOfCurrentPageData;
-    this.refreshCheckedStatus();
-  }
-
-  refreshCheckedStatus(): void {
-    const listOfEnabledData = this.listOfCurrentPageData.filter(
-      ({ disabled }) => !disabled
-    );
-    this.checked = listOfEnabledData.every(({ id }) =>
-      this.setOfCheckedId.has(id)
-    );
-    this.indeterminate =
-      listOfEnabledData.some(({ id }) => this.setOfCheckedId.has(id)) &&
-      !this.checked;
-  }
-
-  onItemChecked(id: number, checked: boolean): void {
-    this.updateCheckedSet(id, checked);
-    this.refreshCheckedStatus();
-  }
-
-  onAllChecked(checked: boolean): void {
-    this.listOfCurrentPageData
-      .filter(({ disabled }) => !disabled)
-      .forEach(({ id }) => this.updateCheckedSet(id, checked));
-    this.refreshCheckedStatus();
-  }
-
-  sendRequest(): void {
-    this.loading = true;
-    const requestData = this.ingredientData.filter((data) =>
-      this.setOfCheckedId.has(data.id)
-    );
-    console.log(requestData);
-    setTimeout(() => {
-      this.setOfCheckedId.clear();
-      this.refreshCheckedStatus();
-      this.loading = false;
-    }, 1000);
-  }
-
-  startEdit(id: number): void {
-    if (this.editCache[id]) {
-      this.editCache[id].edit = true;
-    }
-  }
-
-  cancelEdit(id: number): void {
-    this.editCache[id] = {
-      data: { ...this.editCache[id].data },
-      edit: false,
-    };
-  }
-
-  saveEdit(id: number): void {
-    const index = this.ingredientData.findIndex((item) => item.id === id);
-    Object.assign(this.ingredientData[index], this.editCache[id].data);
-    this.editCache[id].edit = false;
-  }
-
-  updateEditCache(): void {
-    this.ingredientData.forEach((item) => {
-      this.editCache[item.id] = {
-        edit: false,
-        data: { ...item },
-      };
-    });
   }
 
   constructor(private consumptionLogService: ConsumptionLogService) {}
@@ -102,7 +48,6 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadIngredients(1);
-    this.updateEditCache();
   }
 
   private loadIngredients(restaurantId: number) {
@@ -121,6 +66,71 @@ export class OrderHistoryComponent implements OnInit {
         console.error('Error fetching ingredient data', error);
       },
     });
+  }
+
+  // createIngredient() {
+  //   const ingredients = this.includeIngredients();
+  //   console.log(ingredients);
+  //   console.log('Ingredient Name: ' + this.ingredientName);
+
+  //   let newItem = {
+  //     restaurantId: 1,
+  //     categoryId: 1,
+  //     ingredientName: this.ingredientName,
+  //     unitOfStock: this.unitOfStock,
+  //     caloriesPerUnit: this.caloriesPerUnit,
+  //     reorderPoint: this.reorderPoint,
+  //     perishable: this.perishable,
+  //     description: this.description,
+  //     unitOfIdealStoringTemperature: this.unitOfIdealStoringTemperature,
+  //     idealStoringTemperature: this.idealStoringTemperature,
+  //   };
+
+  //   // this.postIngredient(newItem);
+  //   console.log(newItem);
+
+  //   //Service call for Post a ingredient
+  //   this.ingredientService.addIngredient(newItem).subscribe((res) => {
+  //     console.log(res);
+  //   });
+  // }
+
+  // includeIngredients() {
+  //   return this.createIngredient();
+  // }
+
+  submitForm() {
+    // this.includeIngredients();
+    this.visible = false;
+  }
+
+  visible = false;
+  
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+
+  onDelete(id: number): void {
+    // this.ingredientService.deleteIngredient(id).subscribe({
+    //   next: () => {
+    //     this.ingredientData = this.ingredientData.filter(
+    //       (ingredient) => ingredient.id !== id
+    //     );
+    //     console.log(`Ingredient with ID ${id} deleted successfully.`);
+    //   },
+    //   error: (error) => {
+    //     console.error(`Error deleting ingredient with ID ${id}`, error);
+    //   },
+    // });
+  }
+
+  onEdit(data: any): void {
+    console.log(data);
+    this.visible = true;
   }
 
 }

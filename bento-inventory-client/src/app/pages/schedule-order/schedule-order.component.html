@@ -1,1 +1,80 @@
-<p>schedule-order works!</p>
+
+<form nz-form [formGroup]="validateForm">
+    <button nz-button nzType="dashed" class="add-button" (click)="addRow()">
+        <i nz-icon nzType="plus"></i>
+        Add field
+    </button>&nbsp;&nbsp;
+    <button nz-button (click)="submitData()" nzType="primary">Submit</button>&nbsp;&nbsp;
+    <br />
+    <br />
+    <nz-table [nzShowPagination]="false" nzSize="middle" #editRowTable nzBordered [nzData]="listOfData">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th nzWidth="200px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container formArrayName="aliases">
+                <tr [formGroupName]="i" *ngFor="let data of aliases.controls;let i=index" class="editable-row">
+                    <ng-container *ngIf="editId != data.value.id; else editTemplate">
+                        <td>
+                            {{data.value.name}}
+                        </td>
+                        <td>
+                            {{data.value.mobile}}
+                        </td>
+                        <td>
+                            {{data.value.address}}
+                        </td>
+                        <td>
+                            <a (click)="deleteRow(i)">delete</a>&nbsp;&nbsp;
+                            <a (click)="startEdit(data.value)">edit</a>&nbsp;&nbsp;
+                        </td>
+ 
+                    </ng-container>
+                    <ng-template #editTemplate>
+                        <ng-container>
+                            <td>
+                                <nz-form-item>
+                                    <nz-form-control nzSpan="1-24" nzErrorTip="Please enter name">
+                                        <input type="text" nz-input formControlName="name" maxlength="4" />
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </td>
+                            <td>
+                                <nz-form-item>
+                                    <nz-form-control nzSpan="1-24" [nzErrorTip]="errorTpl">
+                                        <input type="text" nz-input formControlName="mobile" />
+                                        <ng-template #errorTpl let-control>
+                                            <ng-container *ngIf="control.hasError('required')">Please enter mobile number</ng-container>
+                                            <ng-container *ngIf="control.hasError('confirm')">
+                                                Please enter a valid mobile number
+                                            </ng-container>
+                                        </ng-template>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </td>
+                            <td>
+                                <nz-form-item>
+                                    <nz-form-control nzSpan="1-24" nzErrorTip="Please enter address">
+                                        <input type="text" nz-input formControlName="address" />
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </td>
+                            <td>
+                                <a (click)="deleteRow(i)">delete</a>&nbsp;&nbsp;
+                                <a nzType="link" (click)="saveRow()">save</a>&nbsp;&nbsp;
+                                <a (click)="stopEdit(data.value)">cancel</a>&nbsp;&nbsp;
+                            </td>
+                        </ng-container>
+                    </ng-template>
+                </tr>
+            </ng-container>
+        </tbody>
+    </nz-table>
+    <!-- <nz-pagination [nzPageSize]="10" [(nzPageIndex)]="current" [nzTotal]="listOfData.length"></nz-pagination> -->
+</form>
+
