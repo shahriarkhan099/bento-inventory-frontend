@@ -19,7 +19,7 @@
         <nz-form-item>
           <nz-form-label for="ingredientName">Ingredient Name</nz-form-label>
           <nz-form-control>
-            <input nz-input id="ingredientName" [value]="ingredientName"  [(ngModel)]="ingredientName" name="ingredientName" placeholder="Enter ingredient name" />
+            <input nz-input id="ingredientName" [(ngModel)]="ingredientName" name="ingredientName" placeholder="Enter ingredient name" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -64,7 +64,7 @@
         <nz-form-item>
           <nz-form-label>Calories Per Unit</nz-form-label>
           <nz-form-control>
-            <input nz-input [value]="caloriesPerUnit" [(ngModel)]="caloriesPerUnit" name="caloriesPerUnit" placeholder="Enter calories per unit" />
+            <input nz-input [(ngModel)]="caloriesPerUnit" name="caloriesPerUnit" placeholder="Enter calories per unit" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -75,7 +75,7 @@
         <nz-form-item>
           <nz-form-label>Reorder Point</nz-form-label>
           <nz-form-control>
-            <input nz-input [value]="reorderPoint" [(ngModel)]="reorderPoint" name="reorderPoint" placeholder="Enter reorder point" />
+            <input nz-input [(ngModel)]="reorderPoint" name="reorderPoint" placeholder="Enter reorder point" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -86,7 +86,7 @@
         <nz-form-item>
           <nz-form-label>Ideal Storing Temperature</nz-form-label>
           <nz-form-control>
-            <input nz-input [value]="idealStoringTemperature" [(ngModel)]="idealStoringTemperature" name="idealStoringTemperature" placeholder="Enter ideal storing temperature" />
+            <input nz-input [(ngModel)]="idealStoringTemperature" name="idealStoringTemperature" placeholder="Enter ideal storing temperature" />
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -144,7 +144,6 @@
           <nz-form-control>
             <textarea
               nz-input
-              [value]="description"
               [(ngModel)]="description"
               name="description"
               placeholder="Enter description"
@@ -199,6 +198,8 @@
       <th>Unit of Temperature</th>
       <th>Category</th>
       <th>Last Updated</th>
+      <th>Delete</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -217,7 +218,7 @@
       <td>{{ data.updatedAt }}</td>
 
       <td *ngIf="showDeleteButton" nz-td>
-        <button (click)="onDelete(data.id)" [ngClass]="{'delete-button': true}">Delete</button>
+        <button nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="onDelete(data.id)" [ngClass]="{'delete-button': true}">Delete</button>
       </td>
       <td *ngIf="showEditButton" nz-td>
         <button (click)="onEdit(data)" [ngClass]="{'edit-button': true}">Edit</button>

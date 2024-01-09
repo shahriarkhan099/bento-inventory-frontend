@@ -21,10 +21,13 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-submenu nzOpen nzTitle="Manage Ingredients " nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="Manage Inventory " nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/inventory-ingredients">Inventory Ingredients</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/inventory-boxes">Inventory Boxes</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/order-suggestions">Order Suggestions</a>
@@ -47,7 +50,7 @@
             <a routerLink="/order-status">Order Status</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/schedule-order">Weekly Schedules</a>
+            <a routerLink="/schedule-order">Schedule Order</a>
           </li>
         </ul>
       </li>

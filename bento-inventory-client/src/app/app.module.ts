@@ -29,6 +29,9 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer'; // For Drawer
 import { NzSelectModule } from 'ng-zorro-antd/select'; // For Drawer
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; // For Drawer
 
+// For Popconfirm
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'; // For Popconfirm
+
 // Pages
 import { AppComponent } from './app.component';
 import { InventoryIngredientsComponent } from './pages/inventory-ingredients/inventory-ingredients.component';
@@ -85,6 +88,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzUploadModule,
     NzModalModule,
+    NzPopconfirmModule,
 
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

@@ -11,9 +11,9 @@ export class IngredientService {
   private apiUrl = 'http://localhost:4000/v1/ingredient/restaurant';
   constructor(private http: HttpClient) {}
 
-  getIngredients(restaurantId: number): Observable<any[]> {
+  getIngredients(restaurantId: number): Observable<Ingredient[]> {
     return this.http
-      .get<{ ingredients: any[] }>(
+      .get<{ ingredients: Ingredient[] }>(
         `${this.apiUrl}/${restaurantId}/ingredients/categories`
       )
       .pipe(map((response) => response.ingredients));

@@ -2,6 +2,9 @@ import {  Component, Input, OnInit } from '@angular/core';
 import { IngredientService } from '../../services/ingredient/ingredient.service';
 import { Ingredient } from '../../models/ingredient.model';
 import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { sortByCreatedAt } from '../../utils/sortUtils';
+import { formatDateToString } from '../../utils/formatDateUtils';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -62,13 +65,13 @@ export class InventoryIngredientsComponent implements OnInit {
     this.categoryId = 0;
     this.categoryName = '';
   }
-  
-  ingredientData: any[] = []; // Array of Ingredient objects
 
   categoryList = [ 'Dairy', 'Vegetable', 'Meat', 'Seafood', 'Fruit', 'Beverage', 'Bread', 'Spice', 'Flour', 'Oil', 'Sauce'];
   unitList = ['ml', 'gm', 'piece', 'bottle', 'packet', 'kg', 'litre', 'pound'];
   temperatureUnitList = ['Celsius', 'Fahrenheit'];
   perishableList = ['Yes', 'No'];
+
+  ingredientData: Ingredient[] = []; // Array of Ingredient objects
 
   onCurrentPageDataChange(ingredientData: Ingredient[]): void {
     this.ingredientData = ingredientData;
@@ -86,7 +89,7 @@ export class InventoryIngredientsComponent implements OnInit {
   description!: string;
   categoryName!: string;
 
-  constructor(private ingredientService: IngredientService) {}
+  constructor(private ingredientService: IngredientService, private message: NzMessageService) {}
 
   //Have to make the restaurant id dynamic
   @Input() restaurantId: number = 1;
@@ -100,11 +103,11 @@ export class InventoryIngredientsComponent implements OnInit {
       next: (data) => {
         this.ingredientData = data.map(ingredient => ({
           ...ingredient,
-          updatedAt: new Date(ingredient.updatedAt).toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'medium',
-          })
+          updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
+          costPerUnit: ingredient.costPerUnit ? Number(ingredient.costPerUnit.toFixed(2)) : 0,
         }));
+
+        sortByCreatedAt(this.ingredientData);
         console.log('Ingredient data loaded', this.ingredientData);
       },
       error: (error) => {
@@ -130,13 +133,10 @@ export class InventoryIngredientsComponent implements OnInit {
     console.log(newItem);
 
     if (this.isEdit) {
-      //Edit a ingredient
       this.ingredientService.editIngredient(this.id, newItem).subscribe((res) => {
         console.log(res);
       });
-    } 
-    else {
-    //Post a ingredient
+    } else {
     this.ingredientService.addIngredient(newItem).subscribe((res) => {
       console.log(res);
     });
