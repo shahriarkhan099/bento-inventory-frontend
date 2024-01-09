@@ -37,3 +37,9 @@
 .add-button-container {
   float: right;
 }
+
+h2 {
+  font-size: 24px;
+  color: #1890ff;
+  margin-bottom: 20px;
+}

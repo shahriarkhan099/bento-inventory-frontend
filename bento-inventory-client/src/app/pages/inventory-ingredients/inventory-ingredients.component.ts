@@ -30,30 +30,48 @@ export class InventoryIngredientsComponent implements OnInit {
   showDeleteButton = true;
   showEditButton = true;
   showAddButton = true;
-  checked = false;
-  ingredientData: Ingredient[] = [];
-  listOfCurrentPageData: readonly Ingredient[] = [];
 
-  categoryList = [
-    'Dairy',
-    'Vegetable',
-    'Meat',
-    'Seafood',
-    'Fruit',
-    'Beverage',
-    'Bread',
-    'Spice',
-    'Flour',
-    'Oil',
-    'Sauce',
-  ];
+  visible = false;
+  isEdit = false;
+  
+  onAdd(): void {
+    this.visible = true;
+    this.isEdit = false;
+    this.refreshFields();
+  }
 
+  close(): void {
+    this.visible = false;
+  }
+
+  submitForm() {
+    this.createUpdateIngredient();
+    this.visible = false;
+  }
+
+  refreshFields(): void {
+    this.id = 0;
+    this.ingredientName = '';
+    this.unitOfStock = '';
+    this.caloriesPerUnit = '';
+    this.reorderPoint = '';
+    this.idealStoringTemperature = '';
+    this.unitOfIdealStoringTemperature = '';
+    this.perishable = '';
+    this.description = '';
+    this.categoryId = 0;
+    this.categoryName = '';
+  }
+  
+  ingredientData: any[] = []; // Array of Ingredient objects
+
+  categoryList = [ 'Dairy', 'Vegetable', 'Meat', 'Seafood', 'Fruit', 'Beverage', 'Bread', 'Spice', 'Flour', 'Oil', 'Sauce'];
   unitList = ['ml', 'gm', 'piece', 'bottle', 'packet', 'kg', 'litre', 'pound'];
   temperatureUnitList = ['Celsius', 'Fahrenheit'];
   perishableList = ['Yes', 'No'];
 
-  onCurrentPageDataChange(listOfCurrentPageData: readonly Ingredient[]): void {
-    this.listOfCurrentPageData = listOfCurrentPageData;
+  onCurrentPageDataChange(ingredientData: Ingredient[]): void {
+    this.ingredientData = ingredientData;
   }
 
   id!: number;
@@ -70,13 +88,14 @@ export class InventoryIngredientsComponent implements OnInit {
 
   constructor(private ingredientService: IngredientService) {}
 
+  //Have to make the restaurant id dynamic
   @Input() restaurantId: number = 1;
 
   ngOnInit(): void {
-    this.loadSupplierss(1);
+    this.loadAllIngredients(1);
   }
 
-  private loadSupplierss(restaurantId: number) {
+  private loadAllIngredients(restaurantId: number) {
     this.ingredientService.getIngredients(restaurantId).subscribe({
       next: (data) => {
         this.ingredientData = data.map(ingredient => ({
@@ -94,8 +113,7 @@ export class InventoryIngredientsComponent implements OnInit {
     });
   }
 
-  createIngredient() {
-    //Have to make restaurantId and categoryId come dynamacially
+  createUpdateIngredient() {
     let newItem = {
       restaurantId: 1,
       categoryId: 1,
@@ -111,10 +129,19 @@ export class InventoryIngredientsComponent implements OnInit {
 
     console.log(newItem);
 
-    //Service call for Post a ingredient
+    if (this.isEdit) {
+      //Edit a ingredient
+      this.ingredientService.editIngredient(this.id, newItem).subscribe((res) => {
+        console.log(res);
+      });
+    } 
+    else {
+    //Post a ingredient
     this.ingredientService.addIngredient(newItem).subscribe((res) => {
       console.log(res);
     });
+    }
+
   }
 
   onDelete(id: number): void {
@@ -133,6 +160,8 @@ export class InventoryIngredientsComponent implements OnInit {
 
   onEdit(ingredient: any): void {
     this.visible = true;
+    this.isEdit = true;
+
     this.id = ingredient.id;
     this.ingredientName = ingredient.ingredientName;
     this.unitOfStock = ingredient.unitOfStock;
@@ -144,36 +173,6 @@ export class InventoryIngredientsComponent implements OnInit {
     this.description = ingredient.description;
     this.categoryId = ingredient.categoryId;
     this.categoryName = ingredient.category.categoryName;
-  }
-
-  visible = false;
-
-  submitForm() {
-    this.createIngredient();
-    this.visible = false;
-  }
-  
-  open(): void {
-    this.visible = true;
-    this.refreshFields();
-  }
-
-  close(): void {
-    this.visible = false;
-  }
-
-  refreshFields(): void {
-    this.id = 0;
-    this.ingredientName = '';
-    this.unitOfStock = '';
-    this.caloriesPerUnit = '';
-    this.reorderPoint = '';
-    this.idealStoringTemperature = '';
-    this.unitOfIdealStoringTemperature = '';
-    this.perishable = '';
-    this.description = '';
-    this.categoryId = 0;
-    this.categoryName = '';
   }
 
 }
