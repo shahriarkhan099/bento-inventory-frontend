@@ -95,7 +95,13 @@ export class InventoryIngredientsComponent implements OnInit {
   @Input() restaurantId: number = 1;
 
   ngOnInit(): void {
+
+    this.ingredientService.refreshNeeded$.subscribe(() => {
+      this.loadAllIngredients(1);
+    });
+    
     this.loadAllIngredients(1);
+    
   }
 
   private loadAllIngredients(restaurantId: number) {
