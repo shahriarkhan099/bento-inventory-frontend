@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Ingredient } from '../../models/ingredient.model';
+import { Order } from '../../models/order.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ConsumptionLogService {
-  private apiUrl = 'http://localhost:4000/v1/ingredient/restaurant';
+export class OrderService {
+  private apiUrl = 'http://localhost:4000/v1/order/restaurant';
 
   constructor(private http: HttpClient) {}
 
@@ -18,9 +18,9 @@ export class ConsumptionLogService {
     return this._refreshNeeded$;
   }
 
-  getIngredients(restaurantId: number): Observable<Ingredient[]> {
+  getIngredients(restaurantId: number): Observable<Order[]> {
     return this.http
-      .get<{ ingredients: Ingredient[] }>(
+      .get<{ ingredients: Order[] }>(
         `${this.apiUrl}/${restaurantId}`
       )
       .pipe(map((response) => response.ingredients));
@@ -48,9 +48,9 @@ export class ConsumptionLogService {
     return this.http.delete<void>(`${this.apiUrl}/${ingredientId}`);
   }
 
-  searchIngredientByName(restaurantId: number, name: string): Observable<Ingredient> {
+  searchIngredientByName(restaurantId: number, name: string): Observable<Order> {
     return this.http
-      .get<{ ingredient: Ingredient }>(
+      .get<{ ingredient: Order }>(
         `${this.apiUrl}/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )

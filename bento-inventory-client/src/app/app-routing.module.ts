@@ -10,13 +10,14 @@ import { OrderStatusComponent } from './pages/order-status/order-status.componen
 import { ScheduleOrderComponent } from './pages/schedule-order/schedule-order.component';
 import { SupplierListComponent } from './pages/supplier-list/supplier-list.component';
 import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-platform-supplier.component';
+import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
 
 const routes: Routes = [
-
   //Manage Ingredients Pages
   { path: 'inventory-ingredients', component: InventoryIngredientsComponent },
   { path: 'order-suggestions', component: OrderSuggestionsComponent },
   { path: 'track-wastage', component: TrackWastageComponent },
+  { path: 'delivery-boxes', component: DeliveryBoxesComponent },
 
   //Manage Orders Pages
   { path: 'place-orders', component: PlaceOrdersComponent },
@@ -26,13 +27,12 @@ const routes: Routes = [
 
   //Manage Supplier Pages
   { path: 'supplier-list', component: SupplierListComponent },
-  { path: 'on-platform-supplier', component: OnPlatformSupplierComponent },
+  { path: 'on-platform-suppliers', component: OnPlatformSupplierComponent },
 
   //Default Dashboard  Pages
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
-
 ];
 
 @NgModule({

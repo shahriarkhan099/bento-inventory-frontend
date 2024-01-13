@@ -5,8 +5,9 @@ export interface ConsumptionLog {
   quantity: number;
   orderType: string;
   costPerUnit: number;
-  consumedAt: string;
-//   ingredientId: number;
-//   restaurantId: number;
-  disabled: boolean;
+  consumedAt: Date;
+  ingredientId: number;
+  restaurantId: number;
+  createdAt: string;
+  updatedAt: string;
 }

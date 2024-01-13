@@ -1,4 +1,4 @@
-import { Category } from './category .model';
+import { Category } from './category.model';
 
 export interface Ingredient {
   id: number;
@@ -16,8 +16,8 @@ export interface Ingredient {
   expectedStockForToday: number | null;
   expectedStockForTomorrow: number | null;
   categoryId: number;
+  restaurantId: number;
   createdAt: string;
   updatedAt: string;
   category: Category;
-  disabled: boolean;
 }

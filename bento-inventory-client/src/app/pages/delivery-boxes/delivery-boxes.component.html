@@ -9,7 +9,7 @@
   [nzMaskClosable]="false"
   [nzWidth]="920"
   [nzVisible]="visible"
-  nzTitle="Add To My Supplier List"
+  nzTitle="Delivery Box"
   [nzFooter]="footerTpl"
   (nzOnClose)="close()"
 >
@@ -17,14 +17,14 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label for="name">Name</nz-form-label>
+          <nz-form-label for="boxName">Box Name</nz-form-label>
           <nz-form-control>
             <input
               nz-input
-              id="name"
-              [(ngModel)]="name"
-              name="name"
-              placeholder="Enter name"
+              id="boxName"
+              [(ngModel)]="boxName"
+              name="boxName"
+              placeholder="Enter box name"
             />
           </nz-form-control>
         </nz-form-item>
@@ -34,32 +34,13 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label for="address">Address</nz-form-label>
-          <nz-form-control>
-            <textarea
-              nz-input
-              id="address"
-              [(ngModel)]="address"
-              name="address"
-              placeholder="Enter address"
-              [nzAutosize]="{ minRows: 4, maxRows: 4 }"
-            ></textarea>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-    </div>
-
-    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
-      <div nz-col nzSpan="12">
-        <nz-form-item>
-          <nz-form-label for="contactNumber">Contact Number</nz-form-label>
+          <nz-form-label>Reorder Point</nz-form-label>
           <nz-form-control>
             <input
               nz-input
-              id="contactNumber"
-              [(ngModel)]="contactNumber"
-              name="contactNumber"
-              placeholder="Enter contact number"
+              [(ngModel)]="reorderPoint"
+              name="reorderPoint"
+              placeholder="Enter reorder point"
             />
           </nz-form-control>
         </nz-form-item>
@@ -69,14 +50,13 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label for="email">Email</nz-form-label>
+          <nz-form-label>Dimensions</nz-form-label>
           <nz-form-control>
             <input
               nz-input
-              id="email"
-              [(ngModel)]="email"
-              name="email"
-              placeholder="Enter email"
+              [(ngModel)]="dimensions"
+              name="dimensions"
+              placeholder="Enter dimensions Length x Width x Height"
             />
           </nz-form-control>
         </nz-form-item>
@@ -86,20 +66,20 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Label</nz-form-label>
+          <nz-form-label>Unit of Dimentions</nz-form-label>
           <nz-form-control>
             <nz-select
-              nzPlaceHolder="Select label"
+              nzPlaceHolder="Enter unit of temperature"
               [nzAllowClear]="true"
-              [(ngModel)]="label"
-              name="label"
+              [(ngModel)]="unitOfDimentions"
+              name="unitOfDimentions"
               [nzMaxTagCount]="1"
               nzShowSearch
             >
               <nz-option
                 nz-input
-                id="label"
-                *ngFor="let el of labelList"
+                id="unitOfDimentions"
+                *ngFor="let el of unitOfDimentionList"
                 [nzValue]="el"
                 [nzLabel]="el"
               ></nz-option>
@@ -109,6 +89,64 @@
       </div>
     </div>
 
+    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Waterproof</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzPlaceHolder="Enter waterproof or not"
+              [nzAllowClear]="true"
+              [(ngModel)]="waterproof"
+              name="waterproof"
+              [nzMaxTagCount]="1"
+              nzShowSearch
+            >
+              <nz-option
+                nz-input
+                id="waterproof"
+                [nzValue]="waterproof"
+                *ngFor="let el of waterproofList"
+                [nzValue]="el"
+                [nzLabel]="el"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Temperature Limit (°C)</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              [(ngModel)]="temperatureLimit"
+              name="temperatureLimit"
+              placeholder="Enter temperature limit in celsius"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Weight Limit (kg)</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              [(ngModel)]="weightLimit"
+              name="weightLimit"
+              placeholder="Enter weight limit in Kg"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
   </form>
 
   <ng-template #footerTpl>
@@ -124,7 +162,7 @@
 <h2>{{ tableTitle }}</h2>
 <nz-table
   #rowSelectionTable
-  [nzData]="listOfSuppliers"
+  [nzData]="listOfBoxes"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="totalNumberOfData"
   [nzPageIndex]="pageIndex"
@@ -143,22 +181,31 @@
 >
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Contact Number</th>
-      <th>Email</th>
-      <th>Label</th>
+      <th>Box Name</th>
+      <th>Current Stock</th>
+      <th>Cost Per Unit</th>
+      <th>Reorder Point</th>
+      <th>Dimensions</th>
+      <th>Unit</th>
+      <th>Weight Limit (kg)</th>
+      <th>Temperature Limit (°C)</th>
+      <th>Waterproof</th>
+      <th>Last Updated</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.contactNumber }}</td>
-      <td>{{ data.email }}</td>
-      <td>{{ data.label }}</td>
-
+      <td>{{ data.boxName }}</td>
+      <td>{{ data.currentStockQuantity }}</td>
+      <td>{{ data.costPerUnit }}</td>
+      <td>{{ data.reorderPoint }}</td>
+      <td>{{ data.dimensions }}</td>
+      <td>{{ data.unitOfDimentions }}</td>
+      <td>{{ data.weightLimit }}</td>
+      <td>{{ data.temperatureLimit }}</td>
+      <td>{{ data.waterproof }}</td>
+      <td>{{ data.updatedAt }}</td>
       <td>
         <button
           *ngIf="showDeleteButton"

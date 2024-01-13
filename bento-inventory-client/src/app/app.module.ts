@@ -46,10 +46,9 @@ import { SupplierListComponent } from './pages/supplier-list/supplier-list.compo
 import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-platform-supplier.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
-
+import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
 
 registerLocaleData(en);
-
 
 @NgModule({
   declarations: [
@@ -66,6 +65,7 @@ registerLocaleData(en);
     OnPlatformSupplierComponent,
     FooterComponent,
     HeaderComponent,
+    DeliveryBoxesComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +89,6 @@ registerLocaleData(en);
     NzUploadModule,
     NzModalModule,
     NzPopconfirmModule,
-
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

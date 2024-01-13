@@ -7,8 +7,8 @@ import { Ingredient } from '../../models/ingredient.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ConsumptionLogService {
-  private apiUrl = 'http://localhost:4000/v1/ingredient/restaurant';
+export class OnPlatformSupplierService {
+  private apiUrl = 'http://localhost:4000/v1/on-platform-supplier';
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class ConsumptionLogService {
   getIngredients(restaurantId: number): Observable<Ingredient[]> {
     return this.http
       .get<{ ingredients: Ingredient[] }>(
-        `${this.apiUrl}/${restaurantId}`
+        `${this.apiUrl}/${restaurantId}/ingredients/categories`
       )
       .pipe(map((response) => response.ingredients));
   }

@@ -1,1 +1,40 @@
-<p>track-wastage works!</p>
+
+<h2>{{ tableTitle }}</h2>
+<nz-table
+  #rowSelectionTable
+  [nzData]="listOfWasteLog"
+  [nzFrontPagination]="frontPagination"
+  [nzTotal]="totalNumberOfData"
+  [nzPageIndex]="pageIndex"
+  [nzPageSize]="pageSize"
+  [nzShowPagination]="showPagination"
+  [nzPaginationPosition]="paginationPosition"
+  [nzPaginationType]="paginationType"
+  [nzBordered]="showBorder"
+  [nzOuterBordered]="outerBordered"
+  [nzSize]="sizeOfTable"
+  [nzLoading]="loadingStatus"
+  [nzFooter]="tableFooter"
+  [nzNoResult]="noResult"
+  [nzShowQuickJumper]="showQuickJumper"
+  [nzHideOnSinglePage]="hidePaginationOnSinglePage"
+>
+  <thead>
+    <tr>
+      <th>Ingredient Name</th>
+      <th>Wastage Quantity</th>
+      <th>Cost Per Unit</th>
+      <th>Total Loss</th>
+      <th>Expired Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data">
+      <td>{{ data.ingredientName }}</td>
+      <td>{{ data.totalQuantity }} {{ data.unitOfStock }}</td>
+      <td>{{ data.costPerUnit }} {{ data.unitOfPrice }}/{{ data.unitOfStock }}</td>
+      <td>{{ data.totalCost }} {{ data.unitOfPrice }}</td>
+      <td>{{ data.updatedAt }}</td>
+    </tr>
+  </tbody>
+</nz-table>

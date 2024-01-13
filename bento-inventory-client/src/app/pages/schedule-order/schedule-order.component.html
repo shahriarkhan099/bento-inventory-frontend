@@ -1,80 +1,53 @@
+<nz-form-item>
+    <nz-form-label for="name">Order Name</nz-form-label>
+    <nz-form-control>
+        <input nz-input [(ngModel)]="order.name" id="name" placeholder="Enter order name" class="input-field-small">
+    </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+    <nz-form-label for="quantity">Quantity</nz-form-label>
+    <nz-form-control>
+        <input nz-input [(ngModel)]="order.quantity" id="quantity" type="number" placeholder="Enter quantity" class="input-field-small">
+    </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+    <nz-form-label for="price">Price</nz-form-label>
+    <nz-form-control>
+        <input nz-input [(ngModel)]="order.price" id="price" type="number" placeholder="Enter price" class="input-field-small">
+    </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+    <nz-form-label for="scheduleTime">Schedule Time</nz-form-label>
+    <nz-form-control>
+        <nz-date-picker [(ngModel)]="scheduleTime" id="scheduleTime" class="input-field-small"></nz-date-picker>
+    </nz-form-control>
+</nz-form-item>
+<div class="button-container">
+    <button nz-button nzType="primary" (click)="addItem()" class="action-button">Add Item</button>
+</div>
 
-<form nz-form [formGroup]="validateForm">
-    <button nz-button nzType="dashed" class="add-button" (click)="addRow()">
-        <i nz-icon nzType="plus"></i>
-        Add field
-    </button>&nbsp;&nbsp;
-    <button nz-button (click)="submitData()" nzType="primary">Submit</button>&nbsp;&nbsp;
-    <br />
-    <br />
-    <nz-table [nzShowPagination]="false" nzSize="middle" #editRowTable nzBordered [nzData]="listOfData">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Mobile</th>
-                <th>Address</th>
-                <th nzWidth="200px">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container formArrayName="aliases">
-                <tr [formGroupName]="i" *ngFor="let data of aliases.controls;let i=index" class="editable-row">
-                    <ng-container *ngIf="editId != data.value.id; else editTemplate">
-                        <td>
-                            {{data.value.name}}
-                        </td>
-                        <td>
-                            {{data.value.mobile}}
-                        </td>
-                        <td>
-                            {{data.value.address}}
-                        </td>
-                        <td>
-                            <a (click)="deleteRow(i)">delete</a>&nbsp;&nbsp;
-                            <a (click)="startEdit(data.value)">edit</a>&nbsp;&nbsp;
-                        </td>
- 
-                    </ng-container>
-                    <ng-template #editTemplate>
-                        <ng-container>
-                            <td>
-                                <nz-form-item>
-                                    <nz-form-control nzSpan="1-24" nzErrorTip="Please enter name">
-                                        <input type="text" nz-input formControlName="name" maxlength="4" />
-                                    </nz-form-control>
-                                </nz-form-item>
-                            </td>
-                            <td>
-                                <nz-form-item>
-                                    <nz-form-control nzSpan="1-24" [nzErrorTip]="errorTpl">
-                                        <input type="text" nz-input formControlName="mobile" />
-                                        <ng-template #errorTpl let-control>
-                                            <ng-container *ngIf="control.hasError('required')">Please enter mobile number</ng-container>
-                                            <ng-container *ngIf="control.hasError('confirm')">
-                                                Please enter a valid mobile number
-                                            </ng-container>
-                                        </ng-template>
-                                    </nz-form-control>
-                                </nz-form-item>
-                            </td>
-                            <td>
-                                <nz-form-item>
-                                    <nz-form-control nzSpan="1-24" nzErrorTip="Please enter address">
-                                        <input type="text" nz-input formControlName="address" />
-                                    </nz-form-control>
-                                </nz-form-item>
-                            </td>
-                            <td>
-                                <a (click)="deleteRow(i)">delete</a>&nbsp;&nbsp;
-                                <a nzType="link" (click)="saveRow()">save</a>&nbsp;&nbsp;
-                                <a (click)="stopEdit(data.value)">cancel</a>&nbsp;&nbsp;
-                            </td>
-                        </ng-container>
-                    </ng-template>
-                </tr>
-            </ng-container>
-        </tbody>
-    </nz-table>
-    <!-- <nz-pagination [nzPageSize]="10" [(nzPageIndex)]="current" [nzTotal]="listOfData.length"></nz-pagination> -->
-</form>
+<!-- Add some spacing here -->
 
+<div style="margin-top: 20px;"></div>
+
+<!-- End of spacing -->
+
+<div class="button-container">
+    <button nz-button nzType="primary" (click)="submitOrder()" class="action-button">Submit Order</button>
+</div>
+<nz-table [nzData]="orders" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td>{{ order.name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+        </tr>
+    </tbody>
+</nz-table>

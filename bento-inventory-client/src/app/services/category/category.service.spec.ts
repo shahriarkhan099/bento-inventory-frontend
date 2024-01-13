@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SelectedRowService } from './selected-row.service';
+import { CategoryService } from './category.service';
 
-describe('SelectedRowService', () => {
-  let service: SelectedRowService;
+describe('CategoryService', () => {
+  let service: CategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SelectedRowService);
+    service = TestBed.inject(CategoryService);
   });
 
   it('should be created', () => {

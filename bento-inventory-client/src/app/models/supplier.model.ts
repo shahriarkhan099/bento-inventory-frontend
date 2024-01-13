@@ -6,5 +6,6 @@ export interface Supplier {
   email: string;
   label: string;
   restaurantId: number;
-  disabled: boolean;
+  createdAt: string;
+  updatedAt: string;
 }

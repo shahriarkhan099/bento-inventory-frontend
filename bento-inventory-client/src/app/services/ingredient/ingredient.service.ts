@@ -8,7 +8,6 @@ import { Ingredient } from '../../models/ingredient.model';
   providedIn: 'root',
 })
 export class IngredientService {
-
   private apiUrl = 'http://localhost:4000/v1/ingredient/restaurant';
 
   constructor(private http: HttpClient) {}
@@ -20,44 +19,41 @@ export class IngredientService {
   }
 
   getIngredients(restaurantId: number): Observable<Ingredient[]> {
-    return this.http.get<{ ingredients: Ingredient[] }>
-    (`${this.apiUrl}/${restaurantId}/ingredients/categories`)
+    return this.http
+      .get<{ ingredients: Ingredient[] }>(
+        `${this.apiUrl}/${restaurantId}/ingredients/categories`
+      )
       .pipe(map((response) => response.ingredients));
   }
-
-  deleteIngredient(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/ingredients/${id}`);
+  
+  addIngredient(ingredient: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${ingredient.restaurantId}`, ingredient).pipe(
+      tap(() => {
+        this._refreshNeeded$.next();
+      })
+    );
   }
 
   editIngredient(ingredientId: number, ingredient: any): Observable<any> {
-    return this.http.put<void>(`${this.apiUrl}/ingredients/${ingredientId}`, ingredient)
-    .pipe(
-      tap(() => {
-      this._refreshNeeded$.next();
-      })
-    );
+    return this.http
+      .put<void>(`${this.apiUrl}/${ingredientId}`, ingredient)
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
   }
 
-  addIngredient(ingredient: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/1`, ingredient)
-    .pipe(
-      tap(() => {
-      this._refreshNeeded$.next();
-      })
-    );
+  deleteIngredient(ingredientId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${ingredientId}`);
   }
 
-  getIngredientCategories(restaurantId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${restaurantId}/categories`);
-  }
-
-  searchIngredientByName(name: string): Observable<Ingredient> {
+  searchIngredientByName(restaurantId: number, name: string): Observable<Ingredient> {
     return this.http
       .get<{ ingredient: Ingredient }>(
-        `${this.apiUrl}/ingredients/search/${name}`, {params: { searchTerm: name }}
+        `${this.apiUrl}/${restaurantId}/search/${name}`,
+        { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.ingredient));
   }
-
-
 }
