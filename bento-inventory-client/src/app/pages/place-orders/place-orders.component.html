@@ -4,7 +4,7 @@
         <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
             <div nz-col nzSpan="12">
                 <nz-form-item>
-                    <nz-form-label for="totalPrice">Total Price</nz-form-label>
+                    <nz-form-label for="totalPrice" style="margin-right:19px;">Total Price</nz-form-label>
                     <nz-form-control>
                         <input
                             nz-input
@@ -20,7 +20,7 @@
         <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
             <div nz-col nzSpan="12">
                 <nz-form-item>
-                    <nz-form-label>Status</nz-form-label>
+                    <nz-form-label style="margin-right:45px;">Status</nz-form-label>
                     <nz-form-control>
                         <nz-select
                             nzPlaceHolder="Select status"
@@ -28,28 +28,13 @@
                             [nzAllowClear]="true"
                             [nzMaxTagCount]="1"
                         >
-                            <nz-option nz-input [nzValue]="'pending'" [nzLabel]="'Pending'"></nz-option>
-                            <nz-option nz-input [nzValue]="'preparing'" [nzLabel]="'Preparing'"></nz-option>
+                            <nz-option nz-input [nzValue]="'pending'" [nzLabel]="'pending'"></nz-option>
+                            <nz-option nz-input [nzValue]="'preparing'" [nzLabel]="'preparing'"></nz-option>
                             <nz-option nz-input [nzValue]="'out_for_delivery'" [nzLabel]="'Out for Delivery'"></nz-option>
-                            <nz-option nz-input [nzValue]="'delivered'" [nzLabel]="'Delivered'"></nz-option>
-                            <nz-option nz-input [nzValue]="'cancelled'" [nzLabel]="'Cancelled'"></nz-option>
+                            <nz-option nz-input [nzValue]="'delivered'" [nzLabel]="'delivered'"></nz-option>
+                            <nz-option nz-input [nzValue]="'cancelled'" [nzLabel]="'cancelled'"></nz-option>
+                            <nz-option nz-input [nzValue]="'suggestions'" [nzLabel]="'suggestions'"></nz-option>
                         </nz-select>
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-        </div>
-
-        <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label for="orderDate">Order Date</nz-form-label>
-                    <nz-form-control>
-                        <nz-date-picker
-                            id="orderDate"
-                            formControlName="orderDate"
-                            nzPlaceHolder="Select order date"
-                            [nzShowTime]="{ nzFormat: 'hh:mm a' }"
-                        ></nz-date-picker>
                     </nz-form-control>
                 </nz-form-item>
             </div>
@@ -74,29 +59,13 @@
         <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
             <div nz-col nzSpan="12">
                 <nz-form-item>
-                    <nz-form-label for="supplierId">Supplier ID</nz-form-label>
+                    <nz-form-label for="supplierId" style="margin-right:15px;">Supplier</nz-form-label>
                     <nz-form-control>
                         <input
                             nz-input
                             id="supplierId"
                             formControlName="supplierId"
-                            placeholder="Enter supplier ID"
-                        />
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-        </div>
-
-        <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label for="restaurantId">Restaurant ID</nz-form-label>
-                    <nz-form-control>
-                        <input
-                            nz-input
-                            id="restaurantId"
-                            formControlName="restaurantId"
-                            placeholder="Enter restaurant ID"
+                            placeholder="Enter supplier"
                         />
                     </nz-form-control>
                 </nz-form-item>
