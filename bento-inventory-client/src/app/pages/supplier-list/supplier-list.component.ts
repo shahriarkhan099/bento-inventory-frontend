@@ -67,6 +67,7 @@ export class SupplierListComponent implements OnInit {
 
   createUpdateSupplier() {
     const newSupplier = {
+      restaurantId: 1,
       name: this.name,
       address: this.address,
       contactNumber: this.contactNumber,
