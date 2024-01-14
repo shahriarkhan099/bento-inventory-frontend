@@ -18,25 +18,25 @@ export class OrderService {
     return this._refreshNeeded$;
   }
 
-  getIngredients(restaurantId: number): Observable<Order[]> {
+  getOrders(restaurantId: number): Observable<Order[]> {
     return this.http
-      .get<{ ingredients: Order[] }>(
+      .get<{ orders: Order[] }>(
         `${this.apiUrl}/${restaurantId}`
       )
-      .pipe(map((response) => response.ingredients));
+      .pipe(map((response) => response.orders));
   }
   
-  addIngredient(ingredient: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${ingredient.restaurantId}`, ingredient).pipe(
+  addOrder(orders: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${orders.restaurantId}`, orders).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
     );
   }
 
-  editIngredient(ingredientId: number, ingredient: any): Observable<any> {
+  editOrder(orderId: number, orders: any): Observable<any> {
     return this.http
-      .put<void>(`${this.apiUrl}/${ingredientId}`, ingredient)
+      .put<void>(`${this.apiUrl}/${orderId}`, orders)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -44,8 +44,8 @@ export class OrderService {
       );
   }
 
-  deleteIngredient(ingredientId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${ingredientId}`);
+  deleteOrder(orderId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${orderId}`);
   }
 
   searchIngredientByName(restaurantId: number, name: string): Observable<Order> {

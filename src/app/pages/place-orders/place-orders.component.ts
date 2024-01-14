@@ -55,7 +55,7 @@ export class PlaceOrdersComponent implements OnInit {
   }
 
   private loadAllIngredients(restaurantId: number) {
-    this.orderService.getIngredients(restaurantId).subscribe({
+    this.orderService.getOrders(restaurantId).subscribe({
       next: (data) => {
         this.listOfOrders = data.map((order) => ({
           ...order,
@@ -82,7 +82,7 @@ export class PlaceOrdersComponent implements OnInit {
 
     console.log(newOrder);
 
-      this.orderService.addIngredient(newOrder).subscribe({
+      this.orderService.addOrder(newOrder).subscribe({
         next: (res) => {
           console.log(res);
           this.message.success('Ingredient Added successfully.');
