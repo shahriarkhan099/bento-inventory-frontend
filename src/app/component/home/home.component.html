@@ -1,7 +1,7 @@
 
-<div>
+<div style="margin-bottom: 10px;">
     <div style="display: flex;">
-        <input type="text" [(ngModel)]="query" style="margin-right: 10px; width: 300px;" placeholder="   Search Vendors" />
+        <input type="text" [(ngModel)]="query" (keyup)="searchVendors()" style="margin-right: 10px; width: 300px;" placeholder="   Search Vendors" />
         <button (click)="searchVendors()" style="background-color: #2ecc71; color: white; border: none; padding: 8px 20px; font-size: 16px; border-radius: 5px;">
             Search
         </button>
@@ -27,7 +27,9 @@
   <h2>Selected Vendor Products</h2>
   <div *ngFor="let product of vendorProducts">
     <input type="checkbox" [(ngModel)]="product.selected" />
-    {{ product.name }} {{ product.image }}
+    {{ product.name }} <br>
+    Price: {{ product.price }} <br>
+    Quantity: <input type="number" [(ngModel)]="product.quantity" />
 </div>
 
 <button (click)="placeOrder()">Place Order</button>

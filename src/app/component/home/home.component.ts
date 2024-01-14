@@ -20,11 +20,19 @@ export class HomeComponent {
   }
 
   searchVendors() {
-    this.vendorsService.searchVendorsByNameAndProducts(this.query).subscribe((vendors) => {
-      this.vendors = vendors;
-      console.log('Vendors:', vendors);
-    });
+    if (this.query.trim() === '') {
+      this.vendors = [];
+      return;
+    } else {
+      setTimeout(() => {
+        this.vendorsService.searchVendorsByNameAndProducts(this.query).subscribe((vendors) => {
+          this.vendors = vendors;
+          console.log('Vendors:', vendors);
+        });
+      }, 1000); 
+    }
   }
+
 
   selectVendor(vendorId: string) {
     this.selectedVendorId = vendorId;
@@ -40,9 +48,9 @@ export class HomeComponent {
   }
 
   placeOrder() {
-    // Implement logic to place an order using the inventory service
     const selectedProducts = this.getSelectedProducts();
-
+    console.log('Selected products:', selectedProducts);
+    
     if (!this.selectedVendorId || selectedProducts.length === 0) {
       console.error('Please select a vendor and at least one product before placing an order.');
       return;
@@ -57,7 +65,6 @@ export class HomeComponent {
     
 
     this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
-      // Handle order placement response
       console.log('Order placed successfully:', orderResponse);
     });
   }
