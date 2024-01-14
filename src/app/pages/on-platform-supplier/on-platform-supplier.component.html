@@ -1,25 +1,44 @@
+<div *ngIf="submittedData">
+  <h2>Submitted Data:</h2>
+  <pre>{{ submittedData | json }}</pre>
+</div>
 
 <form [formGroup]="orderForm" (ngSubmit)="submitForm()" class="form-container">
   <div class="form-group">
     <label for="deliveryDate">Delivery Date:</label>
-    <input type="text" formControlName="deliveryDate">
+    <input type="date" formControlName="deliveryDate">
   </div>
 
   <div class="form-group">
     <label for="scheduleTime">Schedule Time:</label>
-    <input type="text" formControlName="scheduleTime">
+    <input type="date" formControlName="scheduleTime">
   </div>
 
   <div class="form-group">
     <label for="supplierId">Supplier ID:</label>
-    <input type="text" formControlName="supplierId">
+    <input type="number" formControlName="supplierId">
   </div>
+
+  <div class="form-group">
+    <label for="restaurantId">Restaurant ID:</label>
+    <input type="number" formControlName="restaurantId">
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <input type="text" formControlName="status">
+  </div>
+
+  <hr>
 
   <!-- Ingredient Batches -->
   <div formArrayName="ingredientBatches">
     <div *ngFor="let batch of ingredientBatchesArray.controls; let i = index" [formGroupName]="i" class="form-group">
       <label for="ingredientId">Ingredient ID:</label>
-      <input type="text" formControlName="ingredientId">
+      <input type="number" formControlName="ingredientId">
+
+      <label for="supplierId">Supplier ID:</label>
+      <input type="number" formControlName="supplierId">
 
       <label for="ingredientName">Ingredient Name:</label>
       <input type="text" formControlName="ingredientName">
@@ -28,19 +47,19 @@
       <input type="text" formControlName="unitOfStock">
 
       <label for="purchaseQuantity">Purchase Quantity:</label>
-      <input type="text" formControlName="purchaseQuantity">
+      <input type="number" formControlName="purchaseQuantity">
 
       <label for="unitOfPrice">Unit of Price:</label>
       <input type="text" formControlName="unitOfPrice">
 
       <label for="purchasePrice">Purchase Price:</label>
-      <input type="text" formControlName="purchasePrice">
+      <input type="number" formControlName="purchasePrice">
 
       <label for="expirationDate">Expiration Date:</label>
-      <input type="text" formControlName="expirationDate">
+      <input type="date" formControlName="expirationDate">
 
       <label for="restaurantId">Restaurant ID:</label>
-      <input type="text" formControlName="restaurantId">
+      <input type="number" formControlName="restaurantId">
 
       <!-- Remove button for Ingredient Batch -->
       <button type="button" (click)="removeIngredientBatch(i)">Remove Ingredient Batch</button>
@@ -52,25 +71,25 @@
   <div formArrayName="deliveryBoxBatches">
     <div *ngFor="let batch of deliveryBoxBatchesArray.controls; let i = index" [formGroupName]="i" class="form-group">
       <label for="deliveryBoxId">Delivery Box ID:</label>
-      <input type="text" formControlName="deliveryBoxId">
+      <input type="number" formControlName="deliveryBoxId">
 
       <label for="boxName">Box Name:</label>
       <input type="text" formControlName="boxName">
 
       <label for="purchaseQuantity">Purchase Quantity:</label>
-      <input type="text" formControlName="purchaseQuantity">
+      <input type="number" formControlName="purchaseQuantity">
 
       <label for="unitOfPrice">Unit of Price:</label>
       <input type="text" formControlName="unitOfPrice">
 
       <label for="purchasePrice">Purchase Price:</label>
-      <input type="text" formControlName="purchasePrice">
+      <input type="number" formControlName="purchasePrice">
 
       <label for="supplierId">Supplier ID:</label>
-      <input type="text" formControlName="supplierId">
+      <input type="number" formControlName="supplierId">
 
       <label for="restaurantId">Restaurant ID:</label>
-      <input type="text" formControlName="restaurantId">
+      <input type="number" formControlName="restaurantId">
 
       <!-- Remove button for Delivery Box Batch -->
       <button type="button" (click)="removeDeliveryBoxBatch(i)">Remove Delivery Box Batch</button>

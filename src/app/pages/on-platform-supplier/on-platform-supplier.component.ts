@@ -20,12 +20,15 @@ import { Order } from '../../models/order.model';
 })
 export class OnPlatformSupplierComponent implements OnInit {
   public orderForm: FormGroup;
+  public submittedData: any;
 
   constructor(private _fb: FormBuilder, private orderService: OrderService) {
     this.orderForm = this._fb.group({
+      status: [''],
       deliveryDate: [''],
       scheduleTime: [''],
       supplierId: [''],
+      restaurantId: [''],
       ingredientBatches: this._fb.array([this.createIngredientBatch()]),
       deliveryBoxBatches: this._fb.array([this.createDeliveryBoxBatch()]),
     });
@@ -87,8 +90,10 @@ export class OnPlatformSupplierComponent implements OnInit {
   submitForm(): void {
     if (this.orderForm.valid) {
       const formData = this.orderForm.value;
-
+      formData.deliveryDate = new Date(formData.deliveryDate);
+      formData.deliveryDate = new Date(formData.scheduleTime);
       console.log(formData);
+      this.submittedData = formData;
 
       this.orderService.addOrder(formData).subscribe({
         next: (response) => {
