@@ -75,7 +75,7 @@ export class TrackWastageComponent implements OnInit {
   sizeOfTable: NzTableSize = 'small';
   loadingStatus = false;
 
-  tableTitle = 'Current WasteLog Overview';
+  tableTitle = 'Current Wastage Overview';
   tableFooter = '';
   noResult = 'No Data Present';
   showQuickJumper = true;

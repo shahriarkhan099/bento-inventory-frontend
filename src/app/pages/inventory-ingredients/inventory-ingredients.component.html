@@ -34,6 +34,33 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
+          <nz-form-label>Liquid</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzPlaceHolder="Enter liquid or not"
+              [nzAllowClear]="true"
+              [(ngModel)]="liquid"
+              name="liquid"
+              [nzMaxTagCount]="1"
+              nzShowSearch
+              (ngModelChange)="onLiquidChange($event)"
+            >
+              <nz-option
+                nz-input
+                id="liquid"
+                *ngFor="let el of booleanList"
+                [nzValue]="el"
+                [nzLabel]="el"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
           <nz-form-label>Unit Of Measurement</nz-form-label>
           <nz-form-control>
             <nz-select
@@ -47,7 +74,7 @@
               <nz-option
                 nz-input
                 id="unitOfStock"
-                *ngFor="let el of unitList"
+                *ngFor="let el of unitOfQuantityOptions"
                 [nzValue]="el"
                 [nzLabel]="el"
               ></nz-option>
@@ -118,40 +145,14 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Ideal Storing Temperature</nz-form-label>
+          <nz-form-label>Ideal Storing Temperature (°C)</nz-form-label>
           <nz-form-control>
             <input
               nz-input
               [(ngModel)]="idealStoringTemperature"
               name="idealStoringTemperature"
-              placeholder="Enter ideal storing temperature"
+              placeholder="Enter ideal storing temperature in celsius"
             />
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-    </div>
-
-    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
-      <div nz-col nzSpan="12">
-        <nz-form-item>
-          <nz-form-label>Unit of Temperature</nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceHolder="Enter unit of temperature"
-              [nzAllowClear]="true"
-              [(ngModel)]="unitOfIdealStoringTemperature"
-              name="unitOfIdealStoringTemperature"
-              [nzMaxTagCount]="1"
-              nzShowSearch
-            >
-              <nz-option
-                nz-input
-                id="unitOfIdealStoringTemperature"
-                *ngFor="let el of temperatureUnitList"
-                [nzValue]="el"
-                [nzLabel]="el"
-              ></nz-option>
-            </nz-select>
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -173,8 +174,7 @@
               <nz-option
                 nz-input
                 id="perishable"
-                [nzValue]="perishable"
-                *ngFor="let el of perishableList"
+                *ngFor="let el of booleanList"
                 [nzValue]="el"
                 [nzLabel]="el"
               ></nz-option>
@@ -241,11 +241,10 @@
       <th>Calories Per Unit</th>
       <th>Reorder Point</th>
       <th>Description</th>
-      <th>Storing Temperature</th>
-      <th>Unit</th>
+      <th>Storing Temperature (°C)</th>
       <th>Category</th>
       <th>Last Updated</th>
-      <th>Action</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -258,7 +257,6 @@
       <td>{{ data.reorderPoint }}</td>
       <td>{{ data.description }}</td>
       <td>{{ data.idealStoringTemperature }}</td>
-      <td>{{ data.unitOfIdealStoringTemperature }}</td>
       <td>{{ data.category.categoryName }}</td>
       <td>{{ data.updatedAt }}</td>
 

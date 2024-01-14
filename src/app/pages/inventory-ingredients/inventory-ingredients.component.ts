@@ -16,11 +16,6 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 export class InventoryIngredientsComponent implements OnInit {
   listOfIngredients: Ingredient[] = []; 
 
-  categoryList = [ 'Dairy', 'Vegetable', 'Meat', 'Seafood', 'Fruit', 'Beverage', 'Bread', 'Spice', 'Flour', 'Oil', 'Sauce'];
-  unitList = ['ml', 'gm', 'piece', 'bottle', 'packet', 'kg', 'litre', 'pound'];
-  temperatureUnitList = ['Celsius', 'Fahrenheit'];
-  perishableList = ['Yes', 'No'];
-
   constructor(private ingredientService: IngredientService, private message: NzMessageService) {}
 
   //Have to make the restaurant id dynamic
@@ -42,6 +37,8 @@ export class InventoryIngredientsComponent implements OnInit {
       next: (data) => {
         this.listOfIngredients = data.map(ingredient => ({
           ...ingredient,
+          currentStockQuantity: Number((ingredient.currentStockQuantity/1000).toFixed(2)),
+          unitOfStock: ingredient.unitOfStock === "gm" ? "kg" : ingredient.unitOfStock === "ml" ? "litre" : ingredient.unitOfStock,
           costPerUnit: ingredient.costPerUnit ? Number(ingredient.costPerUnit.toFixed(2)) : 0,
           updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
         }));
@@ -61,12 +58,12 @@ export class InventoryIngredientsComponent implements OnInit {
       restaurantId: 1,
       categoryId: 1,
       ingredientName: this.ingredientName,
+      liquid: this.liquid,
       unitOfStock: this.unitOfStock,
       caloriesPerUnit: this.caloriesPerUnit,
       reorderPoint: this.reorderPoint,
       perishable: this.perishable,
       description: this.description,
-      unitOfIdealStoringTemperature: this.unitOfIdealStoringTemperature,
       idealStoringTemperature: this.idealStoringTemperature,
     };
 
@@ -118,15 +115,32 @@ export class InventoryIngredientsComponent implements OnInit {
 
     this.id = ingredient.id;
     this.ingredientName = ingredient.ingredientName;
+    this.liquid = ingredient.liquid;
     this.unitOfStock = ingredient.unitOfStock;
     this.caloriesPerUnit = ingredient.caloriesPerUnit;
     this.reorderPoint = ingredient.reorderPoint;
     this.idealStoringTemperature = ingredient.idealStoringTemperature;
-    this.unitOfIdealStoringTemperature = ingredient.unitOfIdealStoringTemperature;
     this.perishable = ingredient.perishable;
     this.description = ingredient.description;
     this.categoryId = ingredient.categoryId;
     this.categoryName = ingredient.category.categoryName;
+  }
+
+  categoryList = [ 'Dairy', 'Vegetable', 'Meat', 'Seafood', 'Fruit', 'Beverage', 'Bread', 'Spice', 'Flour', 'Oil', 'Sauce'];
+  unitOfQuantityOptions = [''];
+  booleanList = ['Yes', 'No'];
+
+  updateUnitOfQuantityOptions() {
+    if (this.liquid === 'Yes') {
+      this.unitOfQuantityOptions = ['liter', 'ml', 'bottle', 'can', 'packet'];
+    } else if(this.liquid === 'No') {
+      this.unitOfQuantityOptions = ['kg', 'gm', 'piece', 'can', 'packet'];
+    }
+  }
+
+  onLiquidChange(value: string): void {
+    this.liquid = value;
+    this.updateUnitOfQuantityOptions();
   }
 
   visible = false;
@@ -150,11 +164,10 @@ export class InventoryIngredientsComponent implements OnInit {
   refreshFields(): void {
     this.id = '';
     this.ingredientName = '';
+    this.liquid = '';
     this.unitOfStock = '';
     this.caloriesPerUnit = '';
     this.reorderPoint = '';
-    this.idealStoringTemperature = '';
-    this.unitOfIdealStoringTemperature = '';
     this.perishable = '';
     this.description = '';
     this.categoryId = '';
@@ -163,12 +176,12 @@ export class InventoryIngredientsComponent implements OnInit {
 
   id!: number | any;
   ingredientName!: string;
+  liquid!: string; 
   unitOfStock!: string;
   categoryId!: number | any;
   caloriesPerUnit!: number | any;
   reorderPoint!: number | any;
   idealStoringTemperature!: number | any;
-  unitOfIdealStoringTemperature!: string;
   perishable!: string;
   description!: string;
   categoryName!: string;

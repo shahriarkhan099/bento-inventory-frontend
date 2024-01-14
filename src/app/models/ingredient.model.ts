@@ -9,6 +9,7 @@ export interface Ingredient {
   costPerUnit: number | null;
   caloriesPerUnit: number;
   reorderPoint: number;
+  liquid: string;
   perishable: string;
   description: string;
   idealStoringTemperature: number;
