@@ -9,8 +9,8 @@
 </div>
 
 <div *ngIf="vendors">
-    <div class="vendor-list">
-        <div *ngFor="let vendor of vendors" class="vendor-item">
+    <div class="vendor-container">
+        <div class="vendor-item" *ngFor="let vendor of vendors" class="vendor-item">
             <div class="vendor-logo">
                 <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo" />
             </div>
@@ -23,14 +23,19 @@
     </div>
 </div>
 
-<div *ngIf="selectedVendorId">
-  <h2>Selected Vendor Products</h2>
-  <div *ngFor="let product of vendorProducts">
-    <input type="checkbox" [(ngModel)]="product.selected" />
-    {{ product.name }} <br>
-    Price: {{ product.price }} <br>
-    Quantity: <input type="number" [(ngModel)]="product.quantity" />
-</div>
 
-<button (click)="placeOrder()">Place Order</button>
+<div *ngIf="selectedVendorId">
+    <h2>Selected Vendor Products</h2>
+    <div class="product-container">
+        <div class="product-item" *ngFor="let product of vendorProducts">
+            <input type="checkbox" [(ngModel)]="product.selected" />
+            <span>{{ product.name }} </span><br>
+            <span>Price: {{ product.price }} </span><br>
+            <span>Amount: {{ product.minimumOrderAmount }} </span><br>
+            <span>Qty: {{ product.qty }} </span>
+            <button (click)="incrementQuantity(product)">+</button>
+            <button (click)="decrementQuantity(product)">-</button>
+        </div>
+    </div>
+    <button (click)="placeOrder()">Place Order</button>
 </div>

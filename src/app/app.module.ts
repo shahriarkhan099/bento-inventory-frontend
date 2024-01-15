@@ -17,6 +17,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 // For Form
 import { NzFormModule } from 'ng-zorro-antd/form'; // For Form
@@ -89,6 +90,7 @@ registerLocaleData(en);
     NzUploadModule,
     NzModalModule,
     NzPopconfirmModule,
+    NzPaginationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

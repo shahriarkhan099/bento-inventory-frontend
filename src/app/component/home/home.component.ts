@@ -25,6 +25,8 @@ export class HomeComponent {
       return;
     } else {
       setTimeout(() => {
+        this.vendorProducts = [];
+        this.selectedVendorId = '';
         this.vendorsService.searchVendorsByNameAndProducts(this.query).subscribe((vendors) => {
           this.vendors = vendors;
           console.log('Vendors:', vendors);
@@ -33,8 +35,8 @@ export class HomeComponent {
     }
   }
 
-
   selectVendor(vendorId: string) {
+    this.vendors = [];
     this.selectedVendorId = vendorId;
     this.vendorsService.getVendorByIdWithProducts(vendorId).subscribe((vendorDetails) => {
       this.vendorProducts = vendorDetails.products;
@@ -46,6 +48,20 @@ export class HomeComponent {
   getSelectedProducts(): any[] {
     return this.vendorProducts ? this.vendorProducts.filter(product => product.selected) : [];
   }
+
+  incrementQuantity(product: any): void {
+    product.qty++;
+  }
+
+  decrementQuantity(product: any): void {
+    product.qty--;
+  }
+
+  // changeOtherQuantity(product: any): void {
+  //   product.price = product.pricePerUnit * product.qty;
+  //   product.minimumOrderAmount = product.minimumOrderAmountPerUnit * product.qty;
+  // }
+
 
   placeOrder() {
     const selectedProducts = this.getSelectedProducts();
