@@ -25,7 +25,7 @@ export class VendorService {
   }
 
   placeOrder(order: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/order`, order).pipe(
+    return this.http.post(`${this.apiUrl}/order/vendor/${order.vendorId}/all`, order).pipe(
     );
   }
 
