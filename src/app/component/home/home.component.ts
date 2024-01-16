@@ -11,6 +11,7 @@ export class HomeComponent {
   vendors: any[];
   selectedVendorId: string;
   vendorProducts: any[];
+  cartItems: any[] = [];
 
   constructor(private vendorsService: VendorService) {
     this.query = '';
@@ -46,7 +47,12 @@ export class HomeComponent {
   }
 
   getSelectedProducts(): any[] {
-    return this.vendorProducts ? this.vendorProducts.filter(product => product.selected) : [];
+    this.cartItems = this.vendorProducts ? this.vendorProducts.filter(product => product.selected) : [];
+    return this.cartItems;
+  }
+
+  calculateTotalPrice(): number {
+    return this.cartItems.reduce((total, product) => total + (product.price * product.qty), 0);
   }
 
   incrementQuantity(product: any): void {
@@ -56,12 +62,6 @@ export class HomeComponent {
   decrementQuantity(product: any): void {
     product.qty--;
   }
-
-  // changeOtherQuantity(product: any): void {
-  //   product.price = product.pricePerUnit * product.qty;
-  //   product.minimumOrderAmount = product.minimumOrderAmountPerUnit * product.qty;
-  // }
-
 
   placeOrder() {
     const selectedProducts = this.getSelectedProducts();
@@ -83,6 +83,22 @@ export class HomeComponent {
     this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
       console.log('Order placed successfully:', orderResponse);
     });
+  }
+
+  visible = false;
+  
+  onAdd(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+
+  submitForm() {
+    // this.createUpdateIngredient();
+    this.placeOrder();
+    this.visible = false;
   }
 
 }
