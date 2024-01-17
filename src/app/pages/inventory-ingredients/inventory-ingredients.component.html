@@ -101,8 +101,8 @@
                 nz-input
                 id="categoryName"
                 *ngFor="let el of categoryList"
-                [nzValue]="el"
-                [nzLabel]="el"
+                [nzValue]="el.categoryName"
+                [nzLabel]="el.categoryName"
               ></nz-option>
             </nz-select>
           </nz-form-control>

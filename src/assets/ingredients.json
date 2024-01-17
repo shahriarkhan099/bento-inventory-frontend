@@ -1,0 +1,2352 @@
+[
+  {
+    "uniqueIngredientId": 1,
+    "ingredientName": "Milk",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 2,
+    "ingredientName": "Carrot",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 3,
+    "ingredientName": "Chicken",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 4,
+    "ingredientName": "Salmon",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 5,
+    "ingredientName": "Apple",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 6,
+    "ingredientName": "Orange Juice",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 7,
+    "ingredientName": "Whole Wheat Bread",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 8,
+    "ingredientName": "Black Pepper",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 9,
+    "ingredientName": "Wheat Flour",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 10,
+    "ingredientName": "Olive Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 11,
+    "ingredientName": "Tomato Sauce",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 12,
+    "ingredientName": "Cheese",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 13,
+    "ingredientName": "Broccoli",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 14,
+    "ingredientName": "Beef",
+    "caloriesPerUnit": 250
+  },
+  {
+    "uniqueIngredientId": 15,
+    "ingredientName": "Shrimp",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 16,
+    "ingredientName": "Banana",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 17,
+    "ingredientName": "Coffee",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 18,
+    "ingredientName": "Baguette",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 19,
+    "ingredientName": "Cumin",
+    "caloriesPerUnit": 3
+  },
+  {
+    "uniqueIngredientId": 20,
+    "ingredientName": "Rice Flour",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 21,
+    "ingredientName": "Coconut Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 22,
+    "ingredientName": "Barbecue Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 23,
+    "ingredientName": "Yogurt",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 24,
+    "ingredientName": "Spinach",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 25,
+    "ingredientName": "Pork",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 26,
+    "ingredientName": "Tilapia",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 27,
+    "ingredientName": "Grapes",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 28,
+    "ingredientName": "Green Tea",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 29,
+    "ingredientName": "Rye Bread",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 30,
+    "ingredientName": "Coriander",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 31,
+    "ingredientName": "Corn Flour",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 32,
+    "ingredientName": "Avocado Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 33,
+    "ingredientName": "Mustard",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 34,
+    "ingredientName": "Cheddar Cheese",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 35,
+    "ingredientName": "Cauliflower",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 36,
+    "ingredientName": "Lamb",
+    "caloriesPerUnit": 280
+  },
+  {
+    "uniqueIngredientId": 37,
+    "ingredientName": "Cod",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 38,
+    "ingredientName": "Pineapple",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 39,
+    "ingredientName": "Iced Tea",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 40,
+    "ingredientName": "Pita Bread",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 41,
+    "ingredientName": "Turmeric",
+    "caloriesPerUnit": 1
+  },
+  {
+    "uniqueIngredientId": 42,
+    "ingredientName": "Quinoa Flour",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 43,
+    "ingredientName": "Sunflower Oil",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 44,
+    "ingredientName": "Honey Mustard",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 45,
+    "ingredientName": "Greek Yogurt",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 46,
+    "ingredientName": "Kale",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 47,
+    "ingredientName": "Turkey",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 48,
+    "ingredientName": "Tuna",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 49,
+    "ingredientName": "Strawberries",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 50,
+    "ingredientName": "Green Smoothie",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 51,
+    "ingredientName": "Sourdough Bread",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 52,
+    "ingredientName": "Paprika",
+    "caloriesPerUnit": 3
+  },
+  {
+    "uniqueIngredientId": 53,
+    "ingredientName": "Almond Flour",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 54,
+    "ingredientName": "Coconut Milk",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 55,
+    "ingredientName": "Soy Sauce",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 56,
+    "ingredientName": "Zucchini",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 57,
+    "ingredientName": "Bell Pepper",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 58,
+    "ingredientName": "Eggplant",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 59,
+    "ingredientName": "Cucumber",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 60,
+    "ingredientName": "Asparagus",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 61,
+    "ingredientName": "Artichoke",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 62,
+    "ingredientName": "Radish",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 63,
+    "ingredientName": "Butternut Squash",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 64,
+    "ingredientName": "Brussels Sprouts",
+    "caloriesPerUnit": 28
+  },
+  {
+    "uniqueIngredientId": 65,
+    "ingredientName": "Cabbage",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 66,
+    "ingredientName": "Kohlrabi",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 67,
+    "ingredientName": "Sweet Potato",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 68,
+    "ingredientName": "Tomatillo",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 69,
+    "ingredientName": "Lettuce",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 70,
+    "ingredientName": "Snow Peas",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 71,
+    "ingredientName": "Turnip",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 72,
+    "ingredientName": "Collard Greens",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 73,
+    "ingredientName": "Okra",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 74,
+    "ingredientName": "Celeriac",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 75,
+    "ingredientName": "Rutabaga",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 76,
+    "ingredientName": "Jicama",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 77,
+    "ingredientName": "Beetroot",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 78,
+    "ingredientName": "Swiss Chard",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 79,
+    "ingredientName": "Radicchio",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 80,
+    "ingredientName": "Arugula",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 81,
+    "ingredientName": "Bok Choy",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 82,
+    "ingredientName": "Watercress",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 83,
+    "ingredientName": "Broccolini",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 84,
+    "ingredientName": "Pumpkin",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 85,
+    "ingredientName": "Romaine Lettuce",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 86,
+    "ingredientName": "Cherry Tomatoes",
+    "caloriesPerUnit": 12
+  },
+  {
+    "uniqueIngredientId": 87,
+    "ingredientName": "Leeks",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 88,
+    "ingredientName": "Green Beans",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 89,
+    "ingredientName": "Cauliflower Rice",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 90,
+    "ingredientName": "Bell Peppers",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 91,
+    "ingredientName": "Chickpeas",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 92,
+    "ingredientName": "Green Onions",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 93,
+    "ingredientName": "Snap Peas",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 94,
+    "ingredientName": "Butter Lettuce",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 95,
+    "ingredientName": "Cauliflower Florets",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 96,
+    "ingredientName": "Radishes",
+    "caloriesPerUnit": 12
+  },
+  {
+    "uniqueIngredientId": 97,
+    "ingredientName": "Purple Cabbage",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 98,
+    "ingredientName": "Squash",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 99,
+    "ingredientName": "Kale Salad",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 100,
+    "ingredientName": "Bamboo Shoots",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 101,
+    "ingredientName": "Spaghetti Squash",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 102,
+    "ingredientName": "Turnip Greens",
+    "caloriesPerUnit": 28
+  },
+  {
+    "uniqueIngredientId": 103,
+    "ingredientName": "Water Spinach",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 104,
+    "ingredientName": "Buttercup Squash",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 105,
+    "ingredientName": "Green Cabbage",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 106,
+    "ingredientName": "Parsnip",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 107,
+    "ingredientName": "Cress",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 108,
+    "ingredientName": "Fennel",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 109,
+    "ingredientName": "Celery",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 110,
+    "ingredientName": "Mushrooms",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 111,
+    "ingredientName": "Baby Corn",
+    "caloriesPerUnit": 12
+  },
+  {
+    "uniqueIngredientId": 112,
+    "ingredientName": "Sun-Dried Tomatoes",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 113,
+    "ingredientName": "Chicory",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 114,
+    "ingredientName": "Jerusalem Artichoke",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 115,
+    "ingredientName": "Greek Feta Cheese",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 116,
+    "ingredientName": "Cottage Cheese",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 117,
+    "ingredientName": "Mozzarella",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 118,
+    "ingredientName": "Swiss Cheese",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 119,
+    "ingredientName": "Gouda",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 120,
+    "ingredientName": "Sour Cream",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 121,
+    "ingredientName": "Parmesan Cheese",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 122,
+    "ingredientName": "Ricotta",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 123,
+    "ingredientName": "Blue Cheese",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 124,
+    "ingredientName": "Mascarpone",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 125,
+    "ingredientName": "Buttermilk",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 126,
+    "ingredientName": "Camembert",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 127,
+    "ingredientName": "Havarti Cheese",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 128,
+    "ingredientName": "Whipped Cream",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 129,
+    "ingredientName": "Colby Jack Cheese",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 130,
+    "ingredientName": "Evaporated Milk",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 131,
+    "ingredientName": "Monterey Jack Cheese",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 132,
+    "ingredientName": "Muenster Cheese",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 133,
+    "ingredientName": "Condensed Milk",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 134,
+    "ingredientName": "Provolone Cheese",
+    "caloriesPerUnit": 100
+  },
+  {
+    "uniqueIngredientId": 135,
+    "ingredientName": "Cream Cheese",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 136,
+    "ingredientName": "Bacon",
+    "caloriesPerUnit": 42
+  },
+  {
+    "uniqueIngredientId": 137,
+    "ingredientName": "Venison",
+    "caloriesPerUnit": 158
+  },
+  {
+    "uniqueIngredientId": 138,
+    "ingredientName": "Duck Breast",
+    "caloriesPerUnit": 136
+  },
+  {
+    "uniqueIngredientId": 139,
+    "ingredientName": "Pork Sausage",
+    "caloriesPerUnit": 321
+  },
+  {
+    "uniqueIngredientId": 140,
+    "ingredientName": "Lamb Chops",
+    "caloriesPerUnit": 250
+  },
+  {
+    "uniqueIngredientId": 141,
+    "ingredientName": "Ground Turkey",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 142,
+    "ingredientName": "Chicken Thighs",
+    "caloriesPerUnit": 209
+  },
+  {
+    "uniqueIngredientId": 143,
+    "ingredientName": "Sirloin Steak",
+    "caloriesPerUnit": 162
+  },
+  {
+    "uniqueIngredientId": 144,
+    "ingredientName": "Ham",
+    "caloriesPerUnit": 143
+  },
+  {
+    "uniqueIngredientId": 145,
+    "ingredientName": "Veal",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 146,
+    "ingredientName": "Pork Ribs",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 147,
+    "ingredientName": "Chicken Wings",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 148,
+    "ingredientName": "Beef Tenderloin",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 149,
+    "ingredientName": "Turkey Breast",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 150,
+    "ingredientName": "Ground Beef",
+    "caloriesPerUnit": 250
+  },
+  {
+    "uniqueIngredientId": 151,
+    "ingredientName": "Salami",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 152,
+    "ingredientName": "Chicken Drumsticks",
+    "caloriesPerUnit": 190
+  },
+  {
+    "uniqueIngredientId": 153,
+    "ingredientName": "Pork Tenderloin",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 154,
+    "ingredientName": "Ground Chicken",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 155,
+    "ingredientName": "Lobster",
+    "caloriesPerUnit": 129
+  },
+  {
+    "uniqueIngredientId": 156,
+    "ingredientName": "Bison",
+    "caloriesPerUnit": 196
+  },
+  {
+    "uniqueIngredientId": 157,
+    "ingredientName": "Turkey Legs",
+    "caloriesPerUnit": 170
+  },
+  {
+    "uniqueIngredientId": 158,
+    "ingredientName": "Duck Confit",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 159,
+    "ingredientName": "Pepperoni",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 160,
+    "ingredientName": "Pork Belly",
+    "caloriesPerUnit": 280
+  },
+  {
+    "uniqueIngredientId": 161,
+    "ingredientName": "Chicken Sausage",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 162,
+    "ingredientName": "Quail",
+    "caloriesPerUnit": 133
+  },
+  {
+    "uniqueIngredientId": 163,
+    "ingredientName": "Buffalo",
+    "caloriesPerUnit": 212
+  },
+  {
+    "uniqueIngredientId": 164,
+    "ingredientName": "Chicken Liver",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 165,
+    "ingredientName": "Rabbit",
+    "caloriesPerUnit": 173
+  },
+  {
+    "uniqueIngredientId": 166,
+    "ingredientName": "Smoked Salmon",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 167,
+    "ingredientName": "Trout",
+    "caloriesPerUnit": 178
+  },
+  {
+    "uniqueIngredientId": 168,
+    "ingredientName": "Orange",
+    "caloriesPerUnit": 62
+  },
+  {
+    "uniqueIngredientId": 169,
+    "ingredientName": "Strawberry",
+    "caloriesPerUnit": 4
+  },
+  {
+    "uniqueIngredientId": 170,
+    "ingredientName": "Mango",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 171,
+    "ingredientName": "Watermelon",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 172,
+    "ingredientName": "Blueberries",
+    "caloriesPerUnit": 29
+  },
+  {
+    "uniqueIngredientId": 173,
+    "ingredientName": "Peach",
+    "caloriesPerUnit": 59
+  },
+  {
+    "uniqueIngredientId": 174,
+    "ingredientName": "Kiwi",
+    "caloriesPerUnit": 61
+  },
+  {
+    "uniqueIngredientId": 175,
+    "ingredientName": "Cherry",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 176,
+    "ingredientName": "Cantaloupe",
+    "caloriesPerUnit": 34
+  },
+  {
+    "uniqueIngredientId": 177,
+    "ingredientName": "Pear",
+    "caloriesPerUnit": 57
+  },
+  {
+    "uniqueIngredientId": 178,
+    "ingredientName": "Plum",
+    "caloriesPerUnit": 46
+  },
+  {
+    "uniqueIngredientId": 179,
+    "ingredientName": "Apricot",
+    "caloriesPerUnit": 17
+  },
+  {
+    "uniqueIngredientId": 180,
+    "ingredientName": "Raspberry",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 181,
+    "ingredientName": "Blackberry",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 182,
+    "ingredientName": "Cranberry",
+    "caloriesPerUnit": 46
+  },
+  {
+    "uniqueIngredientId": 183,
+    "ingredientName": "Guava",
+    "caloriesPerUnit": 68
+  },
+  {
+    "uniqueIngredientId": 184,
+    "ingredientName": "Passion Fruit",
+    "caloriesPerUnit": 68
+  },
+  {
+    "uniqueIngredientId": 185,
+    "ingredientName": "Dragon Fruit",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 186,
+    "ingredientName": "Pomegranate",
+    "caloriesPerUnit": 83
+  },
+  {
+    "uniqueIngredientId": 187,
+    "ingredientName": "Papaya",
+    "caloriesPerUnit": 59
+  },
+  {
+    "uniqueIngredientId": 188,
+    "ingredientName": "Grapefruit",
+    "caloriesPerUnit": 52
+  },
+  {
+    "uniqueIngredientId": 189,
+    "ingredientName": "Fig",
+    "caloriesPerUnit": 74
+  },
+  {
+    "uniqueIngredientId": 190,
+    "ingredientName": "Clementine",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 191,
+    "ingredientName": "Coconut",
+    "caloriesPerUnit": 354
+  },
+  {
+    "uniqueIngredientId": 192,
+    "ingredientName": "Lychee",
+    "caloriesPerUnit": 66
+  },
+  {
+    "uniqueIngredientId": 193,
+    "ingredientName": "Nectarine",
+    "caloriesPerUnit": 63
+  },
+  {
+    "uniqueIngredientId": 194,
+    "ingredientName": "Tangerine",
+    "caloriesPerUnit": 47
+  },
+  {
+    "uniqueIngredientId": 195,
+    "ingredientName": "Grape",
+    "caloriesPerUnit": 69
+  },
+  {
+    "uniqueIngredientId": 196,
+    "ingredientName": "Lemon",
+    "caloriesPerUnit": 17
+  },
+  {
+    "uniqueIngredientId": 197,
+    "ingredientName": "Blueberry",
+    "caloriesPerUnit": 29
+  },
+  {
+    "uniqueIngredientId": 198,
+    "ingredientName": "Cinnamon",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 199,
+    "ingredientName": "Ginger",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 200,
+    "ingredientName": "Cardamom",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 201,
+    "ingredientName": "Cloves",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 202,
+    "ingredientName": "Chili Powder",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 203,
+    "ingredientName": "Mustard Seeds",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 204,
+    "ingredientName": "Nutmeg",
+    "caloriesPerUnit": 21
+  },
+  {
+    "uniqueIngredientId": 205,
+    "ingredientName": "Allspice",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 206,
+    "ingredientName": "Fennel Seeds",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 207,
+    "ingredientName": "Curry Powder",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 208,
+    "ingredientName": "Cayenne Pepper",
+    "caloriesPerUnit": 17
+  },
+  {
+    "uniqueIngredientId": 209,
+    "ingredientName": "Saffron",
+    "caloriesPerUnit": 4
+  },
+  {
+    "uniqueIngredientId": 210,
+    "ingredientName": "Curry Leaves",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 211,
+    "ingredientName": "Vanilla Bean",
+    "caloriesPerUnit": 12
+  },
+  {
+    "uniqueIngredientId": 212,
+    "ingredientName": "Anise",
+    "caloriesPerUnit": 23
+  },
+  {
+    "uniqueIngredientId": 213,
+    "ingredientName": "Rosemary",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 214,
+    "ingredientName": "Thyme",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 215,
+    "ingredientName": "White Pepper",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 216,
+    "ingredientName": "Sumac",
+    "caloriesPerUnit": 13
+  },
+  {
+    "uniqueIngredientId": 217,
+    "ingredientName": "Marjoram",
+    "caloriesPerUnit": 4
+  },
+  {
+    "uniqueIngredientId": 218,
+    "ingredientName": "Dill Seeds",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 219,
+    "ingredientName": "Lemongrass",
+    "caloriesPerUnit": 99
+  },
+  {
+    "uniqueIngredientId": 220,
+    "ingredientName": "Poppy Seeds",
+    "caloriesPerUnit": 46
+  },
+  {
+    "uniqueIngredientId": 221,
+    "ingredientName": "Lovage",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 222,
+    "ingredientName": "Fennel Pollen",
+    "caloriesPerUnit": 346
+  },
+  {
+    "uniqueIngredientId": 223,
+    "ingredientName": "Za'atar",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 224,
+    "ingredientName": "Ajwain",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 225,
+    "ingredientName": "Carom Seeds",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 226,
+    "ingredientName": "Galangal",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 227,
+    "ingredientName": "Cubeb Pepper",
+    "caloriesPerUnit": 38
+  },
+  {
+    "uniqueIngredientId": 228,
+    "ingredientName": "Nigella Seeds",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 229,
+    "ingredientName": "Long Pepper",
+    "caloriesPerUnit": 17
+  },
+  {
+    "uniqueIngredientId": 230,
+    "ingredientName": "Szechuan Peppercorns",
+    "caloriesPerUnit": 26
+  },
+  {
+    "uniqueIngredientId": 231,
+    "ingredientName": "Grains of Paradise",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 232,
+    "ingredientName": "Achiote",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 233,
+    "ingredientName": "Cassia Bark",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 234,
+    "ingredientName": "Annatto Seeds",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 235,
+    "ingredientName": "Lovage Seeds",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 236,
+    "ingredientName": "Star Anise",
+    "caloriesPerUnit": 337
+  },
+  {
+    "uniqueIngredientId": 237,
+    "ingredientName": "Fenugreek Seeds",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 238,
+    "ingredientName": "Cuban Oregano",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 239,
+    "ingredientName": "Grains of Selim",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 240,
+    "ingredientName": "Cassia",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 241,
+    "ingredientName": "Sweet Woodruff",
+    "caloriesPerUnit": 11
+  },
+  {
+    "uniqueIngredientId": 242,
+    "ingredientName": "Angelica Root",
+    "caloriesPerUnit": 23
+  },
+  {
+    "uniqueIngredientId": 243,
+    "ingredientName": "Borage",
+    "caloriesPerUnit": 21
+  },
+  {
+    "uniqueIngredientId": 244,
+    "ingredientName": "Burnet",
+    "caloriesPerUnit": 9
+  },
+  {
+    "uniqueIngredientId": 245,
+    "ingredientName": "Calamint",
+    "caloriesPerUnit": 11
+  },
+  {
+    "uniqueIngredientId": 246,
+    "ingredientName": "Coriander Seeds",
+    "caloriesPerUnit": 9
+  },
+  {
+    "uniqueIngredientId": 247,
+    "ingredientName": "Epazote",
+    "caloriesPerUnit": 32
+  },
+  {
+    "uniqueIngredientId": 248,
+    "ingredientName": "Hyssop",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 249,
+    "ingredientName": "Jamaican Allspice",
+    "caloriesPerUnit": 16
+  },
+  {
+    "uniqueIngredientId": 250,
+    "ingredientName": "Kaffir Lime Leaves",
+    "caloriesPerUnit": 26
+  },
+  {
+    "uniqueIngredientId": 251,
+    "ingredientName": "Lemon Verbena",
+    "caloriesPerUnit": 9
+  },
+  {
+    "uniqueIngredientId": 252,
+    "ingredientName": "Malva",
+    "caloriesPerUnit": 13
+  },
+  {
+    "uniqueIngredientId": 253,
+    "ingredientName": "Orris Root",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 254,
+    "ingredientName": "Ciabatta",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 255,
+    "ingredientName": "Sourdough",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 256,
+    "ingredientName": "Pumpernickel",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 257,
+    "ingredientName": "Whole Wheat",
+    "caloriesPerUnit": 170
+  },
+  {
+    "uniqueIngredientId": 258,
+    "ingredientName": "Multigrain",
+    "caloriesPerUnit": 190
+  },
+  {
+    "uniqueIngredientId": 259,
+    "ingredientName": "Brioche",
+    "caloriesPerUnit": 280
+  },
+  {
+    "uniqueIngredientId": 260,
+    "ingredientName": "Focaccia",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 261,
+    "ingredientName": "Challah",
+    "caloriesPerUnit": 260
+  },
+  {
+    "uniqueIngredientId": 262,
+    "ingredientName": "Bagel",
+    "caloriesPerUnit": 320
+  },
+  {
+    "uniqueIngredientId": 263,
+    "ingredientName": "Naan",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 264,
+    "ingredientName": "Pita",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 265,
+    "ingredientName": "English Muffin",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 266,
+    "ingredientName": "Cinnamon Swirl",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 267,
+    "ingredientName": "Cornbread",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 268,
+    "ingredientName": "Soda Bread",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 269,
+    "ingredientName": "Raisin Bread",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 270,
+    "ingredientName": "Fougasse",
+    "caloriesPerUnit": 240
+  },
+  {
+    "uniqueIngredientId": 271,
+    "ingredientName": "Garlic Bread",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 272,
+    "ingredientName": "Sesame Seed Bread",
+    "caloriesPerUnit": 210
+  },
+  {
+    "uniqueIngredientId": 273,
+    "ingredientName": "Buckwheat Bread",
+    "caloriesPerUnit": 170
+  },
+  {
+    "uniqueIngredientId": 274,
+    "ingredientName": "Sunflower Seed Bread",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 275,
+    "ingredientName": "Rye Sourdough",
+    "caloriesPerUnit": 190
+  },
+  {
+    "uniqueIngredientId": 276,
+    "ingredientName": "Millet Bread",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 277,
+    "ingredientName": "Babka",
+    "caloriesPerUnit": 250
+  },
+  {
+    "uniqueIngredientId": 278,
+    "ingredientName": "Raisin Walnut Bread",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 279,
+    "ingredientName": "Fruit and Nut Bread",
+    "caloriesPerUnit": 240
+  },
+  {
+    "uniqueIngredientId": 280,
+    "ingredientName": "Sesame Challah",
+    "caloriesPerUnit": 260
+  },
+  {
+    "uniqueIngredientId": 281,
+    "ingredientName": "Mushroom and Onion Bread",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 282,
+    "ingredientName": "Chia Seed Bread",
+    "caloriesPerUnit": 180
+  },
+  {
+    "uniqueIngredientId": 283,
+    "ingredientName": "Potato Bread",
+    "caloriesPerUnit": 210
+  },
+  {
+    "uniqueIngredientId": 284,
+    "ingredientName": "Honey Wheat Bread",
+    "caloriesPerUnit": 190
+  },
+  {
+    "uniqueIngredientId": 285,
+    "ingredientName": "Garlic Parmesan Bread",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 286,
+    "ingredientName": "Pesto Swirl Bread",
+    "caloriesPerUnit": 250
+  },
+  {
+    "uniqueIngredientId": 287,
+    "ingredientName": "Cheese and Jalapeno Bread",
+    "caloriesPerUnit": 260
+  },
+  {
+    "uniqueIngredientId": 288,
+    "ingredientName": "Spinach and Feta Bread",
+    "caloriesPerUnit": 240
+  },
+  {
+    "uniqueIngredientId": 289,
+    "ingredientName": "Garlic Rosemary Bread",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 290,
+    "ingredientName": "Chocolate Chip Bread",
+    "caloriesPerUnit": 280
+  },
+  {
+    "uniqueIngredientId": 291,
+    "ingredientName": "Pesto Tomato Bread",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 292,
+    "ingredientName": "Cranberry Walnut Bread",
+    "caloriesPerUnit": 220
+  },
+  {
+    "uniqueIngredientId": 293,
+    "ingredientName": "Olive Bread",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 294,
+    "ingredientName": "Sesame Rye Bread",
+    "caloriesPerUnit": 210
+  },
+  {
+    "uniqueIngredientId": 295,
+    "ingredientName": "Tomato Basil Bread",
+    "caloriesPerUnit": 240
+  },
+  {
+    "uniqueIngredientId": 296,
+    "ingredientName": "Cheddar Jalapeno Bread",
+    "caloriesPerUnit": 260
+  },
+  {
+    "uniqueIngredientId": 297,
+    "ingredientName": "Marinara Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 298,
+    "ingredientName": "Alfredo Sauce",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 299,
+    "ingredientName": "Pesto Sauce",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 300,
+    "ingredientName": "Hollandaise Sauce",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 301,
+    "ingredientName": "Tomato Basil Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 302,
+    "ingredientName": "Sweet and Sour Sauce",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 303,
+    "ingredientName": "Teriyaki Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 304,
+    "ingredientName": "Garlic Butter Sauce",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 305,
+    "ingredientName": "Buffalo Sauce",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 306,
+    "ingredientName": "Honey Mustard Sauce",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 307,
+    "ingredientName": "Ranch Dressing",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 308,
+    "ingredientName": "Sriracha Sauce",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 309,
+    "ingredientName": "Tartar Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 310,
+    "ingredientName": "Chipotle Mayo",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 311,
+    "ingredientName": "Cranberry Sauce",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 312,
+    "ingredientName": "Ketchup",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 313,
+    "ingredientName": "Chimichurri Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 314,
+    "ingredientName": "Tzatziki Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 315,
+    "ingredientName": "Mango Salsa",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 316,
+    "ingredientName": "Remoulade Sauce",
+    "caloriesPerUnit": 85
+  },
+  {
+    "uniqueIngredientId": 317,
+    "ingredientName": "Curry Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 318,
+    "ingredientName": "Peanut Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 319,
+    "ingredientName": "White Truffle Sauce",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 320,
+    "ingredientName": "Miso Glaze",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 321,
+    "ingredientName": "Ginger Sesame Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 322,
+    "ingredientName": "Balsamic Reduction",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 323,
+    "ingredientName": "Lemon Dill Sauce",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 324,
+    "ingredientName": "Cilantro Lime Sauce",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 325,
+    "ingredientName": "Curry Coconut Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 326,
+    "ingredientName": "Honey Sriracha Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 327,
+    "ingredientName": "Wasabi Mayo",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 328,
+    "ingredientName": "Romesco Sauce",
+    "caloriesPerUnit": 85
+  },
+  {
+    "uniqueIngredientId": 329,
+    "ingredientName": "Tahini Sauce",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 330,
+    "ingredientName": "Cranberry Mayo",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 331,
+    "ingredientName": "Hoisin Sauce",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 332,
+    "ingredientName": "Peach Salsa",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 333,
+    "ingredientName": "Cherry Balsamic Glaze",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 334,
+    "ingredientName": "Maple Mustard Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 335,
+    "ingredientName": "Avocado Lime Crema",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 336,
+    "ingredientName": "Basil Pesto",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 337,
+    "ingredientName": "Raspberry Chipotle Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 338,
+    "ingredientName": "Green Curry Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 339,
+    "ingredientName": "Mango Habanero Sauce",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 340,
+    "ingredientName": "Cranberry Jalapeno Sauce",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 341,
+    "ingredientName": "Greek Tzatziki",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 342,
+    "ingredientName": "Mango Chutney",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 343,
+    "ingredientName": "Blackberry Balsamic Sauce",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 344,
+    "ingredientName": "Cilantro Lime Aioli",
+    "caloriesPerUnit": 75
+  },
+  {
+    "uniqueIngredientId": 345,
+    "ingredientName": "Rhubarb Ginger Compote",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 346,
+    "ingredientName": "Jalapeno Lime Crema",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 347,
+    "ingredientName": "Lemon Garlic Butter Sauce",
+    "caloriesPerUnit": 90
+  },
+  {
+    "uniqueIngredientId": 348,
+    "ingredientName": "Gochujang Sauce",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 349,
+    "ingredientName": "Harissa Sauce",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 350,
+    "ingredientName": "Spicy Mango Salsa",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 351,
+    "ingredientName": "Dijon Mustard Sauce",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 352,
+    "ingredientName": "Bourbon BBQ Glaze",
+    "caloriesPerUnit": 75
+  },
+  {
+    "uniqueIngredientId": 353,
+    "ingredientName": "Cherry Bourbon Sauce",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 354,
+    "ingredientName": "Sun-Dried Tomato Pesto",
+    "caloriesPerUnit": 85
+  },
+  {
+    "uniqueIngredientId": 355,
+    "ingredientName": "Coconut Curry Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 356,
+    "ingredientName": "Sesame Ginger Glaze",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 357,
+    "ingredientName": "Roasted Red Pepper Hummus",
+    "caloriesPerUnit": 55
+  },
+  {
+    "uniqueIngredientId": 358,
+    "ingredientName": "Thai Peanut Sauce",
+    "caloriesPerUnit": 80
+  },
+  {
+    "uniqueIngredientId": 359,
+    "ingredientName": "Apricot Glaze",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 360,
+    "ingredientName": "Brown Sugar Bourbon Sauce",
+    "caloriesPerUnit": 70
+  },
+  {
+    "uniqueIngredientId": 361,
+    "ingredientName": "Mint Yogurt Sauce",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 362,
+    "ingredientName": "Green Enchilada Sauce",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 363,
+    "ingredientName": "Cucumber Dill Sauce",
+    "caloriesPerUnit": 40
+  },
+  {
+    "uniqueIngredientId": 364,
+    "ingredientName": "Mustard Aioli",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 365,
+    "ingredientName": "Champagne Vinaigrette",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 366,
+    "ingredientName": "Ginger Plum Sauce",
+    "caloriesPerUnit": 65
+  },
+  {
+    "uniqueIngredientId": 367,
+    "ingredientName": "Romanesco",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 368,
+    "ingredientName": "Caulilini",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 369,
+    "ingredientName": "Chayote",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 370,
+    "ingredientName": "Tarot Root",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 371,
+    "ingredientName": "Yuca",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 372,
+    "ingredientName": "Tatsoi",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 373,
+    "ingredientName": "Mustard Greens",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 374,
+    "ingredientName": "Endive",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 375,
+    "ingredientName": "Sunchoke",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 376,
+    "ingredientName": "Mizuna",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 377,
+    "ingredientName": "Sorrel",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 378,
+    "ingredientName": "Escarole",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 379,
+    "ingredientName": "Lacinato Kale",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 380,
+    "ingredientName": "Red Leaf Lettuce",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 381,
+    "ingredientName": "Celtuce",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 382,
+    "ingredientName": "Amethyst Radish",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 383,
+    "ingredientName": "Yellow Zucchini",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 384,
+    "ingredientName": "Kale Sprouts",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 385,
+    "ingredientName": "Chioggia Beets",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 386,
+    "ingredientName": "Butterhead Lettuce",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 387,
+    "ingredientName": "Purple Asparagus",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 388,
+    "ingredientName": "Crimson Spinach",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 389,
+    "ingredientName": "Golden Beets",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 390,
+    "ingredientName": "Dragon Tongue Beans",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 391,
+    "ingredientName": "Ramp Leaves",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 392,
+    "ingredientName": "Mushroom Plant",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 393,
+    "ingredientName": "Purple Brussels Sprouts",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 394,
+    "ingredientName": "Ice Plant",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 395,
+    "ingredientName": "Crown Broccoli",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 396,
+    "ingredientName": "Romanesco Broccoli",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 397,
+    "ingredientName": "Dandelion Greens",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 398,
+    "ingredientName": "Burdock Root",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 399,
+    "ingredientName": "Golden Turnip",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 400,
+    "ingredientName": "Wasabi Arugula",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 401,
+    "ingredientName": "Candy Cane Beets",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 402,
+    "ingredientName": "Mung Bean Sprouts",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 403,
+    "ingredientName": "Red Romaine Lettuce",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 404,
+    "ingredientName": "Orange Bell Pepper",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 405,
+    "ingredientName": "Striped Eggplant",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 406,
+    "ingredientName": "Watermelon Radish",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 407,
+    "ingredientName": "Purple Kale",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 408,
+    "ingredientName": "Cherokee Purple Tomato",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 409,
+    "ingredientName": "White Asparagus",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 410,
+    "ingredientName": "Purple Artichoke",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 411,
+    "ingredientName": "Rainbow Carrots",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 412,
+    "ingredientName": "Golden Swiss Chard",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 413,
+    "ingredientName": "Baby Bok Choy",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 414,
+    "ingredientName": "Purple Kohlrabi",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 415,
+    "ingredientName": "Yellow Swiss Chard",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 416,
+    "ingredientName": "Golden Bell Pepper",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 417,
+    "ingredientName": "Orange Cauliflower",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 418,
+    "ingredientName": "Lemon Cucumber",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 419,
+    "ingredientName": "Striped Delicata Squash",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 420,
+    "ingredientName": "Green Bell Pepper",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 421,
+    "ingredientName": "Golden Zucchini",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 422,
+    "ingredientName": "Purple Radicchio",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 423,
+    "ingredientName": "Rainbow Swiss Chard",
+    "caloriesPerUnit": 25
+  },
+  {
+    "uniqueIngredientId": 424,
+    "ingredientName": "Green Kale",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 425,
+    "ingredientName": "Yellow Bell Pepper",
+    "caloriesPerUnit": 20
+  },
+  {
+    "uniqueIngredientId": 426,
+    "ingredientName": "Red Cabbage",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 427,
+    "ingredientName": "Walnut Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 428,
+    "ingredientName": "Hazelnut Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 429,
+    "ingredientName": "Pumpkin Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 430,
+    "ingredientName": "Sesame Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 431,
+    "ingredientName": "Grapeseed Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 432,
+    "ingredientName": "Flaxseed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 433,
+    "ingredientName": "Safflower Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 434,
+    "ingredientName": "Peanut Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 435,
+    "ingredientName": "Canola Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 436,
+    "ingredientName": "Macadamia Nut Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 437,
+    "ingredientName": "Pistachio Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 438,
+    "ingredientName": "Almond Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 439,
+    "ingredientName": "Corn Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 440,
+    "ingredientName": "Camelina Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 441,
+    "ingredientName": "Hempseed Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 442,
+    "ingredientName": "Rice Bran Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 443,
+    "ingredientName": "Black Currant Seed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 444,
+    "ingredientName": "Chia Seed Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 445,
+    "ingredientName": "Apricot Kernel Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 446,
+    "ingredientName": "Argan Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 447,
+    "ingredientName": "Pomegranate Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 448,
+    "ingredientName": "Tomato Seed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 449,
+    "ingredientName": "Papaya Seed Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 450,
+    "ingredientName": "Black Sesame Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 451,
+    "ingredientName": "Cranberry Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 452,
+    "ingredientName": "Cherry Kernel Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 453,
+    "ingredientName": "Kukui Nut Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 454,
+    "ingredientName": "Passion Fruit Seed Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 455,
+    "ingredientName": "Mango Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 456,
+    "ingredientName": "Borage Seed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 457,
+    "ingredientName": "Evening Primrose Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 458,
+    "ingredientName": "Neem Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 459,
+    "ingredientName": "Raspberry Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 460,
+    "ingredientName": "Hemp Seed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 461,
+    "ingredientName": "Cucumber Seed Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 462,
+    "ingredientName": "Chardonnay Grape Seed Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 463,
+    "ingredientName": "Hazelnut Seed Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 464,
+    "ingredientName": "Tamanu Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 465,
+    "ingredientName": "Chamomile Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 466,
+    "ingredientName": "Blackberry Seed Oil",
+    "caloriesPerUnit": 110
+  },
+  {
+    "uniqueIngredientId": 467,
+    "ingredientName": "Jojoba Oil",
+    "caloriesPerUnit": 140
+  },
+  {
+    "uniqueIngredientId": 468,
+    "ingredientName": "Apricot Kernel Seed Oil",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 469,
+    "ingredientName": "Melon Seed Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 470,
+    "ingredientName": "Cumin Seed Oil",
+    "caloriesPerUnit": 110
+  }
+]

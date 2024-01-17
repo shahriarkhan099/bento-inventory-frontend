@@ -1,0 +1,46 @@
+[
+  {
+    "uniqueCategoryId": 1,
+    "categoryName": "Dairy"
+  },
+  {
+    "uniqueCategoryId": 2,
+    "categoryName": "Vegetable"
+  },
+  {
+    "uniqueCategoryId": 3,
+    "categoryName": "Meat"
+  },
+  {
+    "uniqueCategoryId": 4,
+    "categoryName": "Seafood"
+  },
+  {
+    "uniqueCategoryId": 5,
+    "categoryName": "Fruit"
+  },
+  {
+    "uniqueCategoryId": 6,
+    "categoryName": "Beverage"
+  },
+  {
+    "uniqueCategoryId": 7,
+    "categoryName": "Bread"
+  },
+  {
+    "uniqueCategoryId": 8,
+    "categoryName": "Spice"
+  },
+  {
+    "uniqueCategoryId": 9,
+    "categoryName": "Flour"
+  },
+  {
+    "uniqueCategoryId": 10,
+    "categoryName": "Oil"
+  },
+  {
+    "uniqueCategoryId": 11,
+    "categoryName": "Sauce"
+  }
+]

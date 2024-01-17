@@ -39,6 +39,7 @@
                     <nz-form-control>
                         <nz-date-picker
                             id="deliveryDate"
+                            [nzDisabledDate]="disabledDate"
                             nzPlaceHolder="Select delivery date"
                             [nzShowTime]="{ nzFormat: 'hh:mm a' }"
                         ></nz-date-picker>

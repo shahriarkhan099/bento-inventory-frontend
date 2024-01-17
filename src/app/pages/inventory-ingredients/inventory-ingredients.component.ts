@@ -6,6 +6,8 @@ import { IngredientService } from '../../services/ingredient/ingredient.service'
 import { Ingredient } from '../../models/ingredient.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
+import { CategoryService } from '../../services/category/category.service';
+import { GlobalCatgory } from '../../models/globalCategory.model';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -15,14 +17,17 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 
 export class InventoryIngredientsComponent implements OnInit {
   listOfIngredients: Ingredient[] = []; 
+  categoryList: GlobalCatgory[] = []; 
 
-  constructor(private ingredientService: IngredientService, private message: NzMessageService) {}
+  constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService) {
+  }
 
   //Have to make the restaurant id dynamic
   @Input() restaurantId: number = 1;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.subscribeToIngredientChanges();
+    this.loadCategories();
     this.loadAllIngredients(this.restaurantId);
   }
 
@@ -53,10 +58,33 @@ export class InventoryIngredientsComponent implements OnInit {
     });
   }
 
+
+  createCategory() {
+    this.categoryService.getCategoryByName(this.restaurantId, this.categoryName).subscribe((category) => {
+      if (!category) {
+        const newCategory = {
+          restaurantId: this.restaurantId,
+          categoryName: this.categoryName,
+          uniqueCategoryId: this.categoryService.getCategoryMappings()[this.categoryName],
+        };
+  
+        this.categoryService.addCategory(newCategory).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.createUpdateIngredient();
+          },
+          error: (error) => {
+            console.error('Error updating ingredient:', error);
+          }
+        });
+      } else {
+        this.createUpdateIngredient();
+      }
+    });
+  }
+  
   createUpdateIngredient() {
     const newIngredient = {
-      restaurantId: 1,
-      categoryId: 1,
       ingredientName: this.ingredientName,
       liquid: this.liquid,
       unitOfStock: this.unitOfStock,
@@ -65,34 +93,42 @@ export class InventoryIngredientsComponent implements OnInit {
       perishable: this.perishable,
       description: this.description,
       idealStoringTemperature: this.idealStoringTemperature,
+      restaurantId: this.restaurantId,
+      categoryId: 0,
     };
-
-    console.log(newIngredient);
-
-    if (this.isEdit) {
-      this.ingredientService.editIngredient(this.id, newIngredient).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message.success('Ingredient Updated successfully.');
-        },
-        error: (error) => {
-          console.error('Error updating ingredient:', error);
-          this.message.error('Error updating ingredient. Please try again.');
-        }
-      });
-    } else {
-      this.ingredientService.addIngredient(newIngredient).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message.success('Ingredient Added successfully.');
-        },
-        error: (error) => {
-          console.error('Error adding ingredient:', error);
-          this.message.error('Error adding ingredient. Please try again.');
-        }
-      });
-    }
+  
+    this.categoryService.getCategoryByName(this.restaurantId, this.categoryName).subscribe((category) => {
+      if (category) {
+        console.log('Category already exists:', category);
+        newIngredient.categoryId = category.id;
+      }
+  
+      if (this.isEdit) {
+        this.ingredientService.editIngredient(this.id, newIngredient).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.message.success('Ingredient Updated successfully.');
+          },
+          error: (error) => {
+            console.error('Error updating ingredient:', error);
+            this.message.error('Error updating ingredient. Please try again.');
+          }
+        });
+      } else {
+        this.ingredientService.addIngredient(newIngredient).subscribe({
+          next: (res) => {
+            console.log(res);
+            this.message.success('Ingredient Added successfully.');
+          },
+          error: (error) => {
+            console.error('Error adding ingredient:', error);
+            this.message.error('Error adding ingredient. Please try again.');
+          }
+        });
+      }
+    });
   }
+  
 
   onDelete(id: number): void {
     this.ingredientService.deleteIngredient(id).subscribe({
@@ -126,13 +162,25 @@ export class InventoryIngredientsComponent implements OnInit {
     this.categoryName = ingredient.category.categoryName;
   }
 
-  categoryList = [ 'Dairy', 'Vegetable', 'Meat', 'Seafood', 'Fruit', 'Beverage', 'Bread', 'Spice', 'Flour', 'Oil', 'Sauce'];
-  unitOfQuantityOptions = [''];
+  async loadCategories(): Promise<void> {
+    try {
+      const categories = await this.categoryService.loadCategories().toPromise();
+      if (categories) {
+        this.categoryList = categories;
+      }
+    } catch (error) {
+      console.error('Error fetching categories', error);
+    }
+  }
+  
+  unitOfQuantityOptions = ['Please select liquid option first.'];
   booleanList = ['Yes', 'No'];
+  liquidOptions = ['litre', 'ml', 'bottle', 'can', 'packet'];
+  noLiquidOptions = ['kg', 'gm', 'piece', 'can', 'packet'];
 
   updateUnitOfQuantityOptions() {
     if (this.liquid === 'Yes') {
-      this.unitOfQuantityOptions = ['liter', 'ml', 'bottle', 'can', 'packet'];
+      this.unitOfQuantityOptions = ['litre', 'ml', 'bottle', 'can', 'packet'];
     } else if(this.liquid === 'No') {
       this.unitOfQuantityOptions = ['kg', 'gm', 'piece', 'can', 'packet'];
     }
@@ -157,7 +205,7 @@ export class InventoryIngredientsComponent implements OnInit {
   }
 
   submitForm() {
-    this.createUpdateIngredient();
+    this.createCategory();
     this.visible = false;
   }
 

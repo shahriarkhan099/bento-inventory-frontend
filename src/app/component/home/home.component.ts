@@ -125,4 +125,8 @@ export class HomeComponent {
     this.visible = true;
   }
 
+  disabledDate = (current: Date): boolean => {
+    return current < new Date();
+  };
+
 }

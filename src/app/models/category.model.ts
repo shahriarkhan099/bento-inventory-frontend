@@ -1,10 +1,6 @@
 export interface Category {
   id: number;
   categoryName: string;
-  imageUrl: string;
-  storageShelf: string;
-  storageType: string;
+  uniqueCategoryId: number;
   restaurantId: number;
-  createdAt: string;
-  updatedAt: string;
 }
