@@ -10,12 +10,33 @@ import { Ingredient } from '../../models/ingredient.model';
 export class IngredientService {
   private apiUrl = 'http://localhost:4000/v1/ingredient/restaurant';
 
-  constructor(private http: HttpClient) {}
+  private ingredientMappings: Record<string, number> = {};
+
+  constructor(private http: HttpClient) {
+    this.loadIngredientMappings();
+  }
 
   private _refreshNeeded$ = new Subject<void>();
 
   get refreshNeeded$() {
     return this._refreshNeeded$;
+  }
+
+  loadIngredients(): Observable<any[]> {
+    return this.http.get<any[]>('../../assets/ingredients.json');
+  }
+
+  async loadIngredientMappings() {
+    const ingredients = await this.loadIngredients().toPromise();
+    if (ingredients) {
+      ingredients.forEach((ingredient) => {
+        this.ingredientMappings[ingredient.ingredientName] = ingredient.uniqueIngredientId;
+      });
+    }
+  }
+
+  getIngredientMappings(): Record<string, number> {
+    return this.ingredientMappings;
   }
 
   getIngredients(restaurantId: number): Observable<Ingredient[]> {

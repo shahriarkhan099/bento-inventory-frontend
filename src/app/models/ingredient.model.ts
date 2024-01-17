@@ -2,6 +2,7 @@ import { Category } from './category.model';
 
 export interface Ingredient {
   id: number;
+  uniqueIngredientId: number;
   ingredientName: string;
   currentStockQuantity: number;
   unitOfStock: string;

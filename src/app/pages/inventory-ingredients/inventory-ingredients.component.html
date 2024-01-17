@@ -14,19 +14,32 @@
   (nzOnClose)="close()"
 >
   <form nz-form *nzDrawerContent (ngSubmit)="submitForm()">
+
     <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
           <nz-form-label for="ingredientName">Ingredient Name</nz-form-label>
+
           <nz-form-control>
-            <input
-              nz-input
-              id="ingredientName"
+            <nz-select
+              nzPlaceHolder="Enter ingredient name"
+              [nzAllowClear]="true"
               [(ngModel)]="ingredientName"
               name="ingredientName"
-              placeholder="Enter ingredient name"
-            />
+              [nzMaxTagCount]="1"
+              nzShowSearch
+              (ngModelChange)="onSelectSetCaloriesPerUnit()"
+            >
+              <nz-option
+                nz-input
+                id="ingredientName"
+                *ngFor="let el of ingredientList"
+                [nzValue]="el.ingredientName"
+                [nzLabel]="el.ingredientName"
+              ></nz-option>
+            </nz-select>
           </nz-form-control>
+
         </nz-form-item>
       </div>
     </div>
@@ -215,7 +228,7 @@
 <h2>{{ tableTitle }}</h2>
 <nz-table
   #rowSelectionTable
-  [nzData]="listOfIngredients"
+  [nzData]="createdIngredients"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="totalNumberOfData"
   [nzPageIndex]="pageIndex"

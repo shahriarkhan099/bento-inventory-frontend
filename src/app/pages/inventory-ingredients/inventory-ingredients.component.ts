@@ -8,6 +8,7 @@ import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { CategoryService } from '../../services/category/category.service';
 import { GlobalCatgory } from '../../models/globalCategory.model';
+import { GlobalIngredient } from '../../models/globalIngredient,model';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -16,8 +17,9 @@ import { GlobalCatgory } from '../../models/globalCategory.model';
 })
 
 export class InventoryIngredientsComponent implements OnInit {
-  listOfIngredients: Ingredient[] = []; 
+  createdIngredients: Ingredient[] = []; 
   categoryList: GlobalCatgory[] = []; 
+  ingredientList: GlobalIngredient[] = [];
 
   constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService) {
   }
@@ -27,7 +29,8 @@ export class InventoryIngredientsComponent implements OnInit {
 
   ngOnInit() {
     this.subscribeToIngredientChanges();
-    this.loadCategories();
+    this.loadCategoriesFromAssests();
+    this.loadIngredientsFromAssests();
     this.loadAllIngredients(this.restaurantId);
   }
 
@@ -40,7 +43,7 @@ export class InventoryIngredientsComponent implements OnInit {
   private loadAllIngredients(restaurantId: number) {
     this.ingredientService.getIngredients(restaurantId).subscribe({
       next: (data) => {
-        this.listOfIngredients = data.map(ingredient => ({
+        this.createdIngredients = data.map(ingredient => ({
           ...ingredient,
           currentStockQuantity: Number((ingredient.currentStockQuantity/1000).toFixed(2)),
           unitOfStock: ingredient.unitOfStock === "gm" ? "kg" : ingredient.unitOfStock === "ml" ? "litre" : ingredient.unitOfStock,
@@ -48,8 +51,8 @@ export class InventoryIngredientsComponent implements OnInit {
           updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
         }));
 
-        sortByCreatedAt(this.listOfIngredients);
-        console.log('Ingredient data loaded', this.listOfIngredients);
+        sortByCreatedAt(this.createdIngredients);
+        console.log('Ingredient data loaded', this.createdIngredients);
       },
       error: (error) => {
         console.error('Error fetching ingredient data', error);
@@ -57,7 +60,6 @@ export class InventoryIngredientsComponent implements OnInit {
       },
     });
   }
-
 
   createCategory() {
     this.categoryService.getCategoryByName(this.restaurantId, this.categoryName).subscribe((category) => {
@@ -84,7 +86,11 @@ export class InventoryIngredientsComponent implements OnInit {
   }
   
   createUpdateIngredient() {
+    let uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
+    console.log('uniqueIngredientId', uniqueIngredientId);
+    
     const newIngredient = {
+      uniqueIngredientId: this.ingredientService.getIngredientMappings()[this.ingredientName],
       ingredientName: this.ingredientName,
       liquid: this.liquid,
       unitOfStock: this.unitOfStock,
@@ -133,7 +139,7 @@ export class InventoryIngredientsComponent implements OnInit {
   onDelete(id: number): void {
     this.ingredientService.deleteIngredient(id).subscribe({
       next: () => {
-        this.listOfIngredients = this.listOfIngredients.filter(
+        this.createdIngredients = this.createdIngredients.filter(
           (ingredient) => ingredient.id !== id
         );
         this.message.success('Ingredient deleted successfully.');
@@ -162,7 +168,18 @@ export class InventoryIngredientsComponent implements OnInit {
     this.categoryName = ingredient.category.categoryName;
   }
 
-  async loadCategories(): Promise<void> {
+  async loadIngredientsFromAssests(): Promise<void> {
+    try {
+      const ingredients = await this.ingredientService.loadIngredients().toPromise();
+      if (ingredients) {
+        this.ingredientList = ingredients;
+      }
+    } catch (error) {
+      console.error('Error fetching categories', error);
+    }
+  }
+
+  async loadCategoriesFromAssests(): Promise<void> {
     try {
       const categories = await this.categoryService.loadCategories().toPromise();
       if (categories) {
@@ -171,6 +188,11 @@ export class InventoryIngredientsComponent implements OnInit {
     } catch (error) {
       console.error('Error fetching categories', error);
     }
+  }
+
+  onSelectSetCaloriesPerUnit() {
+    let uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
+    this.caloriesPerUnit = this.ingredientList[(uniqueIngredientId - 1)].caloriesPerUnit;
   }
   
   unitOfQuantityOptions = ['Please select liquid option first.'];
