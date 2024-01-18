@@ -2348,5 +2348,20 @@
     "uniqueIngredientId": 470,
     "ingredientName": "Cumin Seed Oil",
     "caloriesPerUnit": 110
-  }
+  },
+  {
+    "uniqueIngredientId": 471,
+    "ingredientName": "Heavy Cream",
+    "caloriesPerUnit": 150
+  },
+  {
+    "uniqueIngredientId": 472,
+    "ingredientName": "Garlic Cloves",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 473,
+    "ingredientName": "Butter",
+    "caloriesPerUnit": 102
+  }  
 ]

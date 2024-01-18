@@ -78,11 +78,11 @@
                 </div>
                 <div class="button-container">
                     <button class="minus-button" (click)="incrementQuantity(product)">+</button>
-                    <button class="plus-button" (click)="decrementQuantity(product)">-</button>
+                    <button class="plus-button" (click)="decrementQuantity(product)" [disabled]="product.qty <= 1">-</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <button (click)="directToShoppingCart()" class="cart-button">Confirm Order</button>
+    <button (click)="directToShoppingCart()" class="cart-button" [disabled]="cartItems.length <= 0">Confirm Order</button>
 </div>
