@@ -25,16 +25,20 @@
       <th>Wastage Quantity</th>
       <th>Cost Per Unit</th>
       <th>Total Loss</th>
-      <th>Expired Date</th>
+      <th>Bought At</th>
+      <th>Wasted At</th>
+      <th>Shelf Life In Days</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.totalQuantity }} {{ data.unitOfStock }}</td>
-      <td>{{ data.costPerUnit }} {{ data.unitOfPrice }}/{{ data.unitOfStock }}</td>
+      <td>{{ data.costPerUnit }}</td>
       <td>{{ data.totalCost }} {{ data.unitOfPrice }}</td>
-      <td>{{ data.updatedAt }}</td>
+      <td>{{ data.boughtAt }}</td>
+      <td>{{ data.expirationDate }}</td>
+      <td>{{ data.shelfLifeInDays }}</td>
     </tr>
   </tbody>
 </nz-table>

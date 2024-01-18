@@ -6,7 +6,9 @@ export interface WasteLog {
   unitOfPrice: string;
   totalCost: number;
   costPerUnit: number;
-  expirationDate: Date;
+  boughtAt: string;
+  expirationDate: string;
+  shelfLifeInDays: number;
   ingredientId: number;
   restaurantId: number;
   createdAt: string;

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
+import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../../services/vendor/vendor.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -8,7 +7,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   searchTerm: string;
   vendors: any[];
   selectedVendorId: string;
@@ -24,6 +23,8 @@ export class HomeComponent {
     this.vendorProducts = [];
     this.cartItems = []
   }
+
+  ngOnInit() {}
 
   searchVendors() {
     if (this.searchTerm.trim() === '') {
@@ -85,6 +86,7 @@ export class HomeComponent {
     const orderData = {
       totalPrice: this.calculateTotalPrice(),
       // deliveryDate: new Date() + this.vendors.find(vendor => vendor.id === this.selectedVendorId).orderProcessingTime,
+      
       deliveryDate: new Date(),
       vendorId: this.selectedVendorId,
       restaurantId: 1,
@@ -105,8 +107,10 @@ export class HomeComponent {
   transformProductsToBatches(selectedProducts: any[]) {
     return selectedProducts.map(product => {
       const productBatch: any = {
+        uniqueIngredientId: product.uniqueIngredientId,
         productName: product.name,
-        purchaseQuantity: product.minimumOrderAmount,
+        purchaseQuantity: (product.minimumOrderAmount * product.qty),
+        unitOfStock: product.unitOfStock,
         purchasePrice: product.price,
         expirationDate: product.expiryDate,
         productId: product.id,

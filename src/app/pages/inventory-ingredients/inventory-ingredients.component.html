@@ -56,7 +56,7 @@
               name="liquid"
               [nzMaxTagCount]="1"
               nzShowSearch
-              (ngModelChange)="onLiquidChange($event)"
+              (ngModelChange)="onLiquidChange(liquid)"
             >
               <nz-option
                 nz-input
@@ -250,7 +250,7 @@
       <th>Ingredient Name</th>
       <th>Current Stock</th>
       <th>UOM</th>
-      <th>Cost Per Unit</th>
+      <th>Avg Cost Per Unit</th>
       <th>Calories Per Unit</th>
       <th>Reorder Point</th>
       <th>Description</th>

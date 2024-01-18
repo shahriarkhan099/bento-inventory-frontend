@@ -1,5 +1,6 @@
 import { IngredientBatch } from './ingredient-batch.model';
 import { DeliveryBoxBatch } from './delivery-box-batch.model';
+import { Supplier } from './supplier.model';
 
 export interface Order {
   id: number;
@@ -14,4 +15,5 @@ export interface Order {
   updatedAt: string;
   ingredientBatches: IngredientBatch[];
   deliveryBoxBatches: DeliveryBoxBatch[];
+  supplier: Supplier;
 }

@@ -195,22 +195,17 @@ export class InventoryIngredientsComponent implements OnInit {
     this.caloriesPerUnit = this.ingredientList[(uniqueIngredientId - 1)].caloriesPerUnit;
   }
   
-  unitOfQuantityOptions = ['Please select liquid option first.'];
+  unitOfQuantityOptions = ['kg', 'gm', 'piece', 'can', 'packet', 'litre', 'ml', 'bottle',];
   booleanList = ['Yes', 'No'];
-  liquidOptions = ['litre', 'ml', 'bottle', 'can', 'packet'];
-  noLiquidOptions = ['kg', 'gm', 'piece', 'can', 'packet'];
 
-  updateUnitOfQuantityOptions() {
+  onLiquidChange(value: string): void {
+    this.liquid = value;
+    
     if (this.liquid === 'Yes') {
       this.unitOfQuantityOptions = ['litre', 'ml', 'bottle', 'can', 'packet'];
     } else if(this.liquid === 'No') {
       this.unitOfQuantityOptions = ['kg', 'gm', 'piece', 'can', 'packet'];
     }
-  }
-
-  onLiquidChange(value: string): void {
-    this.liquid = value;
-    this.updateUnitOfQuantityOptions();
   }
 
   visible = false;

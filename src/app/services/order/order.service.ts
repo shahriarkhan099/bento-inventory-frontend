@@ -20,17 +20,11 @@ export class OrderService {
 
   getOrders(restaurantId: number): Observable<Order[]> {
     return this.http
-      .get<{ orders: Order[] }>(
-        `${this.apiUrl}/${restaurantId}`
-      )
-      .pipe(map((response) => response.orders));
+      .get<{ orders: Order[] }>(`${this.apiUrl}/${restaurantId}`).pipe(map((response) => response.orders));
   }
   
   addOrder(orders: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${orders.restaurantId}`, orders).pipe(
-      tap(() => {
-        this._refreshNeeded$.next();
-      })
+    return this.http.post(`${this.apiUrl}/${orders.restaurantId}`, orders).pipe(tap(() => {this._refreshNeeded$.next();})
     );
   }
 
@@ -48,12 +42,9 @@ export class OrderService {
     return this.http.delete<void>(`${this.apiUrl}/${orderId}`);
   }
 
-  searchIngredientByName(restaurantId: number, name: string): Observable<Order> {
+  searchOrderByName(restaurantId: number, name: string): Observable<Order> {
     return this.http
       .get<{ ingredient: Order }>(
-        `${this.apiUrl}/${restaurantId}/search/${name}`,
-        { params: { searchTerm: name } }
-      )
-      .pipe(map((response) => response.ingredient));
+        `${this.apiUrl}/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
   }
 }

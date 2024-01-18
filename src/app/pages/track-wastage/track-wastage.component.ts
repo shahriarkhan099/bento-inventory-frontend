@@ -43,10 +43,15 @@ export class TrackWastageComponent implements OnInit {
       next: (data) => {
         this.listOfWasteLog = data.map((wastageLog) => ({
           ...wastageLog,
-          costPerUnit: wastageLog.costPerUnit
-            ? Number(wastageLog.costPerUnit.toFixed(2))
-            : 0,
-          updatedAt: formatDateToString(new Date(wastageLog.createdAt)),
+          unitOfStock: wastageLog.unitOfStock === "gm" ? "kg" : wastageLog.unitOfStock === "ml" ? "litre" : wastageLog.unitOfStock,
+          purchaseQuantity: wastageLog.unitOfStock === "gm" ? 
+          (wastageLog.totalQuantity / 1000) : wastageLog.unitOfStock === "ml" ? (wastageLog.totalQuantity / 1000) : wastageLog.totalQuantity,
+          totalCost: Number((wastageLog.totalCost / 100).toFixed(2)),
+          costPerUnit: Number((wastageLog.totalCost / 100).toFixed(2)) / 
+          (wastageLog.unitOfStock === "gm" ? (wastageLog.totalQuantity / 1000) : wastageLog.unitOfStock === "ml" ? (wastageLog.totalQuantity / 1000) : wastageLog.totalQuantity),
+          shelfLifeInDays: (new Date(wastageLog.createdAt)).getDay() - (new Date(wastageLog.boughtAt)).getDay(),
+          boughtAt: formatDateToString(new Date(wastageLog.boughtAt)),
+          expirationDate: formatDateToString(new Date(wastageLog.createdAt)),
         }));
 
         sortByCreatedAt(this.listOfWasteLog);
@@ -55,9 +60,7 @@ export class TrackWastageComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching wastageLog data', error);
-        this.message.error(
-          'Failed to fetch wastageLog data. Please try again.'
-        );
+        this.message.error('Failed to fetch wastageLog data. Please try again.');
       },
     });
   }

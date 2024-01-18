@@ -8,7 +8,7 @@ export interface IngredientBatch {
   purchasePrice: number;
   costPerUnit: number;
   receivedAt: Date;
-  expirationDate: Date;
+  expirationDate: string;
   supplierId: number;
   ingredientId: number;
   orderId: number;

@@ -2,9 +2,7 @@ body {
   font-family: "GTPressura", sans-serif;
 }
 
-.delete-button,
-.edit-button,
-.add-button {
+.view-details-button {
   padding: 10px 20px;
   font-size: 14px;
   border: none;
@@ -12,36 +10,14 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   color: white;
+  background-color: #3498db; 
   margin-right: 8px;
 }
 
-.delete-button {
-  background-color: #e74c3c;
+.view-details-button:hover {
+  background-color: #2071b3; 
 }
 
-.edit-button {
-  background-color: #f39c12;
-}
-
-.add-button {
-  background-color: #2ecc71;
-}
-
-.delete-button:hover {
-  background-color: #a11809;
-}
-
-.edit-button:hover {
-  background-color: #ad6f0b;
-}
-
-.add-button:hover {
-  background-color: #039741;
-}
-
-.add-button-container {
-  float: right;
-}
 
 h2 {
   font-size: 24px;
