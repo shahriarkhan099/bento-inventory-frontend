@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../../services/vendor/vendor.service';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-home',
@@ -8,129 +7,61 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  searchTerm: string;
-  vendors: any[];
-  selectedVendorId: string;
-  selectedVendor: any;
-  vendorProducts: any[];
-  cartItems: any[];
+  orders: any[] = [];
+  loading = true;
+  error = false;
 
-  constructor(private vendorsService: VendorService, private message: NzMessageService) {
-    this.searchTerm = '';
-    this.vendors = [];
-    this.selectedVendorId = '';
-    this.selectedVendor = '';
-    this.vendorProducts = [];
-    this.cartItems = []
+  constructor(private orderService: VendorService) {}
+
+  ngOnInit(): void {
+    this.fetchOrderData();
+    setInterval(() => this.calculateRemainingTime(this.orders), 1000);
   }
 
-  ngOnInit() {}
-
-  searchVendors() {
-    if (this.searchTerm.trim() === '') {
-      this.vendors = [];
-      return;
-    } else {
-      setTimeout(() => {
-        this.vendorProducts = [];
-        this.selectedVendorId = '';
-        this.vendorsService.searchVendorsByNameAndProducts(this.searchTerm).subscribe((vendors) => {
-          this.vendors = vendors;
-          console.log('Vendors:', vendors);
-        });
-      }, 1000); 
-    }
+  fetchOrderData() {
+    const restaurantId = 1; // Replace with the actual restaurant ID
+    this.orderService.getAllOrdersOfRestaurant(restaurantId).subscribe(
+      (data) => {
+        this.orders = data;
+        this.loading = false;
+      },
+      (err) => {
+        console.error('Error fetching order data:', err);
+        this.loading = false;
+        this.error = true;
+      }
+    );
   }
 
-  selectVendor(vendorId: string) {
-    this.vendors = [];
-    this.selectedVendorId = vendorId;
-    this.vendorsService.getVendorByIdWithProducts(vendorId).subscribe((vendorDetails) => {
-      this.selectedVendor = vendorDetails;
-      this.vendorProducts = vendorDetails.products;
-      console.log('Vendor details:', vendorDetails);
-      console.log('Vendor details:', this.vendorProducts);
-    });
-  }
+  calculateRemainingTime(order: any) {
+    if (order && order.deliveryDate) {
+      const deliveryDate = new Date(order.deliveryDate);
+      const currentDate = new Date();
+      const timeDifference = deliveryDate.getTime() - currentDate.getTime();
 
-  getSelectedProducts(): any[] {
-    this.cartItems = this.vendorProducts ? this.vendorProducts.filter(product => product.selected) : [];
-    console.log('Cart items:', this.cartItems);
-    return this.cartItems;
-  }
+      if (timeDifference > 0) {
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-  calculateTotalPrice(): number {
-    let total = 0;
-    for (let i = 0; i < this.cartItems.length; i++) {
-      const product = this.cartItems[i];
-      total += product.price * product.qty;
-    }
-    return Number(total.toFixed(2));
-  }
-
-  incrementQuantity(product: any): void {
-    product.qty++;
-  }
-
-  decrementQuantity(product: any): void {
-    product.qty--;
-  }
-
-  placeOrder() {
-    if (!this.selectedVendorId || this.cartItems.length === 0) {
-      this.message.error('Please select a vendor and at least one product before placing an order.');
-      return;
+        return `${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        return 'Delivery Time Expired';
+      }
     }
 
-    const productBatches = this.transformProductsToBatches(this.cartItems);
-    const orderData = {
-      totalPrice: this.calculateTotalPrice(),
-      // deliveryDate: new Date() + this.vendors.find(vendor => vendor.id === this.selectedVendorId).orderProcessingTime,
-      
-      deliveryDate: new Date(),
-      vendorId: this.selectedVendorId,
-      restaurantId: 1,
-      productBatches: productBatches
-    };
-
-    console.log(orderData);
-
-    this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
-      console.log('Order placed successfully:', orderResponse);
-      this.message.success('Order placed successfully.');
-      this.message.success('Your order will be arrive within ' + this.selectedVendor.orderProcessingTime + ' hours.');
-    });
-
-    this.close();
+    return '';
   }
 
-  transformProductsToBatches(selectedProducts: any[]) {
-    return selectedProducts.map(product => {
-      const productBatch: any = {
-        uniqueIngredientId: product.uniqueIngredientId,
-        productName: product.name,
-        purchaseQuantity: (product.minimumOrderAmount * product.qty),
-        unitOfStock: product.unitOfStock,
-        purchasePrice: product.price,
-        expirationDate: product.expiryDate,
-        productId: product.id,
-      };
-      return productBatch;
-    });
+  isDeliveryExpired(order: any): boolean {
+    if (order && order.deliveryDate) {
+      const deliveryDate = new Date(order.deliveryDate);
+      const currentDate = new Date();
+
+      return currentDate.getTime() > deliveryDate.getTime();
+    }
+
+    return false;
   }
-
-  visible = false;
-
-  close() {
-    this.visible = false;
-  }
-
-  directToShoppingCart() {
-    this.visible = true;
-  }
-
-  disabledDate = (current: Date): boolean => {
-    return current < new Date();
-  };
 
 }

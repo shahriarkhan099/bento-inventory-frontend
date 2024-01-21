@@ -19,92 +19,9 @@ import { Order } from '../../models/order.model';
   styleUrl: './on-platform-supplier.component.css',
 })
 export class OnPlatformSupplierComponent implements OnInit {
-  public orderForm: FormGroup;
-  public submittedData: any;
-
-  constructor(private _fb: FormBuilder, private orderService: OrderService) {
-    this.orderForm = this._fb.group({
-      status: [''],
-      deliveryDate: [''],
-      scheduleTime: [''],
-      supplierId: [''],
-      restaurantId: [''],
-      ingredientBatches: this._fb.array([this.createIngredientBatch()]),
-      deliveryBoxBatches: this._fb.array([this.createDeliveryBoxBatch()]),
-    });
-  }
-
+  
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
-  private createIngredientBatch(): FormGroup {
-    return this._fb.group({
-      ingredientId: [''],
-      ingredientName: [''],
-      unitOfStock: [''],
-      purchaseQuantity: [''],
-      unitOfPrice: [''],
-      purchasePrice: [''],
-      expirationDate: [''],
-      restaurantId: [''],
-      supplierId: [''],
-    });
-  }
-
-  private createDeliveryBoxBatch(): FormGroup {
-    return this._fb.group({
-      deliveryBoxId: [''],
-      boxName: [''],
-      purchaseQuantity: [''],
-      unitOfPrice: [''],
-      purchasePrice: [''],
-      supplierId: [''],
-      restaurantId: [''],
-    });
-  }
-
-  get ingredientBatchesArray(): FormArray {
-    return <FormArray>this.orderForm.get('ingredientBatches');
-  }
-
-  get deliveryBoxBatchesArray(): FormArray {
-    return <FormArray>this.orderForm.get('deliveryBoxBatches');
-  }
-
-  addIngredientBatch(): void {
-    this.ingredientBatchesArray.push(this.createIngredientBatch());
-  }
-
-  removeIngredientBatch(index: number): void {
-    this.ingredientBatchesArray.removeAt(index);
-  }
-
-  addDeliveryBoxBatch(): void {
-    this.deliveryBoxBatchesArray.push(this.createDeliveryBoxBatch());
-  }
-
-  removeDeliveryBoxBatch(index: number): void {
-    this.deliveryBoxBatchesArray.removeAt(index);
-  }
-
-  submitForm(): void {
-    if (this.orderForm.valid) {
-      const formData = this.orderForm.value;
-      formData.deliveryDate = new Date(formData.deliveryDate);
-      formData.deliveryDate = new Date(formData.scheduleTime);
-      console.log(formData);
-      this.submittedData = formData;
-
-      this.orderService.addOrder(formData).subscribe({
-        next: (response) => {
-          console.log('Post successful', response);
-        },
-        error: (error) => {
-          console.error('Error in post', error);
-        },
-      });
-    } else {
-      console.error('Form invalid');
-    }
-  }
 }

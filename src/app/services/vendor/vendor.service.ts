@@ -40,8 +40,8 @@ export class VendorService {
   }
 
   // Order Status with Vendor API
-  getVendorOrders(vendorId: number): Observable<any[]> {
-    return this.http.get<{ data: any[] }>(`${this.apiUrl}/order/vendor/${vendorId}`)
+  getAllOrdersOfRestaurant(restaurantId: number): Observable<any[]> {
+    return this.http.get<{ data: any[] }>(`${this.apiUrl}/order/restaurant/${restaurantId}`)
       .pipe(map((response) => response.data));
   }
 

@@ -53,23 +53,26 @@ export class PlaceOrdersComponent implements OnInit {
     });
   }
 
+  calculateTotalPrice(): number {
+    let total = 0;
+    for (let i = 0; i < this.cartItems.length; i++) {
+      const product = this.cartItems[i];
+      const costPerUnit = product.price / product.minimumOrderAmount;
+      total += product.price + (product.qty * costPerUnit);
+    }
+    return Number(total.toFixed(2));
+  }
+
   getSelectedProducts(): any[] {
     this.cartItems = this.vendorProducts ? this.vendorProducts.filter(product => product.selected) : [];
     console.log('Cart items:', this.cartItems);
     return this.cartItems;
   }
 
-  calculateTotalPrice(): number {
-    let total = 0;
-    for (let i = 0; i < this.cartItems.length; i++) {
-      const product = this.cartItems[i];
-      total += product.price * product.qty;
-    }
-    return Number(total.toFixed(2));
-  }
-
   incrementQuantity(product: any): void {
     product.qty++;
+    product.selected = true;
+    this.getSelectedProducts();
   }
 
   decrementQuantity(product: any): void {
@@ -83,6 +86,8 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     const productBatches = this.transformProductsToBatches(this.cartItems);
+    console.log(productBatches);
+    
     const orderData = {
       totalPrice: this.calculateTotalPrice(),
       deliveryDate: new Date(),
@@ -99,6 +104,12 @@ export class PlaceOrdersComponent implements OnInit {
       this.message.success('Your order will be arrive within ' + this.selectedVendor.orderProcessingTime + ' hours.');
     });
 
+    this.cartItems.forEach((product) => {
+      product.selected = false;
+      product.qty = 0;
+    });
+    this.cartItems = [];
+
     this.close();
   }
 
@@ -107,9 +118,9 @@ export class PlaceOrdersComponent implements OnInit {
       const productBatch: any = {
         uniqueIngredientId: product.uniqueIngredientId,
         productName: product.name,
-        purchaseQuantity: (product.minimumOrderAmount * product.qty),
+        purchaseQuantity: (product.minimumOrderAmount + product.qty),
         unitOfStock: product.unitOfStock,
-        purchasePrice: product.price,
+        purchasePrice: (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2),
         expirationDate: product.expiryDate,
         productId: product.id,
       };

@@ -15,15 +15,23 @@
     (nzOnClose)="close()">
     <form nz-form *nzDrawerContent (ngSubmit)="placeOrder()">
 
-          <div *ngIf="cartItems.length > 0">
+        <div *ngIf="cartItems.length > 0">
             <h2>Shopping Cart</h2>
             <div class="cart-container">
               <div class="cart-item" *ngFor="let item of cartItems">
-                <span>{{ item.name }} - Qty: {{ item.qty }} - Price: {{ (item.price * item.qty).toFixed(2) }}</span>
+                <div class="cart-item-details">
+                  <div class="item-name">{{ item.name }}</div>
+                  <div class="item-quantity">
+                    Qty: {{ item.minimumOrderAmount + item.qty }} {{ item.unitOfStock }}
+                  </div>
+                  <div class="item-price">
+                    Price: {{ (((item.price/item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) }} USD
+                  </div>
+                </div>
               </div>
             </div>
-            <p>Total Price: {{ calculateTotalPrice() }}</p>
-          </div>
+            <p class="total-price">Total Price: {{ calculateTotalPrice() }} USD</p>
+          </div>          
 
     </form>
 
@@ -69,16 +77,16 @@
     <div class="product-container">
         <div class="product-item" *ngFor="let product of vendorProducts">
             <div>
-                <input type="checkbox" (change)="getSelectedProducts()" [(ngModel)]="product.selected" />
+                <input type="checkbox" (change)="getSelectedProducts()" [(ngModel)]="product.selected"/>
                 <div class="product-details">
                     <span>{{ product.name }}</span><br>
-                    <span>Price: {{ product.price }}</span><br>
-                    <span>Amount: {{ product.minimumOrderAmount }}</span><br>
-                    <span>Qty: {{ product.qty }}</span>
+                    <span>Price: {{ product.price }} USD</span><br>
+                    <span>Minimum Qty: {{ product.minimumOrderAmount }} {{ product.unitOfStock }}</span><br>
+                    <span>Total Qty: {{ product.qty + product.minimumOrderAmount }} {{ product.unitOfStock }}</span>
                 </div>
                 <div class="button-container">
                     <button class="minus-button" (click)="incrementQuantity(product)">+</button>
-                    <button class="plus-button" (click)="decrementQuantity(product)" [disabled]="product.qty <= 1">-</button>
+                    <button class="plus-button" (click)="decrementQuantity(product)" [disabled]="product.qty <= 0">-</button>
                 </div>
             </div>
         </div>
