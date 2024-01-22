@@ -1,13 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
-
-import { OrderService } from '../../services/order/order.service';
-import { Order } from '../../models/order.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
-import { IngredientBatch } from '../../models/ingredient-batch.model';
-import { DeliveryBoxBatch } from '../../models/delivery-box-batch.model';
+import { VendorService } from '../../services/vendor/vendor.service';
 
 @Component({
   selector: 'app-order-status',
@@ -15,39 +11,36 @@ import { DeliveryBoxBatch } from '../../models/delivery-box-batch.model';
   styleUrl: './order-status.component.css',
 })
 export class OrderStatusComponent implements OnInit {
-  listOfOrder: Order[] = []; 
-  listOfIngredientBatch: IngredientBatch[] = [];
-  listOfDeliveryBoxBatch: DeliveryBoxBatch[] = [];
+  listOfProductOrders: any[] = []; 
+  listOfProductBatches: any[] = [];
 
-  constructor(private orderService: OrderService, private message: NzMessageService) {}
+  constructor(private vendorOrderService: VendorService, private message: NzMessageService) {}
 
   //Have to make the restaurant id dynamic
   @Input() restaurantId: number = 1;
 
   ngOnInit(): void {
-    this.subscribeToIngredientChanges();
     this.loadAllOrders(this.restaurantId);
-  }
-
-  private subscribeToIngredientChanges() {
-    this.orderService.refreshNeeded$.subscribe(() => {
-      this.loadAllOrders(this.restaurantId);
-    });
+    setInterval(() => this.calculateRemainingTime(this.listOfProductOrders), 1000);
   }
 
   private loadAllOrders(restaurantId: number) {
-    this.orderService.getOrders(restaurantId).subscribe({
+    this.vendorOrderService.getAllOrdersOfRestaurant(restaurantId).subscribe({
       next: (data) => {
-        this.listOfOrder = data.map(order => ({
-          ...order,
-          status: order.status === "delivered" ? "Received" : order.status === "cancelled" ? "Cancelled" : order.status,
-          totalPrice: Number(order.totalPrice.toFixed(2)),
-          orderDate: formatDateToString(new Date(order.orderDate)),
-          deliveryDate: formatDateToString(new Date(order.deliveryDate)),
-        }));
+        const currentDateTime = new Date();
 
-        sortByCreatedAt(this.listOfOrder);
-        console.log('Order data loaded', this.listOfOrder);
+        this.listOfProductOrders = data
+          .filter((order) => new Date(order.deliveryDate) > currentDateTime)
+          .map((order) => ({
+            ...order,
+            status: 'Preparing',
+            totalPrice: Number(order.totalPrice.toFixed(2)),
+            orderDate: formatDateToString(new Date(order.orderDate)),
+            deliveryDate: formatDateToString(new Date(order.deliveryDate)),
+          }));
+
+        sortByCreatedAt(this.listOfProductOrders);
+        console.log('Order data loaded', this.listOfProductOrders);
       },
       error: (error) => {
         console.error('Error fetching order data', error);
@@ -69,7 +62,7 @@ export class OrderStatusComponent implements OnInit {
   sizeOfTable: NzTableSize = 'small';
   loadingStatus = false;
 
-  tableTitle = 'Order History Overview';
+  tableTitle = 'Current Order Status';
   tableFooter = '';
   noResult = 'No Data Present';
   showQuickJumper = true;
@@ -79,21 +72,48 @@ export class OrderStatusComponent implements OnInit {
 
   visible = false;
 
-  onDetails(order: Order): void {
+  onDetails(productOrder: any): void {
     this.visible = true;
-    this.listOfIngredientBatch = order.ingredientBatches.map(ingredientBatch => ({
-      ...ingredientBatch,
-      purchasePrice: (ingredientBatch.purchasePrice / 100),
-      unitOfStock: ingredientBatch.unitOfStock === "gm" ? "kg" : ingredientBatch.unitOfStock === "ml" ? "litre" : ingredientBatch.unitOfStock,
-      purchaseQuantity: ingredientBatch.unitOfStock === "gm" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.unitOfStock === "ml" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.purchaseQuantity,
-      expirationDate: formatDateToString(new Date(ingredientBatch.expirationDate)),
+    this.listOfProductBatches = productOrder.productBatches.map((productBatch: any) => ({
+      ...productBatch,
+      purchasePrice: productBatch.purchasePrice,
+      purchaseQuantity: productBatch.purchaseQuantity,
+      expirationDate: formatDateToString(new Date(productBatch.expirationDate)),
     }));
-    this.listOfDeliveryBoxBatch = order.deliveryBoxBatches;
-    console.log(this.listOfIngredientBatch);
+    console.log(this.listOfProductBatches);
   }
 
   onBack(): void {
     this.visible = false;
+  }
+
+  calculateRemainingTime(order: any) {
+    if (order && order.deliveryDate) {
+      const deliveryDate = new Date(order.deliveryDate);
+      const currentDate = new Date();
+      const timeDifference = deliveryDate.getTime() - currentDate.getTime();
+
+      if (timeDifference > 0) {
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        return `${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        return 'Delivery Time Expired';
+      }
+    }
+    return '';
+  }
+
+  isDeliveryExpired(order: any): boolean {
+    if (order && order.deliveryDate) {
+      const deliveryDate = new Date(order.deliveryDate);
+      const currentDate = new Date();
+
+      return currentDate.getTime() > deliveryDate.getTime();
+    }
+    return false;
   }
 
 }

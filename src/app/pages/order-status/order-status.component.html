@@ -1,4 +1,3 @@
-
 <nz-drawer
   [nzBodyStyle]="{ overflow: 'auto' }"
   [nzMaskClosable]="false"
@@ -13,7 +12,7 @@
 
     <nz-table
   #rowSelectionTable
-  [nzData]="listOfIngredientBatch"
+  [nzData]="listOfProductBatches"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="0"
   [nzPageIndex]="pageIndex"
@@ -32,21 +31,21 @@
 >
   <thead>
     <tr>
-      <th>Ingredient Name</th>
+      <th>Product Name</th>
       <th>Purchase Quantity</th>
       <th>Unit</th>
-      <th>Total Cost</th>
+      <th>Total Cost (USD)</th>
       <th>Cost Per Unit</th>
       <th>Expiration Date</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
-      <td>{{ data.ingredientName }}</td>
+      <td>{{ data.productName }}</td>
       <td>{{ data.purchaseQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>
       <td>{{ data.purchasePrice }}</td>
-      <td>{{ data.costPerUnit }}</td>
+      <td>{{ data.purchasePrice / data.purchaseQuantity }}</td>
       <td>{{ data.expirationDate }}</td>
     </tr>
   </tbody>
@@ -67,7 +66,7 @@
 
 <nz-table
   #rowSelectionTable
-  [nzData]="listOfOrder"
+  [nzData]="listOfProductOrders"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="totalNumberOfData"
   [nzPageIndex]="pageIndex"
@@ -88,19 +87,21 @@
     <tr>
       <th>Supplier</th>
       <th>Order Status</th>
-      <th>Total Cost</th>
+      <th>Total Cost (USD)</th>
       <th>Ordered At</th>
       <th>Estimated Arrival Time</th>
+      <th>Remaining Time</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
-      <td>{{ data.supplier.name }}</td>
+      <td>{{ data.vendor.name }}</td>
       <td>{{ data.status }}</td>
       <td>{{ data.totalPrice }}</td>
       <td>{{ data.orderDate }}</td>
       <td>{{ data.deliveryDate }}</td>
+      <td>{{ calculateRemainingTime(data) }}</td>
 
       <td>
         <button
