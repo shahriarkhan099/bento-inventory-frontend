@@ -200,3 +200,30 @@ h2 {
   font-weight: bold;
   margin-top: 10px;
 }
+
+.time-slot-container {
+  max-width: 300px; 
+  margin: 50px auto; 
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.select-box {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #555;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.select-box:hover,
+.select-box:focus {
+  border-color: #3498db;
+}

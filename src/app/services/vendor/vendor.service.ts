@@ -24,6 +24,10 @@ export class VendorService {
     return this.http.post(`${this.apiUrl}/vendor`, supplier).pipe();
   }
 
+  updateSupplier(supplier: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/vendor/${supplier.id}`, supplier).pipe();
+  }
+
   placeOrder(order: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/order/vendor/${order.vendorId}/all`, order).pipe(
     );

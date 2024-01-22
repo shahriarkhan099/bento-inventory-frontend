@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../../services/vendor/vendor.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { generateAvailableTimeSlots, bookTimeSlot} from '../../utils/timeSlotUtils';
 
 @Component({
   selector: 'app-place-orders',
@@ -14,6 +15,7 @@ export class PlaceOrdersComponent implements OnInit {
   selectedVendor: any;
   vendorProducts: any[];
   cartItems: any[];
+  selectedTimeSlot: string;
 
   constructor(private vendorsService: VendorService, private message: NzMessageService) {
     this.searchTerm = '';
@@ -21,7 +23,8 @@ export class PlaceOrdersComponent implements OnInit {
     this.selectedVendorId = '';
     this.selectedVendor = '';
     this.vendorProducts = [];
-    this.cartItems = []
+    this.cartItems = [];
+    this.selectedTimeSlot = '';
   }
 
   ngOnInit() {}
@@ -50,6 +53,7 @@ export class PlaceOrdersComponent implements OnInit {
       this.vendorProducts = vendorDetails.products;
       console.log('Vendor details:', vendorDetails);
       console.log('Vendor details:', this.vendorProducts);
+      console.log('Available Time Slots:', this.getAvailableTimeSlots());
     });
   }
 
@@ -85,6 +89,11 @@ export class PlaceOrdersComponent implements OnInit {
       return;
     }
 
+    if (!this.selectedTimeSlot) {
+      this.message.error('Please select a slot to confirm the order.');
+      return;
+    }
+
     const productBatches = this.transformProductsToBatches(this.cartItems);
     console.log(productBatches);
     
@@ -93,9 +102,10 @@ export class PlaceOrdersComponent implements OnInit {
       deliveryDate: new Date(),
       vendorId: this.selectedVendorId,
       restaurantId: 1,
-      productBatches: productBatches
+      productBatches: productBatches,
+      selectedTimeSlot: this.selectedTimeSlot,
     };
-
+    
     console.log(orderData);
 
     this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
@@ -109,8 +119,14 @@ export class PlaceOrdersComponent implements OnInit {
       product.qty = 0;
     });
     this.cartItems = [];
+    this.visible = false;
+    bookTimeSlot(this.selectedVendor.bookedTimeSlots, this.selectedTimeSlot); 
+    console.log('Booked Time Slots:', this.selectedVendor);
 
-    this.close();
+    this.vendorsService.updateSupplier(this.selectedVendor).subscribe((vendorResponse) => {
+      console.log('Vendor updated successfully:', vendorResponse);
+    });
+    
   }
 
   transformProductsToBatches(selectedProducts: any[]) {
@@ -120,7 +136,7 @@ export class PlaceOrdersComponent implements OnInit {
         productName: product.name,
         purchaseQuantity: (product.minimumOrderAmount + product.qty),
         unitOfStock: product.unitOfStock,
-        purchasePrice: (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2),
+        purchasePrice: (((product.price / product.minimumOrderAmount) * product.qty) + product.price).toFixed(2),
         expirationDate: product.expiryDate,
         productId: product.id,
       };
@@ -141,5 +157,17 @@ export class PlaceOrdersComponent implements OnInit {
   disabledDate = (current: Date): boolean => {
     return current < new Date();
   };
+
+  getAvailableTimeSlots(): string[] {
+    if (this.selectedVendor) {
+      return generateAvailableTimeSlots(
+        this.selectedVendor.openingHours.start,
+        this.selectedVendor.openingHours.end,
+        this.selectedVendor.bookedTimeSlots || [],
+        15
+      );
+    }
+    return [];
+  }
 
 }
