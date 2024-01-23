@@ -27,9 +27,22 @@ export function addMinutes(time: string, minutes: number) {
 
 export function generateAvailableTimeSlots(startTime: string, endTime: string, bookedTimeSlots: string[], interval: number) {
     const allTimeSlots = generateTimeSlots(startTime, endTime, interval);
-    const availableTimeSlots = allTimeSlots.filter(
+    let availableTimeSlots = allTimeSlots.filter(
         (slot) => !bookedTimeSlots.includes(slot)
     );
+
+    // const currentTime = new Date();
+    // const currentFormattedTimeWithDeliveryTime = (currentTime.getHours() + 3) * 100 + currentTime.getMinutes();
+
+    // const currentTimeIndex = availableTimeSlots.findIndex((slot) => {
+    //     const slotStartTime = parseInt(slot.split(' - ')[0].replace(':', ''), 10);
+    //     return slotStartTime >= currentFormattedTimeWithDeliveryTime;
+    // });
+
+    // if (currentTimeIndex > -1) {
+    //     availableTimeSlots = availableTimeSlots.slice(currentTimeIndex);
+    // }
+
     return availableTimeSlots;
 }
 

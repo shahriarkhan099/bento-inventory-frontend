@@ -1,0 +1,408 @@
+[
+    {
+      "uniqueIngredientId": 1,
+      "name": "Small Bento Box",
+      "dimensions": "20 x 15 x 5"
+    },
+    {
+      "uniqueIngredientId": 2,
+      "name": "Medium Bento Box",
+      "dimensions": "25 x 20 x 6"
+    },
+    {
+      "uniqueIngredientId": 3,
+      "name": "Large Bento Box",
+      "dimensions": "30 x 25 x 8"
+    },
+    {
+      "uniqueIngredientId": 4,
+      "name": "Small Pizza Box",
+      "dimensions": "30 x 30 x 5"
+    },
+    {
+      "uniqueIngredientId": 5,
+      "name": "Medium Pizza Box",
+      "dimensions": "40 x 40 x 6"
+    },
+    {
+      "uniqueIngredientId": 6,
+      "name": "Large Pizza Box",
+      "dimensions": "50 x 50 x 7"
+    },
+    {
+      "uniqueIngredientId": 7,
+      "name": "Small Normal Delivery Box",
+      "dimensions": "20 x 20 x 10"
+    },
+    {
+      "uniqueIngredientId": 8,
+      "name": "Medium Normal Delivery Box",
+      "dimensions": "30 x 30 x 12"
+    },
+    {
+      "uniqueIngredientId": 9,
+      "name": "Large Normal Delivery Box",
+      "dimensions": "40 x 40 x 15"
+    },
+    {
+      "uniqueIngredientId": 10,
+      "name": "Small Pasta Box",
+      "dimensions": "25 x 15 x 5"
+    },
+    {
+      "uniqueIngredientId": 11,
+      "name": "Medium Pasta Box",
+      "dimensions": "35 x 20 x 6"
+    },
+    {
+      "uniqueIngredientId": 12,
+      "name": "Large Pasta Box",
+      "dimensions": "45 x 25 x 8"
+    },
+    {
+      "uniqueIngredientId": 13,
+      "name": "Small Sushi Box",
+      "dimensions": "15 x 10 x 3"
+    },
+    {
+      "uniqueIngredientId": 14,
+      "name": "Medium Sushi Box",
+      "dimensions": "20 x 15 x 4"
+    },
+    {
+      "uniqueIngredientId": 15,
+      "name": "Large Sushi Box",
+      "dimensions": "25 x 20 x 5"
+    },
+    {
+      "uniqueIngredientId": 16,
+      "name": "Small Burger Box",
+      "dimensions": "18 x 15 x 8"
+    },
+    {
+      "uniqueIngredientId": 17,
+      "name": "Medium Burger Box",
+      "dimensions": "22 x 18 x 10"
+    },
+    {
+      "uniqueIngredientId": 18,
+      "name": "Large Burger Box",
+      "dimensions": "26 x 20 x 12"
+    },
+    {
+      "uniqueIngredientId": 19,
+      "name": "Small Salad Box",
+      "dimensions": "12 x 12 x 3"
+    },
+    {
+      "uniqueIngredientId": 20,
+      "name": "Medium Salad Box",
+      "dimensions": "16 x 16 x 4"
+    },
+    {
+      "uniqueIngredientId": 21,
+      "name": "Large Salad Box",
+      "dimensions": "20 x 20 x 5"
+    },
+    {
+      "uniqueIngredientId": 22,
+      "name": "Small Dessert Box",
+      "dimensions": "10 x 10 x 5"
+    },
+    {
+      "uniqueIngredientId": 23,
+      "name": "Medium Dessert Box",
+      "dimensions": "15 x 15 x 6"
+    },
+    {
+      "uniqueIngredientId": 24,
+      "name": "Large Dessert Box",
+      "dimensions": "20 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 25,
+      "name": "Small Chinese Takeout Box",
+      "dimensions": "15 x 15 x 7"
+    },
+    {
+      "uniqueIngredientId": 26,
+      "name": "Medium Chinese Takeout Box",
+      "dimensions": "20 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 27,
+      "name": "Large Chinese Takeout Box",
+      "dimensions": "25 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 28,
+      "name": "Small Sandwich Box",
+      "dimensions": "14 x 14 x 4"
+    },
+    {
+      "uniqueIngredientId": 29,
+      "name": "Medium Sandwich Box",
+      "dimensions": "18 x 18 x 5"
+    },
+    {
+      "uniqueIngredientId": 30,
+      "name": "Large Sandwich Box",
+      "dimensions": "22 x 22 x 6"
+    },
+    {
+      "uniqueIngredientId": 31,
+      "name": "Small BBQ Box",
+      "dimensions": "25 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 32,
+      "name": "Medium BBQ Box",
+      "dimensions": "30 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 33,
+      "name": "Large BBQ Box",
+      "dimensions": "35 x 30 x 12"
+    },
+    {
+      "uniqueIngredientId": 34,
+      "name": "Small Breakfast Box",
+      "dimensions": "18 x 12 x 6"
+    },
+    {
+      "uniqueIngredientId": 35,
+      "name": "Medium Breakfast Box",
+      "dimensions": "22 x 15 x 8"
+    },
+    {
+      "uniqueIngredientId": 36,
+      "name": "Large Breakfast Box",
+      "dimensions": "26 x 18 x 10"
+    },
+    {
+      "uniqueIngredientId": 37,
+      "name": "Small Seafood Box",
+      "dimensions": "20 x 15 x 7"
+    },
+    {
+      "uniqueIngredientId": 38,
+      "name": "Medium Seafood Box",
+      "dimensions": "25 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 39,
+      "name": "Large Seafood Box",
+      "dimensions": "30 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 40,
+      "name": "Small Mexican Box",
+      "dimensions": "15 x 15 x 6"
+    },
+    {
+      "uniqueIngredientId": 41,
+      "name": "Medium Mexican Box",
+      "dimensions": "20 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 42,
+      "name": "Large Mexican Box",
+      "dimensions": "25 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 43,
+      "name": "Small Vegetarian Box",
+      "dimensions": "12 x 12 x 4"
+    },
+    {
+      "uniqueIngredientId": 44,
+      "name": "Medium Vegetarian Box",
+      "dimensions": "16 x 16 x 5"
+    },
+    {
+      "uniqueIngredientId": 45,
+      "name": "Large Vegetarian Box",
+      "dimensions": "20 x 20 x 6"
+    },
+    {
+      "uniqueIngredientId": 46,
+      "name": "Small Italian Box",
+      "dimensions": "18 x 12 x 6"
+    },
+    {
+      "uniqueIngredientId": 47,
+      "name": "Medium Italian Box",
+      "dimensions": "22 x 15 x 8"
+    },
+    {
+      "uniqueIngredientId": 48,
+      "name": "Large Italian Box",
+      "dimensions": "26 x 18 x 10"
+    },
+    {
+      "uniqueIngredientId": 49,
+      "name": "Small Indian Box",
+      "dimensions": "15 x 15 x 7"
+    },
+    {
+      "uniqueIngredientId": 50,
+      "name": "Medium Indian Box",
+      "dimensions": "20 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 51,
+      "name": "Large Indian Box",
+      "dimensions": "25 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 52,
+      "name": "Small American Box",
+      "dimensions": "14 x 14 x 5"
+    },
+    {
+      "uniqueIngredientId": 53,
+      "name": "Medium American Box",
+      "dimensions": "18 x 18 x 6"
+    },
+    {
+      "uniqueIngredientId": 54,
+      "name": "Large American Box",
+      "dimensions": "22 x 22 x 7"
+    },
+    {
+      "uniqueIngredientId": 55,
+      "name": "Small Greek Box",
+      "dimensions": "16 x 12 x 5"
+    },
+    {
+      "uniqueIngredientId": 56,
+      "name": "Medium Greek Box",
+      "dimensions": "20 x 15 x 6"
+    },
+    {
+      "uniqueIngredientId": 57,
+      "name": "Large Greek Box",
+      "dimensions": "24 x 18 x 8"
+    },
+    {
+      "uniqueIngredientId": 58,
+      "name": "Small Thai Box",
+      "dimensions": "14 x 10 x 4"
+    },
+    {
+      "uniqueIngredientId": 59,
+      "name": "Medium Thai Box",
+      "dimensions": "18 x 14 x 5"
+    },
+    {
+      "uniqueIngredientId": 60,
+      "name": "Large Thai Box",
+      "dimensions": "22 x 18 x 6"
+    },
+    {
+      "uniqueIngredientId": 61,
+      "name": "Small French Box",
+      "dimensions": "16 x 12 x 6"
+    },
+    {
+      "uniqueIngredientId": 62,
+      "name": "Medium French Box",
+      "dimensions": "20 x 15 x 8"
+    },
+    {
+      "uniqueIngredientId": 63,
+      "name": "Large French Box",
+      "dimensions": "24 x 18 x 10"
+    },
+    {
+      "uniqueIngredientId": 64,
+      "name": "Small Turkish Box",
+      "dimensions": "15 x 15 x 6"
+    },
+    {
+      "uniqueIngredientId": 65,
+      "name": "Medium Turkish Box",
+      "dimensions": "20 x 20 x 8"
+    },
+    {
+      "uniqueIngredientId": 66,
+      "name": "Large Turkish Box",
+      "dimensions": "25 x 25 x 10"
+    },
+    {
+      "uniqueIngredientId": 67,
+      "name": "Small Malaysian Box",
+      "dimensions": "14 x 14 x 5"
+    },
+    {
+      "uniqueIngredientId": 68,
+      "name": "Medium Malaysian Box",
+      "dimensions": "18 x 18 x 6"
+    },
+    {
+      "uniqueIngredientId": 69,
+      "name": "Large Malaysian Box",
+      "dimensions": "22 x 22 x 7"
+    },
+    {
+      "uniqueIngredientId": 71,
+      "name": "Small Spanish Box",
+      "dimensions": "16 x 12 x 4"
+    },
+    {
+      "uniqueIngredientId": 72,
+      "name": "Medium Spanish Box",
+      "dimensions": "18 x 18 x 6"
+    },
+    {
+      "uniqueIngredientId": 73,
+      "name": "Large Spanish Box",
+      "dimensions": "22 x 22 x 7"
+    },
+    {
+      "uniqueIngredientId": 74,
+      "name": "Small Korean Box",
+      "dimensions": "16 x 12 x 5"
+    },
+    {
+      "uniqueIngredientId": 75,
+      "name": "Medium Korean Box",
+      "dimensions": "20 x 15 x 6"
+    },
+    {
+      "uniqueIngredientId": 76,
+      "name": "Large Korean Box",
+      "dimensions": "24 x 18 x 8"
+    },
+    {
+      "uniqueIngredientId": 77,
+      "name": "Small Vietnamese Box",
+      "dimensions": "14 x 10 x 4"
+    },
+    {
+      "uniqueIngredientId": 78,
+      "name": "Medium Vietnamese Box",
+      "dimensions": "18 x 14 x 5"
+    },
+    {
+      "uniqueIngredientId": 79,
+      "name": "Large Vietnamese Box",
+      "dimensions": "22 x 18 x 6"
+    },
+    {
+      "uniqueIngredientId": 80,
+      "name": "Small Japanese Box",
+      "dimensions": "16 x 12 x 6"
+    },
+    {
+      "uniqueIngredientId": 81,
+      "name": "Medium Japanese Box",
+      "dimensions": "20 x 15 x 8"
+    },
+    {
+      "uniqueIngredientId": 82,
+      "name": "Large Japanese Box",
+      "dimensions": "24 x 18 x 10"
+    }
+  ]
+  
