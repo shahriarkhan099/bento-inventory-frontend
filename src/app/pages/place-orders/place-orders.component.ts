@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../../services/vendor/vendor.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { generateAvailableTimeSlots, bookTimeSlot} from '../../utils/timeSlotUtils';
+import { formatDateToString } from '../../utils/formatDateUtils';
 
 @Component({
   selector: 'app-place-orders',
@@ -97,13 +98,19 @@ export class PlaceOrdersComponent implements OnInit {
     const productBatches = this.transformProductsToBatches(this.cartItems);
     console.log(productBatches);
     
+    let calculatedDeliveryDate = new Date();
+    calculatedDeliveryDate.setHours(0, 0, 0, 0);
+    calculatedDeliveryDate.setHours(calculatedDeliveryDate.getHours() + Number(this.selectedTimeSlot.split(':')[0]));
+    calculatedDeliveryDate.setMinutes(calculatedDeliveryDate.getMinutes() + Number(this.selectedTimeSlot.split(':')[2]));
+    console.log(formatDateToString(calculatedDeliveryDate));
+    
     const orderData = {
       totalPrice: this.calculateTotalPrice(),
-      deliveryDate: new Date(),
+      deliveryDate: calculatedDeliveryDate,
       vendorId: this.selectedVendorId,
       restaurantId: 1,
-      productBatches: productBatches,
       selectedTimeSlot: this.selectedTimeSlot,
+      productBatches: productBatches,
     };
     
     console.log(orderData);
@@ -120,7 +127,10 @@ export class PlaceOrdersComponent implements OnInit {
     });
     this.cartItems = [];
     this.visible = false;
-    bookTimeSlot(this.selectedVendor.bookedTimeSlots, this.selectedTimeSlot); 
+    let TimeSlots = bookTimeSlot(this.selectedVendor.bookedTimeSlots, this.selectedTimeSlot); 
+    this.selectedVendor.bookedTimeSlots = TimeSlots;
+    console.log('Booked Time Slots:', this.selectedVendor.bookedTimeSlots);
+    
     console.log('Booked Time Slots:', this.selectedVendor);
 
     this.vendorsService.updateSupplier(this.selectedVendor).subscribe((vendorResponse) => {

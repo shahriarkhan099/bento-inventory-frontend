@@ -43,12 +43,11 @@ export class TrackWastageComponent implements OnInit {
       next: (data) => {
         this.listOfWasteLog = data.map((wastageLog) => ({
           ...wastageLog,
-          unitOfStock: wastageLog.unitOfStock === "gm" ? "kg" : wastageLog.unitOfStock === "ml" ? "litre" : wastageLog.unitOfStock,
           purchaseQuantity: wastageLog.unitOfStock === "gm" ? 
           (wastageLog.totalQuantity / 1000) : wastageLog.unitOfStock === "ml" ? (wastageLog.totalQuantity / 1000) : wastageLog.totalQuantity,
+          unitOfStock: wastageLog.unitOfStock === "gm" ? "kg" : wastageLog.unitOfStock === "ml" ? "litre" : wastageLog.unitOfStock,
           totalCost: Number((wastageLog.totalCost / 100).toFixed(2)),
-          costPerUnit: Number((wastageLog.totalCost / 100).toFixed(2)) / 
-          (wastageLog.unitOfStock === "gm" ? (wastageLog.totalQuantity / 1000) : wastageLog.unitOfStock === "ml" ? (wastageLog.totalQuantity / 1000) : wastageLog.totalQuantity),
+          costPerUnit: Number((wastageLog.totalCost / 100).toFixed(2)) / wastageLog.totalQuantity,
           shelfLifeInDays: (new Date(wastageLog.createdAt)).getDay() - (new Date(wastageLog.boughtAt)).getDay(),
           boughtAt: formatDateToString(new Date(wastageLog.boughtAt)),
           expirationDate: formatDateToString(new Date(wastageLog.createdAt)),
