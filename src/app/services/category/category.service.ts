@@ -8,7 +8,7 @@ import { Ingredient } from '../../models/ingredient.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:4000/v1/category/restaurant';
+  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/category/restaurant';
 
   private categoryMappings: Record<string, number> = {};
 

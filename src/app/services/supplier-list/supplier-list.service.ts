@@ -8,7 +8,7 @@ import { Supplier } from '../../models/supplier.model';
   providedIn: 'root',
 })
 export class SupplierListService {
-  private apiUrl = 'http://localhost:4000/v1/supplier/restaurant';
+  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/supplier/restaurant';
 
   constructor(private http: HttpClient) {}
 

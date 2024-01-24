@@ -8,7 +8,7 @@ import { Order } from '../../models/order.model';
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:4000/v1/order/restaurant';
+  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/order/restaurant';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { DeliveryBox } from '../../models/delivery-box.model';
   providedIn: 'root',
 })
 export class DeliveryBoxService {
-  private apiUrl = 'http://localhost:4000/v1/deliveryBox/restaurant';
+  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/deliveryBox/restaurant';
 
   constructor(private http: HttpClient) {}
 
