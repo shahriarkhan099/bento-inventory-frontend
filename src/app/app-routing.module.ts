@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'on-platform-suppliers', component: OnPlatformSupplierComponent },
 
   //Default Dashboard  Pages
-  { path: 'home', pathMatch: 'full', component: HomeComponent },
+  { path: 'home', pathMatch: 'full', component: InventoryIngredientsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

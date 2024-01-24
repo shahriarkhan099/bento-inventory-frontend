@@ -49,6 +49,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
 import { SpashLogoComponent } from './component/spash-logo/spash-logo.component';
+import { AuthRedirectComponent } from './component/auth-redirect/auth-redirect.component';
 
 registerLocaleData(en);
 
@@ -68,7 +69,8 @@ registerLocaleData(en);
     FooterComponent,
     HeaderComponent,
     DeliveryBoxesComponent,
-    SpashLogoComponent
+    SpashLogoComponent,
+    AuthRedirectComponent
   ],
   imports: [
     BrowserModule,
