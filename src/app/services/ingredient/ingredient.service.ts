@@ -3,20 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Ingredient } from '../../models/ingredient.model';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientService {
-  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/ingredient/restaurant';
 
   private ingredientMappings: Record<string, number> = {};
+  private _refreshNeeded$ = new Subject<void>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private configService: ConfigService) {
     this.loadIngredientMappings();
   }
 
-  private _refreshNeeded$ = new Subject<void>();
+  getInventoryApiUrl(): string {
+    return this.configService.getInventoryApiUrl();
+  }
 
   get refreshNeeded$() {
     return this._refreshNeeded$;
@@ -42,13 +45,13 @@ export class IngredientService {
   getIngredients(restaurantId: number): Observable<Ingredient[]> {
     return this.http
       .get<{ ingredients: Ingredient[] }>(
-        `${this.apiUrl}/${restaurantId}/ingredients/categories`
+        `${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}/ingredients/categories`
       )
       .pipe(map((response) => response.ingredients));
   }
   
   addIngredient(ingredient: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${ingredient.restaurantId}`, ingredient).pipe(
+    return this.http.post(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredient.restaurantId}`, ingredient).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -57,7 +60,7 @@ export class IngredientService {
 
   editIngredient(ingredientId: number, ingredient: any): Observable<any> {
     return this.http
-      .put<void>(`${this.apiUrl}/${ingredientId}`, ingredient)
+      .put<void>(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`, ingredient)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -66,15 +69,24 @@ export class IngredientService {
   }
 
   deleteIngredient(ingredientId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${ingredientId}`);
+    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`);
   }
 
   searchIngredientByName(restaurantId: number, name: string): Observable<Ingredient> {
     return this.http
       .get<{ ingredient: Ingredient }>(
-        `${this.apiUrl}/${restaurantId}/search/${name}`,
+        `${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.ingredient));
   }
+
+  getIngredientByIngredientUniqueId (restaurantId: number, ingredientUniqueId: number): Observable<Ingredient> {
+    return this.http
+      .get<{ ingredient: Ingredient }>(
+        `${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}/${ingredientUniqueId}`
+      )
+      .pipe(map((response) => response.ingredient));
+  }
+
 }

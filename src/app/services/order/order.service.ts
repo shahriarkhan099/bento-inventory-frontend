@@ -3,16 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Order } from '../../models/order.model';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/order/restaurant';
-
-  constructor(private http: HttpClient) {}
 
   private _refreshNeeded$ = new Subject<void>();
+
+  constructor(private http: HttpClient, private configService: ConfigService) {}
+
+  getInventoryApiUrl(): string {
+    return this.configService.getInventoryApiUrl();
+  }
 
   get refreshNeeded$() {
     return this._refreshNeeded$;
@@ -20,17 +24,17 @@ export class OrderService {
 
   getOrders(restaurantId: number): Observable<Order[]> {
     return this.http
-      .get<{ orders: Order[] }>(`${this.apiUrl}/${restaurantId}`).pipe(map((response) => response.orders));
+      .get<{ orders: Order[] }>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}`).pipe(map((response) => response.orders));
   }
   
   addOrder(orders: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${orders.restaurantId}`, orders).pipe(tap(() => {this._refreshNeeded$.next();})
+    return this.http.post(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orders.restaurantId}`, orders).pipe(tap(() => {this._refreshNeeded$.next();})
     );
   }
 
   editOrder(orderId: number, orders: any): Observable<any> {
     return this.http
-      .put<void>(`${this.apiUrl}/${orderId}`, orders)
+      .put<void>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`, orders)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -39,12 +43,13 @@ export class OrderService {
   }
 
   deleteOrder(orderId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${orderId}`);
+    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`);
   }
 
   searchOrderByName(restaurantId: number, name: string): Observable<Order> {
     return this.http
       .get<{ ingredient: Order }>(
-        `${this.apiUrl}/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
+        `${this.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
   }
+
 }

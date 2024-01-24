@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InventoryIngredientsComponent } from './pages/inventory-ingredients/inventory-ingredients.component';
-import { HomeComponent } from './component/home/home.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { OrderSuggestionsComponent } from './pages/order-suggestions/order-suggestions.component';
 import { TrackWastageComponent } from './pages/track-wastage/track-wastage.component';
@@ -30,9 +29,9 @@ const routes: Routes = [
   { path: 'on-platform-suppliers', component: OnPlatformSupplierComponent },
 
   //Default Dashboard  Pages
-  { path: 'home', pathMatch: 'full', component: InventoryIngredientsComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'inventory-ingredients', pathMatch: 'full', component: InventoryIngredientsComponent },
+  { path: '', redirectTo: 'inventory-ingredients', pathMatch: 'full' },
+  { path: '**', redirectTo: 'inventory-ingredients', pathMatch: 'full' },
 ];
 
 @NgModule({

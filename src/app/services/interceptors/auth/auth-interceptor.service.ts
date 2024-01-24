@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthInterceptorService implements HttpInterceptor {
   intercept(
     request: HttpRequest<any>,
@@ -27,4 +28,5 @@ export class AuthInterceptorService implements HttpInterceptor {
       return next.handle(authRequest);
     } else return next.handle(request);
   }
+  
 }

@@ -85,9 +85,27 @@ export class InventoryIngredientsComponent implements OnInit {
     });
   }
   
-  createUpdateIngredient() {
+  async createUpdateIngredient() {
+
+    if (!this.validateInput()) {
+      return;
+    }
+
     let uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
     console.log('uniqueIngredientId', uniqueIngredientId);
+
+    // let isIngredientExit = await this.ingredientService.getIngredientByIngredientUniqueId(this.restaurantId, uniqueIngredientId).subscribe((ingredient) => {
+    //   if (ingredient) {
+    //     console.log('Ingredient already exists:', ingredient);
+    //     return true;
+    //   }
+    //   return false;
+    // });
+
+    // if (!isIngredientExit) {
+    //   this.message.error('Ingredient already exists. Please try again.');
+    //   return;
+    // }
     
     const newIngredient = {
       uniqueIngredientId: this.ingredientService.getIngredientMappings()[this.ingredientName],
@@ -133,6 +151,8 @@ export class InventoryIngredientsComponent implements OnInit {
         });
       }
     });
+
+    this.visible = false;
   }
   
 
@@ -223,7 +243,6 @@ export class InventoryIngredientsComponent implements OnInit {
 
   submitForm() {
     this.createCategory();
-    this.visible = false;
   }
 
   refreshFields(): void {
@@ -237,6 +256,7 @@ export class InventoryIngredientsComponent implements OnInit {
     this.description = '';
     this.categoryId = '';
     this.categoryName = '';
+    this.idealStoringTemperature = '';
   }
 
   id!: number | any;
@@ -274,4 +294,27 @@ export class InventoryIngredientsComponent implements OnInit {
   showEditButton = true;
   showAddButton = true;
 
+  validateInput() {
+    if (!this.isInputDigit(this.caloriesPerUnit) || this.caloriesPerUnit < 0) {
+      this.message.error('Please provide a valid calories per unit.');
+      return false;
+    }
+    if (this.reorderPoint === '') {
+      this.reorderPoint = Number(0);
+    }
+    if (!this.isInputDigit(this.reorderPoint) || this.reorderPoint < 0) {
+      this.message.error('Please provide a valid reorder point.');
+      return false;
+    }
+    if (!this.isInputDigit(this.idealStoringTemperature)) {
+      this.message.error('Please provide a valid ideal storing temperature.');
+      return false;
+    }
+    return true;
+  }
+
+  isInputDigit(input: string): boolean {
+    return /^\d+$/.test(input);
+  }
+  
 }

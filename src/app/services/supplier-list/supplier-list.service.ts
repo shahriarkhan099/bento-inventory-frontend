@@ -3,16 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Supplier } from '../../models/supplier.model';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupplierListService {
-  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/supplier/restaurant';
-
-  constructor(private http: HttpClient) {}
 
   private _refreshNeeded$ = new Subject<void>();
+
+  constructor(private http: HttpClient, private configService: ConfigService) {}
+
+  getInventoryApiUrl(): string {
+    return this.configService.getInventoryApiUrl();
+  }
 
   get refreshNeeded$() {
     return this._refreshNeeded$;
@@ -21,13 +25,13 @@ export class SupplierListService {
   getSuppliers(restaurantId: number): Observable<Supplier[]> {
     return this.http
       .get<{ suppliers: Supplier[] }>(
-        `${this.apiUrl}/${restaurantId}`
+        `${this.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.suppliers));
   }
   
   addSupplier(supplier: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${supplier.restaurantId}`, supplier).pipe(
+    return this.http.post(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplier.restaurantId}`, supplier).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -36,7 +40,7 @@ export class SupplierListService {
 
   editSupplier(supplierId: number, supplier: any): Observable<any> {
     return this.http
-      .put<void>(`${this.apiUrl}/${supplierId}`, supplier)
+      .put<void>(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`, supplier)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -45,15 +49,16 @@ export class SupplierListService {
   }
 
   deleteSupplier(supplierId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${supplierId}`);
+    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`);
   }
 
   searchSupplierByName(restaurantId: number, name: string): Observable<Supplier> {
     return this.http
       .get<{ supplier: Supplier }>(
-        `${this.apiUrl}/${restaurantId}/search/${name}`,
+        `${this.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.supplier));
   }
+
 }

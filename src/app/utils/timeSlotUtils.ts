@@ -31,17 +31,17 @@ export function generateAvailableTimeSlots(startTime: string, endTime: string, b
         (slot) => !bookedTimeSlots.includes(slot)
     );
 
-    // const currentTime = new Date();
-    // const currentFormattedTimeWithDeliveryTime = (currentTime.getHours() + 3) * 100 + currentTime.getMinutes();
+    const currentTime = new Date();
+    const currentFormattedTimeWithDeliveryTime = (currentTime.getHours() + 3) * 100 + currentTime.getMinutes();
 
-    // const currentTimeIndex = availableTimeSlots.findIndex((slot) => {
-    //     const slotStartTime = parseInt(slot.split(' - ')[0].replace(':', ''), 10);
-    //     return slotStartTime >= currentFormattedTimeWithDeliveryTime;
-    // });
+    const currentTimeIndex = availableTimeSlots.findIndex((slot) => {
+        const slotStartTime = parseInt(slot.split(' - ')[0].replace(':', ''), 10);
+        return slotStartTime >= currentFormattedTimeWithDeliveryTime;
+    });
 
-    // if (currentTimeIndex > -1) {
-    //     availableTimeSlots = availableTimeSlots.slice(currentTimeIndex);
-    // }
+    if (currentTimeIndex > -1) {
+        availableTimeSlots = availableTimeSlots.slice(currentTimeIndex);
+    }
 
     return availableTimeSlots;
 }

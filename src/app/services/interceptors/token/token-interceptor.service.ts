@@ -12,6 +12,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TokenInterceptorService implements HttpInterceptor {
   intercept(
     request: HttpRequest<any>,
@@ -29,4 +30,5 @@ export class TokenInterceptorService implements HttpInterceptor {
       })
     );
   }
+
 }

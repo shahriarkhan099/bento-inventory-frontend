@@ -3,20 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Ingredient } from '../../models/ingredient.model';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'https://inventory-server-klzl.onrender.com/v1/category/restaurant';
 
   private categoryMappings: Record<string, number> = {};
+  private _refreshNeeded$ = new Subject<void>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private configService: ConfigService) {
     this.loadCategoryMappings();
   }
 
-  private _refreshNeeded$ = new Subject<void>();
+  getInventoryApiUrl(): string {
+    return this.configService.getInventoryApiUrl();
+  }
 
   get refreshNeeded$() {
     return this._refreshNeeded$;
@@ -40,15 +43,16 @@ export class CategoryService {
   }
 
   getCategoryByName(restaurantId: number, categoryName: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${restaurantId}/search/`, { params: { q: categoryName } })
+    return this.http.get<any>(`${this.getInventoryApiUrl()}/v1/category/restaurant/${restaurantId}/search/`, { params: { q: categoryName } })
     .pipe(map((response) => response.categories));
   }
   
   addCategory(category: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${category.restaurantId}`, category).pipe(
+    return this.http.post(`${this.getInventoryApiUrl()}/v1/category/restaurant/${category.restaurantId}`, category).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
     );
   }
+
 }

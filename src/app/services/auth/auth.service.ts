@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://inventory-server-klzl.onrender.com';
+
   private tokenKey = 'token';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {}
+
+  getInventoryApiUrl(): string {
+    return this.configService.getInventoryApiUrl();
+  }
 
   authenticate(code: string) {
-    const url = `${this.apiUrl}/auth/token/${code}`;
+    const url = `${this.getInventoryApiUrl()}/auth/token/${code}`;
     return this.http.get(url);
   }
 
@@ -22,4 +27,5 @@ export class AuthService {
       Authorization: `Bearer ${token}`,
     });
   }
+  
 }
