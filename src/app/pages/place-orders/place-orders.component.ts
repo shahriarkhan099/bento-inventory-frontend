@@ -136,6 +136,7 @@ export class PlaceOrdersComponent implements OnInit {
     this.vendorsService.updateSupplier(this.selectedVendor).subscribe((vendorResponse) => {
       console.log('Vendor updated successfully:', vendorResponse);
     });
+    this.selectedTimeSlot = ''
     
   }
 
