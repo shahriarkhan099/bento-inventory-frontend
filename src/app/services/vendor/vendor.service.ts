@@ -6,7 +6,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class VendorService {
-  private apiUrl = 'http://localhost:5000/v1';
+  private apiUrl = 'https://bento-vendor.onrender.com/v1';
 
   constructor(private http: HttpClient) { }
 
