@@ -48,6 +48,7 @@ import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-pla
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
+import { SpashLogoComponent } from './component/spash-logo/spash-logo.component';
 
 registerLocaleData(en);
 
@@ -67,6 +68,7 @@ registerLocaleData(en);
     FooterComponent,
     HeaderComponent,
     DeliveryBoxesComponent,
+    SpashLogoComponent
   ],
   imports: [
     BrowserModule,
