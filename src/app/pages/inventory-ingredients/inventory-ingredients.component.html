@@ -17,7 +17,7 @@
 
     <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
       <div nz-col nzSpan="12">
-        <nz-form-item>
+        <nz-form-item >
           <nz-form-label for="ingredientName">Ingredient Name</nz-form-label>
 
           <nz-form-control>
@@ -158,7 +158,7 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Ideal Storing Temperature (°C)</nz-form-label>
+          <nz-form-label class="label">Ideal Storing Temperature (°C)</nz-form-label>
           <nz-form-control>
             <input
               nz-input
@@ -268,7 +268,7 @@
       <td>{{ data.costPerUnit }}</td>
       <td>{{ data.caloriesPerUnit }}</td>
       <td>{{ data.reorderPoint }}</td>
-      <td>{{ data.description }}</td>
+      <td style="width: 10vw;">{{ data.description }}</td>
       <td>{{ data.idealStoringTemperature }}</td>
       <td>{{ data.category.categoryName }}</td>
       <td>{{ data.updatedAt }}</td>

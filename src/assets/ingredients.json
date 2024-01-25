@@ -2748,6 +2748,11 @@
     "uniqueIngredientId": 550,
     "ingredientName": "Water Chestnuts",
     "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 551,
+    "ingredientName": "Water",
+    "caloriesPerUnit": 0
   }
 
 ]
