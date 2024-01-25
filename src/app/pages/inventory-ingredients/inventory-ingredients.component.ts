@@ -87,7 +87,7 @@ export class InventoryIngredientsComponent implements OnInit {
   
   async createUpdateIngredient() {
 
-    if (!this.validateInput()) {
+    if (!this.validateInput() && !this.isEdit) {
       return;
     }
 
@@ -95,7 +95,7 @@ export class InventoryIngredientsComponent implements OnInit {
     console.log('uniqueIngredientId', uniqueIngredientId);
 
     if (!this.isIngredientExit(this.restaurantId, uniqueIngredientId)) {
-      this.message.error('Ingredient already exists. Please try again.');
+      this.message.error('Ingredient already exists. Invalid request.');
       return;
     }
     
