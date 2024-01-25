@@ -2363,5 +2363,391 @@
     "uniqueIngredientId": 473,
     "ingredientName": "Butter",
     "caloriesPerUnit": 102
-  }  
+  },
+  {
+    "uniqueIngredientId": 474,
+    "ingredientName": "Rice",
+    "caloriesPerUnit": 130
+  },
+  {
+    "uniqueIngredientId": 475,
+    "ingredientName": "Garlic",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 476,
+    "ingredientName": "Lentils",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 477,
+    "ingredientName": "Basmati Rice",
+    "caloriesPerUnit": 210
+  },
+  {
+    "uniqueIngredientId": 478,
+    "ingredientName": "Ginger Root",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 479,
+    "ingredientName": "Turmeric Powder",
+    "caloriesPerUnit": 24
+  },
+  {
+    "uniqueIngredientId": 480,
+    "ingredientName": "Cumin Seeds",
+    "caloriesPerUnit": 16
+  },
+  {
+    "uniqueIngredientId": 481,
+    "ingredientName": "Red Lentils",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 482,
+    "ingredientName": "Jasmine Rice",
+    "caloriesPerUnit": 200
+  },
+  {
+    "uniqueIngredientId": 483,
+    "ingredientName": "Beef Sirloin",
+    "caloriesPerUnit": 300
+  },
+  {
+    "uniqueIngredientId": 484,
+    "ingredientName": "Shallots",
+    "caloriesPerUnit": 15
+  },
+  {
+    "uniqueIngredientId": 485,
+    "ingredientName": "Oyster Sauce",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 486,
+    "ingredientName": "Palm Sugar",
+    "caloriesPerUnit": 50
+  },
+  {
+    "uniqueIngredientId": 487,
+    "ingredientName": "Cardamom Pods",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 488,
+    "ingredientName": "Peanuts",
+    "caloriesPerUnit": 160
+  },
+  {
+    "uniqueIngredientId": 489,
+    "ingredientName": "Paneer",
+    "caloriesPerUnit": 300
+  },
+  {
+    "uniqueIngredientId": 490,
+    "ingredientName": "Garam Masala",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 491,
+    "ingredientName": "Fenugreek Leaves",
+    "caloriesPerUnit": 49
+  },
+  {
+    "uniqueIngredientId": 492,
+    "ingredientName": "Brown Lentils",
+    "caloriesPerUnit": 230
+  },
+  {
+    "uniqueIngredientId": 493,
+    "ingredientName": "Red Chili Peppers",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 494,
+    "ingredientName": "Mint Leaves",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 495,
+    "ingredientName": "Tofu",
+    "caloriesPerUnit": 144
+  },
+  {
+    "uniqueIngredientId": 496,
+    "ingredientName": "Turmeric Leaves",
+    "caloriesPerUnit": 3
+  },
+  {
+    "uniqueIngredientId": 497,
+    "ingredientName": "Lotus Root",
+    "caloriesPerUnit": 74
+  },
+  {
+    "uniqueIngredientId": 498,
+    "ingredientName": "Rice Vinegar",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 499,
+    "ingredientName": "Shiitake Mushrooms",
+    "caloriesPerUnit": 35
+  },
+  {
+    "uniqueIngredientId": 500,
+    "ingredientName": "Black Sesame Seeds",
+    "caloriesPerUnit": 52
+  },
+  {
+    "uniqueIngredientId": 501,
+    "ingredientName": "Ramen Noodles",
+    "caloriesPerUnit": 188
+  },
+  {
+    "uniqueIngredientId": 502,
+    "ingredientName": "Kimchi",
+    "caloriesPerUnit": 23
+  },
+  {
+    "uniqueIngredientId": 503,
+    "ingredientName": "Potato",
+    "caloriesPerUnit": 77
+  },
+  {
+    "uniqueIngredientId": 504,
+    "ingredientName": "Thai Basil",
+    "caloriesPerUnit": 3
+  },
+  {
+    "uniqueIngredientId": 505,
+    "ingredientName": "Miso Paste",
+    "caloriesPerUnit": 34
+  },
+  {
+    "uniqueIngredientId": 506,
+    "ingredientName": "Rice Noodles",
+    "caloriesPerUnit": 192
+  },
+  {
+    "uniqueIngredientId": 507,
+    "ingredientName": "Soy Milk",
+    "caloriesPerUnit": 33
+  },
+  {
+    "uniqueIngredientId": 508,
+    "ingredientName": "Water Chestnuts",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 509,
+    "ingredientName": "Daikon Radish",
+    "caloriesPerUnit": 18
+  },
+  {
+    "uniqueIngredientId": 510,
+    "ingredientName": "Shrimp Paste",
+    "caloriesPerUnit": 45
+  },
+  {
+    "uniqueIngredientId": 511,
+    "ingredientName": "Chinese Five Spice",
+    "caloriesPerUnit": 10
+  },
+  {
+    "uniqueIngredientId": 512,
+    "ingredientName": "Cilantro",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 513,
+    "ingredientName": "Basil",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 514,
+    "ingredientName": "Black Bean Sauce",
+    "caloriesPerUnit": 30
+  },
+  {
+    "uniqueIngredientId": 515,
+    "ingredientName": "Sambal Oelek",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 516,
+    "ingredientName": "Tamarind Paste",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 517,
+    "ingredientName": "Thai Red Chili",
+    "caloriesPerUnit": 2
+  },
+  {
+    "uniqueIngredientId": 518,
+    "ingredientName": "Salt",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 519,
+    "ingredientName": "Sugar",
+    "caloriesPerUnit": 49
+  },
+  {
+    "uniqueIngredientId": 520,
+    "ingredientName": "Vegetable Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 521,
+    "ingredientName": "Onion",
+    "caloriesPerUnit": 44
+  },
+  {
+    "uniqueIngredientId": 522,
+    "ingredientName": "Tomato",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 523,
+    "ingredientName": "Eggs",
+    "caloriesPerUnit": 68
+  },
+  {
+    "uniqueIngredientId": 524,
+    "ingredientName": "Flour",
+    "caloriesPerUnit": 455
+  },
+  {
+    "uniqueIngredientId": 525,
+    "ingredientName": "Green Chilies",
+    "caloriesPerUnit": 4
+  },
+  {
+    "uniqueIngredientId": 526,
+    "ingredientName": "Ghee",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 527,
+    "ingredientName": "Mustard Oil",
+    "caloriesPerUnit": 120
+  },
+  {
+    "uniqueIngredientId": 528,
+    "ingredientName": "Asafoetida",
+    "caloriesPerUnit": 94
+  },
+  {
+    "uniqueIngredientId": 529,
+    "ingredientName": "Cumin Powder",
+    "caloriesPerUnit": 8
+  },
+  {
+    "uniqueIngredientId": 530,
+    "ingredientName": "Tamarind",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 531,
+    "ingredientName": "Chickpea Flour",
+    "caloriesPerUnit": 356
+  },
+  {
+    "uniqueIngredientId": 532,
+    "ingredientName": "Cashews",
+    "caloriesPerUnit": 155
+  },
+  {
+    "uniqueIngredientId": 533,
+    "ingredientName": "Black Salt",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 534,
+    "ingredientName": "Coriander Powder",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 535,
+    "ingredientName": "Cinnamon Powder",
+    "caloriesPerUnit": 19
+  },
+  {
+    "uniqueIngredientId": 536,
+    "ingredientName": "Bay Leaf",
+    "caloriesPerUnit": 5
+  },
+  {
+    "uniqueIngredientId": 537,
+    "ingredientName": "Red Chili Powder",
+    "caloriesPerUnit": 6
+  },
+  {
+    "uniqueIngredientId": 538,
+    "ingredientName": "Sesame Seeds",
+    "caloriesPerUnit": 52
+  },
+  {
+    "uniqueIngredientId": 539,
+    "ingredientName": "Kokum",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 540,
+    "ingredientName": "Rock Salt",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 541,
+    "ingredientName": "Pink Salt",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 542,
+    "ingredientName": "Jaggery",
+    "caloriesPerUnit": 383
+  },
+  {
+    "uniqueIngredientId": 543,
+    "ingredientName": "Mace",
+    "caloriesPerUnit": 475
+  },
+  {
+    "uniqueIngredientId": 544,
+    "ingredientName": "Green Mango",
+    "caloriesPerUnit": 60
+  },
+  {
+    "uniqueIngredientId": 545,
+    "ingredientName": "Amchur",
+    "caloriesPerUnit": 43
+  },
+  {
+    "uniqueIngredientId": 546,
+    "ingredientName": "Tapioca Pearls",
+    "caloriesPerUnit": 88
+  },
+  {
+    "uniqueIngredientId": 547,
+    "ingredientName": "Rose Water",
+    "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 548,
+    "ingredientName": "Honey",
+    "caloriesPerUnit": 64
+  },
+  {
+    "uniqueIngredientId": 549,
+    "ingredientName": "Pistachios",
+    "caloriesPerUnit": 562
+  },
+  {
+    "uniqueIngredientId": 550,
+    "ingredientName": "Water Chestnuts",
+    "caloriesPerUnit": 60
+  }
+
 ]
