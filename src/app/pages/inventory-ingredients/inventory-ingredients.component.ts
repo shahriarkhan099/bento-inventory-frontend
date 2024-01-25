@@ -91,21 +91,13 @@ export class InventoryIngredientsComponent implements OnInit {
       return;
     }
 
-    let uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
+    const uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
     console.log('uniqueIngredientId', uniqueIngredientId);
 
-    // let isIngredientExit = await this.ingredientService.getIngredientByIngredientUniqueId(this.restaurantId, uniqueIngredientId).subscribe((ingredient) => {
-    //   if (ingredient) {
-    //     console.log('Ingredient already exists:', ingredient);
-    //     return true;
-    //   }
-    //   return false;
-    // });
-
-    // if (!isIngredientExit) {
-    //   this.message.error('Ingredient already exists. Please try again.');
-    //   return;
-    // }
+    if (!this.isIngredientExit(this.restaurantId, uniqueIngredientId)) {
+      this.message.error('Ingredient already exists. Please try again.');
+      return;
+    }
     
     const newIngredient = {
       uniqueIngredientId: this.ingredientService.getIngredientMappings()[this.ingredientName],
@@ -315,6 +307,10 @@ export class InventoryIngredientsComponent implements OnInit {
 
   isInputDigit(input: string): boolean {
     return /^\d+$/.test(input);
+  }
+
+  isIngredientExit(restaurantId: number, uniqueIngredientId: number): boolean {
+    return this.createdIngredients.filter(ingredient => ingredient.restaurantId === restaurantId && ingredient.uniqueIngredientId === uniqueIngredientId).length === 0;
   }
   
 }
