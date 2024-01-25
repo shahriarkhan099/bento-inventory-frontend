@@ -48,3 +48,16 @@ h2 {
   color: #1890ff;
   margin-bottom: 20px;
 }
+
+nz-form-label {
+  width: 200px;
+  text-align: left;
+ }
+ 
+ textarea, input {
+   width: 20vw;
+ }
+ 
+ nz-select {
+   width: 20vw !important
+ }

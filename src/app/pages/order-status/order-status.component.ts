@@ -92,12 +92,14 @@ export class OrderStatusComponent implements OnInit {
       const deliveryDate = new Date(order.deliveryDate);
       const currentDate = new Date();
       const timeDifference = deliveryDate.getTime() - currentDate.getTime();
-
+  
       if (timeDifference > 0) {
         const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const minutes = Math.floor(
+          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+        );
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
+  
         return `${hours}h ${minutes}m ${seconds}s`;
       } else {
         return 'Delivery Time Expired';
@@ -105,12 +107,12 @@ export class OrderStatusComponent implements OnInit {
     }
     return '';
   }
-
+  
   isDeliveryExpired(order: any): boolean {
     if (order && order.deliveryDate) {
       const deliveryDate = new Date(order.deliveryDate);
       const currentDate = new Date();
-
+  
       return currentDate.getTime() > deliveryDate.getTime();
     }
     return false;

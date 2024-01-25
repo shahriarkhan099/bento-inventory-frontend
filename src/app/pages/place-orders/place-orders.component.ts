@@ -3,6 +3,7 @@ import { VendorService } from '../../services/vendor/vendor.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { generateAvailableTimeSlots, bookTimeSlot} from '../../utils/timeSlotUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
+import { getRemainingHours } from '../../utils/timeCalculationUtils';
 
 @Component({
   selector: 'app-place-orders',
@@ -118,7 +119,7 @@ export class PlaceOrdersComponent implements OnInit {
     this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
       console.log('Order placed successfully:', orderResponse);
       this.message.success('Order placed successfully.');
-      this.message.success('Your order will be arrive within ' + this.selectedVendor.orderProcessingTime + ' hours.');
+      this.message.success('Your order will be arrive within ' + getRemainingHours(calculatedDeliveryDate) + ' hours.');
     });
 
     this.cartItems.forEach((product) => {

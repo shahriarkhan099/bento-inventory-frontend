@@ -51,6 +51,7 @@ export class SupplierListComponent implements OnInit {
       next: (data) => {
         this.listOfSuppliers = data.map((supplier) => ({
           ...supplier,
+          updatedAt: formatDateToString(new Date(supplier.updatedAt)),
         }));
 
         sortByCreatedAt(this.listOfSuppliers);

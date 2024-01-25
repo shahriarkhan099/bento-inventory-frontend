@@ -133,6 +133,7 @@
               [(ngModel)]="caloriesPerUnit"
               name="caloriesPerUnit"
               placeholder="Enter calories per unit"
+              [disabled] = true
             />
           </nz-form-control>
         </nz-form-item>
@@ -274,23 +275,11 @@
       <td>{{ data.updatedAt }}</td>
 
       <td>
-        <button
-          *ngIf="showDeleteButton"
-          nz-td
-          nz-popconfirm
-          nzPopconfirmTitle="Sure to delete?"
-          (nzOnConfirm)="onDelete(data.id)"
-          [ngClass]="{ 'delete-button': true }"
-        >
-          Delete
+        <button *ngIf="showDeleteButton" nz-td nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="onDelete(data.id)" [ngClass]="{ 'delete-button': true }">
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
         </button>
-        <button
-          *ngIf="showEditButton"
-          nz-td
-          (click)="onEdit(data)"
-          [ngClass]="{ 'edit-button': true }"
-        >
-          Edit
+        <button *ngIf="showEditButton" nz-td (click)="onEdit(data)" [ngClass]="{ 'edit-button': true }">
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
         </button>
       </td>
     </tr>

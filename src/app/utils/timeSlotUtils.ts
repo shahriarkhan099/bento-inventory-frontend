@@ -31,7 +31,7 @@ export function generateAvailableTimeSlots(startTime: string, endTime: string, b
         (slot) => !bookedTimeSlots.includes(slot)
     );
 
-    const currentTime = new Date();
+    let currentTime = new Date();
     const currentFormattedTimeWithDeliveryTime = (currentTime.getHours() + 3) * 100 + currentTime.getMinutes();
 
     const currentTimeIndex = availableTimeSlots.findIndex((slot) => {
@@ -41,6 +41,10 @@ export function generateAvailableTimeSlots(startTime: string, endTime: string, b
 
     if (currentTimeIndex > -1) {
         availableTimeSlots = availableTimeSlots.slice(currentTimeIndex);
+    }
+
+    if (currentTime.getHours() >= 21) {
+        availableTimeSlots = [];
     }
 
     return availableTimeSlots;

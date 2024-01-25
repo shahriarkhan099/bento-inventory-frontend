@@ -50,7 +50,7 @@
     <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
-          <nz-form-label>Dimensions</nz-form-label>
+          <nz-form-label>Dimensions (cm) </nz-form-label>
           <nz-form-control>
             <input
               nz-input
@@ -58,32 +58,6 @@
               name="dimensions"
               placeholder="Enter dimensions Length x Width x Height"
             />
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-    </div>
-
-    <div nz-row [nzGutter]="8" class="mt" style="margin: 0 0 10px 0">
-      <div nz-col nzSpan="12">
-        <nz-form-item>
-          <nz-form-label>Unit of Dimentions</nz-form-label>
-          <nz-form-control>
-            <nz-select
-              nzPlaceHolder="Enter unit of temperature"
-              [nzAllowClear]="true"
-              [(ngModel)]="unitOfDimentions"
-              name="unitOfDimentions"
-              [nzMaxTagCount]="1"
-              nzShowSearch
-            >
-              <nz-option
-                nz-input
-                id="unitOfDimentions"
-                *ngFor="let el of unitOfDimentionList"
-                [nzValue]="el"
-                [nzLabel]="el"
-              ></nz-option>
-            </nz-select>
           </nz-form-control>
         </nz-form-item>
       </div>
@@ -184,7 +158,7 @@
       <th>Current Stock</th>
       <th>Avg Cost Per Unit</th>
       <th>Reorder Point</th>
-      <th>Dimensions <br> (Length x Width x Height)</th>
+      <th>Dimensions (cm) <br> Length x Width x Height</th>
       <th>Unit</th>
       <th>Weight Limit (kg)</th>
       <th>Temperature Limit (°C)</th>
@@ -214,7 +188,7 @@
           (nzOnConfirm)="onDelete(data.id)"
           [ngClass]="{ 'delete-button': true }"
         >
-          Delete
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
         </button>
         <button
           *ngIf="showEditButton"
@@ -222,7 +196,7 @@
           (click)="onEdit(data)"
           [ngClass]="{ 'edit-button': true }"
         >
-          Edit
+        <span nz-icon nzType="edit" nzTheme="outline"></span>
         </button>
       </td>
     </tr>
