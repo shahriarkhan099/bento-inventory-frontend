@@ -45,8 +45,8 @@ export class OrderSuggestionsComponent implements OnInit {
   @Input() restaurantId: number = 1;
 
   ngOnInit(): void {
-    this.subscribeToIngredientChanges();
-    this.loadAllIngredients(this.restaurantId);
+    // this.subscribeToIngredientChanges();
+    // this.loadAllIngredients(this.restaurantId);
   }
 
   private subscribeToIngredientChanges() {
@@ -78,47 +78,6 @@ export class OrderSuggestionsComponent implements OnInit {
     });
   }
 
-  createUpdateIngredient() {
-    const newIngredient = {
-      restaurantId: 1,
-      categoryId: 1,
-      ingredientName: this.ingredientName,
-      unitOfStock: this.unitOfStock,
-      caloriesPerUnit: this.caloriesPerUnit,
-      reorderPoint: this.reorderPoint,
-      perishable: this.perishable,
-      description: this.description,
-      unitOfIdealStoringTemperature: this.unitOfIdealStoringTemperature,
-      idealStoringTemperature: this.idealStoringTemperature,
-    };
-
-    console.log(newIngredient);
-
-    if (this.isEdit) {
-      this.ingredientService.editIngredient(this.id, newIngredient).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message.success('Ingredient Updated successfully.');
-        },
-        error: (error) => {
-          console.error('Error updating ingredient:', error);
-          this.message.error('Error updating ingredient. Please try again.');
-        },
-      });
-    } else {
-      this.ingredientService.addIngredient(newIngredient).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message.success('Ingredient Added successfully.');
-        },
-        error: (error) => {
-          console.error('Error adding ingredient:', error);
-          this.message.error('Error adding ingredient. Please try again.');
-        },
-      });
-    }
-  }
-
   onDelete(id: number): void {
     this.ingredientService.deleteIngredient(id).subscribe({
       next: () => {
@@ -134,24 +93,6 @@ export class OrderSuggestionsComponent implements OnInit {
     });
   }
 
-  onEdit(ingredient: any): void {
-    this.visible = true;
-    this.isEdit = true;
-
-    this.id = ingredient.id;
-    this.ingredientName = ingredient.ingredientName;
-    this.unitOfStock = ingredient.unitOfStock;
-    this.caloriesPerUnit = ingredient.caloriesPerUnit;
-    this.reorderPoint = ingredient.reorderPoint;
-    this.idealStoringTemperature = ingredient.idealStoringTemperature;
-    this.unitOfIdealStoringTemperature =
-      ingredient.unitOfIdealStoringTemperature;
-    this.perishable = ingredient.perishable;
-    this.description = ingredient.description;
-    this.categoryId = ingredient.categoryId;
-    this.categoryName = ingredient.category.categoryName;
-  }
-
   totalNumberOfData = 0;
   pageIndex = 1;
   pageSize = 10;
@@ -165,33 +106,15 @@ export class OrderSuggestionsComponent implements OnInit {
   sizeOfTable: NzTableSize = 'small';
   loadingStatus = false;
 
-  tableTitle = 'Your Current Ingredients';
+  tableTitle = 'Ingredients on Autopilot';
   tableFooter = '';
-  noResult = 'No Data Present';
+  noResult = 'No Ingredients on Autopilot';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 
   showDeleteButton = true;
   showEditButton = true;
   showAddButton = true;
-
-  visible = false;
-  isEdit = false;
-
-  onAdd(): void {
-    this.visible = true;
-    this.isEdit = false;
-    this.refreshFields();
-  }
-
-  close(): void {
-    this.visible = false;
-  }
-
-  submitForm() {
-    this.createUpdateIngredient();
-    this.visible = false;
-  }
 
   id!: number;
   ingredientName!: string;

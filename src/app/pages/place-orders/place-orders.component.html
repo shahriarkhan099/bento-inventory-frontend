@@ -65,11 +65,12 @@
     <div class="vendor-container">
         <div class="product-item" *ngFor="let vendor of vendors">
             <div class="vendor-logo">
-                <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo" />
+                <!-- <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo" /> -->
+                <h3 style="text-align: center; background-color: #9b59b6; color: #fff; padding: 10px; border-radius: 5px; font-weight: bold; font-family: 'Arial', sans-serif;">
+                    {{ vendor.name }}
+                </h3>
             </div>
-            <div class="vendor-container">
-                <h3>{{ vendor.name }}</h3>
-                <p>{{ vendor.description }}</p>
+            <div class="vendor-button">
                 <button (click)="selectVendor(vendor.id)" class="view-product-button">View Products</button>
             </div>
         </div>

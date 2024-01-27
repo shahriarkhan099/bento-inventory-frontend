@@ -120,11 +120,6 @@
     "caloriesPerUnit": 20
   },
   {
-    "uniqueIngredientId": 25,
-    "ingredientName": "Pork",
-    "caloriesPerUnit": 220
-  },
-  {
     "uniqueIngredientId": 26,
     "ingredientName": "Tilapia",
     "caloriesPerUnit": 100
@@ -690,11 +685,6 @@
     "caloriesPerUnit": 136
   },
   {
-    "uniqueIngredientId": 139,
-    "ingredientName": "Pork Sausage",
-    "caloriesPerUnit": 321
-  },
-  {
     "uniqueIngredientId": 140,
     "ingredientName": "Lamb Chops",
     "caloriesPerUnit": 250
@@ -723,11 +713,6 @@
     "uniqueIngredientId": 145,
     "ingredientName": "Veal",
     "caloriesPerUnit": 160
-  },
-  {
-    "uniqueIngredientId": 146,
-    "ingredientName": "Pork Ribs",
-    "caloriesPerUnit": 230
   },
   {
     "uniqueIngredientId": 147,
@@ -760,11 +745,6 @@
     "caloriesPerUnit": 190
   },
   {
-    "uniqueIngredientId": 153,
-    "ingredientName": "Pork Tenderloin",
-    "caloriesPerUnit": 150
-  },
-  {
     "uniqueIngredientId": 154,
     "ingredientName": "Ground Chicken",
     "caloriesPerUnit": 180
@@ -793,11 +773,6 @@
     "uniqueIngredientId": 159,
     "ingredientName": "Pepperoni",
     "caloriesPerUnit": 130
-  },
-  {
-    "uniqueIngredientId": 160,
-    "ingredientName": "Pork Belly",
-    "caloriesPerUnit": 280
   },
   {
     "uniqueIngredientId": 161,
