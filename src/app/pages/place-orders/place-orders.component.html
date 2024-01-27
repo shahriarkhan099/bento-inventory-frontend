@@ -65,10 +65,10 @@
     <div class="vendor-container">
         <div class="product-item" *ngFor="let vendor of vendors">
             <div class="vendor-logo">
-                <!-- <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo" /> -->
-                <h3 style="text-align: center; color: #9b59b6; padding: 10px; border-radius: 5px; font-weight: bold; font-family: 'Arial', sans-serif;">
+                <!-- <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo9b59b6" /> -->
+                <div style="text-align: center; color: #fff; background-color: #26a366; padding: 10px; border-radius: 100px; font-weight: bold; font-family: 'Arial', sans-serif;">
                     {{ vendor.name }}
-                </h3>
+                </div>
             </div>
             <div class="vendor-button">
                 <button (click)="selectVendor(vendor.id)" class="view-product-button">View Products</button>
@@ -87,9 +87,11 @@
                 <input type="checkbox" (change)="getSelectedProducts()" [(ngModel)]="product.selected"/>
                 <div class="product-details">
                     <span>{{ product.name }}</span><br>
-                    <span>Price: {{ product.price }} USD</span><br>
                     <span>Minimum Qty: {{ product.minimumOrderAmount }} {{ product.unitOfStock }}</span><br>
-                    <span>Total Qty: {{ product.qty + product.minimumOrderAmount }} {{ product.unitOfStock }}</span>
+                    <span>Price: {{ product.price }} USD</span>
+                    <br><br>
+                    <span>Total Qty: {{ product.qty + product.minimumOrderAmount }} {{ product.unitOfStock }}</span> <br>
+                    <span>Total Price: {{ (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2) }} USD</span><br>
                 </div>
                 <div class="button-container">
                     <button class="minus-button" (click)="incrementQuantity(product)">+</button>

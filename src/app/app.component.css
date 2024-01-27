@@ -7,6 +7,7 @@
 
 .app-layout {
   height: 100vh;
+  background: #fff !important;
 }
 
 .menu-sidebar {
@@ -14,6 +15,7 @@
   z-index: 10;
   min-height: 100vh;
   box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  background: #fff !important;
 }
 
 .header-trigger {
@@ -29,21 +31,26 @@
 }
 
 .sidebar-logo {
-  position: relative;
-  height: 64px;
+  /* position: relative; */
+  /* height: 64px; */
+  height: 60px;
   padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
+  background: white;
   transition: all .3s;
+  /* border: 1px solid red; */
+}
+.sidebar-logo img{
+  width: 42px;
 }
 
-.sidebar-logo img {
+/* .sidebar-logo img {
   display: inline-block;
   height: 32px;
-  width: 32px;
+  width: 42px;
   vertical-align: middle;
-}
+} */
 
 .sidebar-logo h1 {
   display: inline-block;
