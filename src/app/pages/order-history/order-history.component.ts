@@ -87,6 +87,7 @@ export class OrderHistoryComponent implements OnInit {
       unitOfStock: ingredientBatch.unitOfStock === "gm" ? "kg" : ingredientBatch.unitOfStock === "ml" ? "litre" : ingredientBatch.unitOfStock,
       purchaseQuantity: ingredientBatch.unitOfStock === "gm" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.unitOfStock === "ml" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.purchaseQuantity,
       expirationDate: formatDateToString(new Date(ingredientBatch.expirationDate)),
+      costPerUnit: Number(ingredientBatch.costPerUnit.toFixed(2)),
     }));
     this.listOfDeliveryBoxBatch = order.deliveryBoxBatches;
     console.log(this.listOfIngredientBatch);
