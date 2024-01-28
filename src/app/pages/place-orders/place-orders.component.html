@@ -25,12 +25,12 @@
                     Qty: {{ item.minimumOrderAmount + item.qty }} {{ item.unitOfStock }}
                   </div>
                   <div class="item-price">
-                    Price: {{ (((item.price/item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) }} USD
+                    Price: {{ (((item.price/item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) | currency:'£' }}
                   </div>
                 </div>
               </div>
             </div>
-            <p class="total-price">Total Price: {{ calculateTotalPrice() }} USD</p>
+            <p class="total-price">Total Price: {{ calculateTotalPrice() | currency:'£' }}</p>
 
             <div class="time-slot-container">
                 <label for="timeSlot">Select Delivery Slot: </label>
@@ -88,10 +88,10 @@
                 <div class="product-details">
                     <span>{{ product.name }}</span><br>
                     <span>Minimum Qty: {{ product.minimumOrderAmount }} {{ product.unitOfStock }}</span><br>
-                    <span>Price: {{ product.price }} USD</span>
+                    <span>Price: {{ product.price | currency:'£' }}</span>
                     <br><br>
                     <span>Total Qty: {{ product.qty + product.minimumOrderAmount }} {{ product.unitOfStock }}</span> <br>
-                    <span>Total Price: {{ (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2) }} USD</span><br>
+                    <span>Total Price: {{ (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2) | currency:'£' }}</span><br>
                 </div>
                 <div class="button-container">
                     <button class="minus-button" (click)="incrementQuantity(product)">+</button>

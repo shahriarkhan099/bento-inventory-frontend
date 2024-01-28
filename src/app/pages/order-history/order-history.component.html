@@ -35,7 +35,7 @@
       <th>Ingredient Name</th>
       <th>Purchase Quantity</th>
       <th>Unit</th>
-      <th>Total Cost (USD)</th>
+      <th>Total Cost (GBP)</th>
       <th>Cost Per Unit</th>
       <th>Expiration Date</th>
     </tr>
@@ -45,7 +45,7 @@
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.purchaseQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>
-      <td>{{ data.purchasePrice }}</td>
+      <td>{{ data.purchasePrice | currency:'£' }}</td>
       <td>{{ data.costPerUnit }}</td>
       <td>{{ data.expirationDate }}</td>
     </tr>
@@ -88,7 +88,7 @@
     <tr>
       <th>Supplier Name</th>
       <th>Order Status</th>
-      <th>Total Cost (USD)</th>
+      <th>Total Cost (GBP)</th>
       <th>Ordered On</th>
       <th>Received On</th>
       <th>Actions</th>
@@ -98,7 +98,7 @@
     <tr *ngFor="let data of rowSelectionTable.data">
       <td>{{ data.supplier.name }}</td>
       <td>{{ data.status }}</td>
-      <td>{{ data.totalPrice }}</td>
+      <td>{{ data.totalPrice | currency:'£' }}</td>
       <td>{{ data.orderDate }}</td>
       <td>{{ data.deliveryDate }}</td>
 

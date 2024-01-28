@@ -24,7 +24,7 @@
       <th>Ingredient Name</th>
       <th>Wastage Quantity</th>
       <th>Cost Per Unit</th>
-      <th>Total Loss (USD)</th>
+      <th>Total Loss (GBP)</th>
       <th>Bought On</th>
       <th>Wasted On</th>
       <th>Shelf Life In Days</th>
@@ -35,7 +35,7 @@
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.totalQuantity }} {{ data.unitOfStock }}</td>
       <td>{{ data.costPerUnit }}</td>
-      <td>$ {{ data.totalCost }}</td>
+      <td>{{ data.totalCost | currency:'£' }}</td>
       <td>{{ data.boughtAt }}</td>
       <td>{{ data.expirationDate }}</td>
       <td>{{ data.shelfLifeInDays }}</td>
