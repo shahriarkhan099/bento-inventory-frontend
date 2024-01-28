@@ -1,7 +1,7 @@
 <div nz-td [ngClass]="{ 'add-button-container': true }" (click)="directToShoppingCart()">
     <span *ngIf="cartItems.length > 0" class="cart-notification">{{ cartItems.length }} </span>
     <button nz-form [ngClass]="{ 'cart-button': true }">
-     Shopping Cart 
+       <span nz-icon nzType="shopping-cart" nzTheme="outline"></span> 
     </button>
 </div>
 
@@ -124,5 +124,5 @@
         ></nz-pagination>
       </div> <br>
 
-    <button (click)="directToShoppingCart()" class="cart-button" [disabled]="cartItems.length <= 0">Confirm Order</button>
+    <button (click)="directToShoppingCart()" class="search-button" [disabled]="cartItems.length <= 0">Confirm Order</button>
 </div>

@@ -132,7 +132,7 @@
 .search-input {
   margin-right: 10px;
   width: 300px;
-  border-color: #219d53;
+  border-color: #004d00;
 }
 
 .search-button {
@@ -151,7 +151,7 @@
 }
 
 .cart-button {
-  background-color: #27ae60; 
+  background-color: #2980b9; 
   color: white;
   border: none;
   padding: 8px 20px;
@@ -162,7 +162,7 @@
 }
 
 .cart-button:hover {
-  background-color: #219d53; 
+  background-color: #1f3a93; 
 }
 
 h2 {
@@ -236,20 +236,24 @@ h2 {
 .select-box:focus {
   border-color: #3498db;
 }
+
 .vendorImg img {
   max-width: 80px;
   max-height: 80px;
   margin-top: 22px;
 }
+
 .vendorInfoDiv {
   display: flex;
   width: 350px;
   height: auto;
 }
+
 .vendorInfo {
   margin-left: 20px;
   width: 180px;
 }
+
 .vendorInfo p {
   text-align: center;
   width: auto; 
