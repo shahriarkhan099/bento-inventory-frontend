@@ -28,12 +28,12 @@
   padding: 20px;
 }
 
-.vendor-button {
+/* .vendor-button {
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   grid-gap: 10px; 
   padding: 20px;
-}
+} */
 
 .add-button {
   padding: 10px 20px;
@@ -132,10 +132,11 @@
 .search-input {
   margin-right: 10px;
   width: 300px;
+  border-color: #219d53;
 }
 
 .search-button {
-  background-color: #3498db;
+  background-color: #27ae60;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -146,7 +147,7 @@
 }
 
 .search-button:hover {
-  background-color: #1f3a93; 
+  background-color: #219d53; 
 }
 
 .cart-button {
@@ -234,4 +235,41 @@ h2 {
 .select-box:hover,
 .select-box:focus {
   border-color: #3498db;
+}
+.vendorImg img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-top: 22px;
+}
+.vendorInfoDiv {
+  display: flex;
+  width: 350px;
+  height: auto;
+}
+.vendorInfo {
+  margin-left: 20px;
+  width: 180px;
+}
+.vendorInfo p {
+  text-align: center;
+  width: auto; 
+  font-size: 22px;
+  color: black;
+  /* background-color: #26a366; */
+  padding: 10px; 
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.vendor-button {
+  background-color: #27ae60;
+  color: white;
+  margin-left: 35px;  
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.vendor-button:hover {
+  background-color: #219d53;
 }

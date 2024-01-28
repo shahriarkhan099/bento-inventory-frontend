@@ -62,11 +62,11 @@
     </div>
 </div>
 
-<div *ngIf="vendors.length > 0">
+<!-- <div *ngIf="vendors.length > 0">
     <div class="vendor-container">
         <div class="product-item" *ngFor="let vendor of vendors">
             <div class="vendor-logo">
-                <!-- <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo9b59b6" /> -->
+                <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo9b59b6" /> 
                 <div style="text-align: center; color: #fff; background-color: #26a366; padding: 10px; border-radius: 100px; font-weight: bold; font-family: 'Arial', sans-serif;">
                     {{ vendor.name }}
                 </div>
@@ -76,6 +76,20 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div *ngIf="vendors.length > 0"  class="vendor-container"  >
+    
+        <div *ngFor="let vendor of vendors"  class="vendorInfoDiv product-item" >
+            <div class="vendorImg">
+                <img src="../../../assets/photos and logos/shop.jpg" alt="" srcset="">
+            </div>
+            <div class="vendorInfo">
+                <p>{{ vendor.name }}</p>
+                <button (click)="selectVendor(vendor.id)"class="vendor-button">View Products</button>
+            </div>
+        </div>
+    
 </div>
 
 <div *ngIf="selectedVendorId">
