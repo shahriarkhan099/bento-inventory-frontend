@@ -13,4 +13,5 @@ export class HeaderComponent {
     localStorage.removeItem('accessToken');
     window.location.href = 'https://getbento.vercel.app/logout';
   }
+  
 }

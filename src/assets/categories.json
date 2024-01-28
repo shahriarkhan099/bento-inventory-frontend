@@ -42,5 +42,9 @@
   {
     "uniqueCategoryId": 11,
     "categoryName": "Sauce"
+  },
+  {
+    "uniqueCategoryId": 12,
+    "categoryName": "Rice"
   }
 ]
