@@ -143,7 +143,7 @@ export class SupplierListComponent implements OnInit {
   sizeOfTable: NzTableSize = 'small';
   loadingStatus = false;
 
-  tableTitle = 'Current Supplier List';
+  tableTitle = 'My Supplier List';
   tableFooter = '';
   noResult = 'No Data Present';
   showQuickJumper = true;
