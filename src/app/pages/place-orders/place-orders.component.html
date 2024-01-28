@@ -13,6 +13,7 @@
     nzTitle="Shopping Cart"
     [nzFooter]="footerTpl"
     (nzOnClose)="close()">
+    
     <form nz-form *nzDrawerContent (ngSubmit)="placeOrder()">
 
         <div *ngIf="cartItems.length > 0">
@@ -25,7 +26,7 @@
                     Qty: {{ item.minimumOrderAmount + item.qty }} {{ item.unitOfStock }}
                   </div>
                   <div class="item-price">
-                    Price: {{ (((item.price/item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) | currency:'£' }}
+                    Price: {{ (((item.price / item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) | currency:'£' }}
                   </div>
                 </div>
               </div>
@@ -38,6 +39,7 @@
                   <option *ngFor="let slot of getAvailableTimeSlots()" [value]="slot">{{ slot }}</option>
                 </select>
             </div>
+
         </div>    
 
     </form>
@@ -60,7 +62,6 @@
     </div>
 </div>
 
-
 <div *ngIf="vendors.length > 0">
     <div class="vendor-container">
         <div class="product-item" *ngFor="let vendor of vendors">
@@ -77,12 +78,11 @@
     </div>
 </div>
 
-
 <div *ngIf="selectedVendorId">
     <h2>Selected Vendor Products</h2>
 
-    <div class="product-container">
-        <div class="product-item" *ngFor="let product of vendorProducts">
+      <nz-grid [nzGutter]="16" class="product-container">
+        <div class="product-item" *ngFor="let product of vendorProducts | slice: (currentPage - 1) * productsPerPage : currentPage * productsPerPage">
             <div>
                 <input type="checkbox" (change)="getSelectedProducts()" [(ngModel)]="product.selected"/>
                 <div class="product-details">
@@ -99,7 +99,16 @@
                 </div>
             </div>
         </div>
-    </div>
+      </nz-grid>
+
+      <div style="float: right; margin-right: 36px;">
+        <nz-pagination
+          [nzPageIndex]="currentPage"
+          [nzTotal]="vendorProducts.length"
+          [nzPageSize]="productsPerPage"
+          (nzPageIndexChange)="pageChanged($event)"
+        ></nz-pagination>
+      </div> <br>
 
     <button (click)="directToShoppingCart()" class="cart-button" [disabled]="cartItems.length <= 0">Confirm Order</button>
 </div>

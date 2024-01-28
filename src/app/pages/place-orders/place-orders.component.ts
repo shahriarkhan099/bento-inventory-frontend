@@ -182,4 +182,11 @@ export class PlaceOrdersComponent implements OnInit {
     return [];
   }
 
+  currentPage = 1;
+  productsPerPage = 8;
+
+  pageChanged(page: number): void {
+    this.currentPage = page;
+  }
+
 }

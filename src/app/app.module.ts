@@ -1,5 +1,5 @@
 // Angular core modules
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import en from '@angular/common/locales/en';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 // For Form
 import { NzFormModule } from 'ng-zorro-antd/form'; // For Form
@@ -93,7 +94,9 @@ registerLocaleData(en);
     NzModalModule,
     NzPopconfirmModule,
     NzPaginationModule,
+    NzGridModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
