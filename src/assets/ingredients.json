@@ -2728,6 +2728,21 @@
     "uniqueIngredientId": 551,
     "ingredientName": "Water",
     "caloriesPerUnit": 0
+  },
+  {
+    "uniqueIngredientId": 552,
+    "ingredientName": "Matcha",
+    "caloriesPerUnit": 3
+  },
+  {
+    "uniqueIngredientId": 553,
+    "ingredientName": "Parsley",
+    "caloriesPerUnit": 22
+  },
+  {
+    "uniqueIngredientId": 554,
+    "ingredientName": "Caviar",
+    "caloriesPerUnit": 40
   }
 
 ]

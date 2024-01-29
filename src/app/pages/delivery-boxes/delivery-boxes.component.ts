@@ -69,7 +69,6 @@ export class DeliveryBoxesComponent implements OnInit {
       boxName: this.boxName,
       reorderPoint: this.reorderPoint,
       dimensions: this.dimensions,
-      unitOfDimentions: this.unitOfDimentions,
       weightLimit: this.weightLimit,
       temperatureLimit: this.temperatureLimit,
       waterproof: this.waterproof,
