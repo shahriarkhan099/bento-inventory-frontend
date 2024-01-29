@@ -67,6 +67,7 @@ export class DeliveryBoxesComponent implements OnInit {
     const newBox = {
       restaurantId: 1,
       boxName: this.boxName,
+      currentStockQuantity: this.currentStockQuantity,
       reorderPoint: this.reorderPoint,
       dimensions: this.dimensions,
       weightLimit: this.weightLimit,
@@ -122,6 +123,7 @@ export class DeliveryBoxesComponent implements OnInit {
 
     this.id = deliveryBox.id;
     this.boxName = deliveryBox.boxName;
+    this.currentStockQuantity = deliveryBox.currentStockQuantity;
     this.reorderPoint = deliveryBox.reorderPoint;
     this.dimensions = deliveryBox.dimensions;
     this.unitOfDimentions = deliveryBox.unitOfDimentions;
@@ -151,6 +153,7 @@ export class DeliveryBoxesComponent implements OnInit {
   refreshFields(): void {
     this.id = '';
     this.boxName = '';
+    this.currentStockQuantity = '';
     this.reorderPoint = '';
     this.dimensions = '';
     this.unitOfDimentions = '';
@@ -161,6 +164,7 @@ export class DeliveryBoxesComponent implements OnInit {
 
   id!: number | any;
   boxName!: string;
+  currentStockQuantity!: number | any;
   reorderPoint!: number | any;
   dimensions!: string;
   unitOfDimentions!: string;

@@ -14,6 +14,7 @@
   (nzOnClose)="close()"
 >
   <form nz-form *nzDrawerContent (ngSubmit)="submitForm()">
+
     <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
       <div nz-col nzSpan="12">
         <nz-form-item>
@@ -25,6 +26,23 @@
               [(ngModel)]="boxName"
               name="boxName"
               placeholder="Enter box name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row [nzGutter]="8" class="mt" style="margin: 20px 0 10px 0">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label for="currentStockQuantity">Total Stock</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              id="currentStockQuantity"
+              [(ngModel)]="currentStockQuantity"
+              name="currentStockQuantity"
+              placeholder="Enter Total Stock"
             />
           </nz-form-control>
         </nz-form-item>

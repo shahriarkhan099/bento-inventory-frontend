@@ -312,5 +312,17 @@ export class InventoryIngredientsComponent implements OnInit {
   isIngredientExit(restaurantId: number, uniqueIngredientId: number): boolean {
     return this.createdIngredients.filter(ingredient => ingredient.restaurantId === restaurantId && ingredient.uniqueIngredientId === uniqueIngredientId).length === 0;
   }
+
+  searchValue = '';
+  listOfDisplayData = [...this.createdIngredients];
+  reset(): void {
+    this.searchValue = '';
+    this.search();
+  }
+
+  search(): void {
+    this.visible = false;
+    this.listOfDisplayData = this.createdIngredients.filter((item: Ingredient) => item.ingredientName.indexOf(this.searchValue) !== -1);
+  }
   
 }
