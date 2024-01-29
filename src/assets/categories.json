@@ -46,5 +46,9 @@
   {
     "uniqueCategoryId": 12,
     "categoryName": "Rice"
+  },
+  {
+    "uniqueCategoryId": 13,
+    "categoryName": "Egg"
   }
 ]
