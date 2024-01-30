@@ -45,7 +45,7 @@ export class InventoryIngredientsComponent implements OnInit {
       next: (data) => {
         this.createdIngredients = data.map(ingredient => ({
           ...ingredient,
-          currentStockQuantity: Number((ingredient.currentStockQuantity/1000).toFixed(2)),
+          currentStockQuantity: ingredient.unitOfStock === "gm" ? Number((ingredient.currentStockQuantity/1000).toFixed(2)) : ingredient.unitOfStock === "ml" ? Number((ingredient.currentStockQuantity/1000).toFixed(2)) : ingredient.currentStockQuantity,
           unitOfStock: ingredient.unitOfStock === "gm" ? "kg" : ingredient.unitOfStock === "ml" ? "litre" : ingredient.unitOfStock,
           costPerUnit: ingredient.costPerUnit ? Number(ingredient.costPerUnit.toFixed(2)) : 0,
           updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
@@ -103,7 +103,7 @@ export class InventoryIngredientsComponent implements OnInit {
       uniqueIngredientId: this.ingredientService.getIngredientMappings()[this.ingredientName],
       ingredientName: this.ingredientName,
       liquid: this.liquid,
-      unitOfStock: this.unitOfStock,
+      unitOfStock: this.unitOfStock === "kg" ? "gm" : this.unitOfStock === "litre" ? "ml" : this.unitOfStock,
       caloriesPerUnit: this.caloriesPerUnit,
       reorderPoint: this.reorderPoint,
       perishable: this.perishable,

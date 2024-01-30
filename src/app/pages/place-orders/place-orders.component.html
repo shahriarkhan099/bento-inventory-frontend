@@ -93,7 +93,7 @@
 </div>
 
 <div *ngIf="selectedVendorId">
-    <h2>Selected Vendor Products</h2>
+    <h2 style="margin-left: 1rem;">Products of {{ selectedVendor.name }}</h2>
 
       <nz-grid [nzGutter]="16" class="product-container">
         <div class="product-item" *ngFor="let product of vendorProducts | slice: (currentPage - 1) * productsPerPage : currentPage * productsPerPage">

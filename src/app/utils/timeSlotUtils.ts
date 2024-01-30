@@ -46,6 +46,8 @@ export function generateAvailableTimeSlots(startTime: string, endTime: string, b
     if (currentTime.getHours() >= 21) {
         availableTimeSlots = [];
     }
+    console.log(availableTimeSlots);
+    
 
     return availableTimeSlots;
 }

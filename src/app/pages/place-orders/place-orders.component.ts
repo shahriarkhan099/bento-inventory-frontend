@@ -97,6 +97,7 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     const productBatches = this.transformProductsToBatches(this.cartItems);
+    console.log(this.cartItems);
     console.log(productBatches);
     
     let calculatedDeliveryDate = new Date();
