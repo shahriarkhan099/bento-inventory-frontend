@@ -9,6 +9,7 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 import { CategoryService } from '../../services/category/category.service';
 import { GlobalCatgory } from '../../models/globalCategory.model';
 import { GlobalIngredient } from '../../models/globalIngredient,model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -20,14 +21,26 @@ export class InventoryIngredientsComponent implements OnInit {
   createdIngredients: Ingredient[] = []; 
   categoryList: GlobalCatgory[] = []; 
   ingredientList: GlobalIngredient[] = [];
+  restaurantId: number = 1;
 
-  constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService) {
+  constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService, private authService: AuthService) {
+  }
+ 
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        this.restaurantId = data.message;
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
+    });
   }
 
-  //Have to make the restaurant id dynamic
-  @Input() restaurantId: number = 1;
 
   ngOnInit() {
+    this.getRestaurantId();
     this.subscribeToIngredientChanges();
     this.loadCategoriesFromAssests();
     this.loadIngredientsFromAssests();

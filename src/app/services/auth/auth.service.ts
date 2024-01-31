@@ -6,6 +6,7 @@ import { ConfigService } from '../config/config.service';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
 
   private tokenKey = 'token';
@@ -18,6 +19,11 @@ export class AuthService {
 
   authenticate(code: string) {
     const url = `${this.getInventoryApiUrl()}/auth/token/${code}`;
+    return this.http.get(url);
+  }
+
+  getRestaurantId(): Observable<any> {
+    const url = `${this.configService.getInventoryApiUrl()}/v1/authRouter/resId`;
     return this.http.get(url);
   }
 
