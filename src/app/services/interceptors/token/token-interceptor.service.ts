@@ -21,6 +21,7 @@ export class TokenInterceptorService implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           const bearerToken = event.headers.get('Authorization');
           if (bearerToken) {
+            console.log(bearerToken);
             const token = bearerToken.split(' ')[1];
             localStorage.setItem('accessToken', token);
           }
