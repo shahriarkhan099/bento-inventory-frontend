@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   authenticate(code: string) {
-    const url = `${this.getInventoryApiUrl()}/auth/token/${code}`;
+    const url = `${this.getInventoryApiUrl()}/v1/authRouter/token/${code}`;
     return this.http.get(url);
   }
 
