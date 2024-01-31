@@ -10,8 +10,10 @@ import { ScheduleOrderComponent } from './pages/schedule-order/schedule-order.co
 import { SupplierListComponent } from './pages/supplier-list/supplier-list.component';
 import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-platform-supplier.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
+import { AuthRedirectComponent } from '../app/component/auth-redirect/auth-redirect.component';
 
 const routes: Routes = [
+  { path: 'auth-redirect', component: AuthRedirectComponent},
   //Manage Ingredients Pages
   { path: 'inventory-ingredients', component: InventoryIngredientsComponent },
   { path: 'order-suggestions', component: OrderSuggestionsComponent },
