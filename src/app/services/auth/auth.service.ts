@@ -18,12 +18,12 @@ export class AuthService {
   }
 
   authenticate(code: string) {
-    const url = `${this.getInventoryApiUrl()}/v1/authRouter/token/${code}`;
+    const url = `${this.getInventoryApiUrl()}/auth/token/${code}`;
     return this.http.get(url);
   }
 
   getRestaurantId(): Observable<any> {
-    const url = `${this.configService.getInventoryApiUrl()}/v1/authRouter/resId`;
+    const url = `${this.configService.getInventoryApiUrl()}/auth/resId`;
     return this.http.get(url);
   }
 
