@@ -15,7 +15,7 @@ export class AuthRedirectComponent {
     const code = this.route.snapshot.queryParamMap.get('code')
     console.log(code);
     if (code) {
-      localStorage.setItem('accessToken', code);
+      // localStorage.setItem('accessToken', code);
       this.authService.authenticate(code).subscribe({
         next: () => this.router.navigateByUrl('/inventory-ingredients'),
         error: () => window.location.href = 'https://getbento.vercel.app/login'
