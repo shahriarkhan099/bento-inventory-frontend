@@ -7,9 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class AuthInterceptorService implements HttpInterceptor {
   intercept(
