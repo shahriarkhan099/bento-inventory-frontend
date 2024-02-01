@@ -34,6 +34,7 @@ export class InventoryIngredientsComponent implements OnInit {
       this.loadAllIngredients(this.restaurantId);
     } else {
       this.getRestaurantId();
+      this.loadAllIngredients(this.restaurantId);
     }
     this.subscribeToIngredientChanges();
     this.loadCategoriesFromAssests();
