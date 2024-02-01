@@ -10,6 +10,7 @@ import { CategoryService } from '../../services/category/category.service';
 import { GlobalCatgory } from '../../models/globalCategory.model';
 import { GlobalIngredient } from '../../models/globalIngredient,model';
 import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -28,7 +29,12 @@ export class InventoryIngredientsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRestaurantId();
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllIngredients(this.restaurantId);
+    } else {
+      this.getRestaurantId();
+    }
     this.subscribeToIngredientChanges();
     this.loadCategoriesFromAssests();
     this.loadIngredientsFromAssests();
@@ -43,9 +49,10 @@ export class InventoryIngredientsComponent implements OnInit {
   private getRestaurantId() {
     this.authService.getRestaurantId().subscribe({
       next: (data) => {
-        console.log('resId', data)
+        console.log('resId', data);
         this.restaurantId = data.message;
-        this.loadAllIngredients(this.restaurantId);
+        LocalStorageService.setRestaurantId(this.restaurantId);
+        // this.loadAllIngredients(this.restaurantId);
       },
       error: (error) => {
         console.error('Error fetching restaurant id', error);

@@ -13,10 +13,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   authenticate(code: string) {
     const url = `${this.configService.getInventoryApiUrl()}/auth/token/${code}`;
     return this.http.get(url);
