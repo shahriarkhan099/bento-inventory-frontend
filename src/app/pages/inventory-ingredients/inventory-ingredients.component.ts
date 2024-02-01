@@ -40,7 +40,7 @@ export class InventoryIngredientsComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.getRestaurantId();
+    this.getRestaurantId();
     this.subscribeToIngredientChanges();
     this.loadCategoriesFromAssests();
     this.loadIngredientsFromAssests();
