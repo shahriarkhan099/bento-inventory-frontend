@@ -10,6 +10,7 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 import { DeliveryBox } from '../../models/delivery-box.model';
 import { DeliveryBoxService } from '../../services/delivery-box/delivery-box.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-delivery-boxes',
@@ -26,28 +27,17 @@ export class DeliveryBoxesComponent implements OnInit {
   constructor(private deliveryBoxService: DeliveryBoxService, private message: NzMessageService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.getRestaurantId();
     this.subscribeToDeliveyBoxChanges();
-    // this.loadAllDeliveryBoxes(this.restaurantId);
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+    } else {
+      this.loadAllDeliveryBoxes(this.restaurantId);
+    }
   }
 
   private subscribeToDeliveyBoxChanges() {
     this.deliveryBoxService.refreshNeeded$.subscribe(() => {
       this.loadAllDeliveryBoxes(this.restaurantId);
-    });
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllDeliveryBoxes(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
     });
   }
 
