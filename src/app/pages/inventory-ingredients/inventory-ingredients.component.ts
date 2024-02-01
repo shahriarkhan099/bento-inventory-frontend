@@ -21,25 +21,11 @@ export class InventoryIngredientsComponent implements OnInit {
   createdIngredients: Ingredient[] = []; 
   categoryList: GlobalCatgory[] = []; 
   ingredientList: GlobalIngredient[] = [];
-  restaurantId: number = 0;
+  // restaurantId: number = 1 if not entering from Bento
+  restaurantId: number = 1;
 
   constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService, private authService: AuthService) {
   }
- 
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllIngredients(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
-    });
-  }
-
 
   ngOnInit() {
     this.getRestaurantId();
@@ -51,6 +37,20 @@ export class InventoryIngredientsComponent implements OnInit {
   private subscribeToIngredientChanges() {
     this.ingredientService.refreshNeeded$.subscribe(() => {
       this.loadAllIngredients(this.restaurantId);
+    });
+  }
+
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        console.log('resId', data)
+        this.restaurantId = data.message;
+        this.loadAllIngredients(this.restaurantId);
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
     });
   }
 
