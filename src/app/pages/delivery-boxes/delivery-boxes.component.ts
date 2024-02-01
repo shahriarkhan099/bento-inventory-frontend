@@ -9,6 +9,7 @@ import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { DeliveryBox } from '../../models/delivery-box.model';
 import { DeliveryBoxService } from '../../services/delivery-box/delivery-box.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-delivery-boxes',
@@ -17,26 +18,36 @@ import { DeliveryBoxService } from '../../services/delivery-box/delivery-box.ser
 })
 export class DeliveryBoxesComponent implements OnInit {
   listOfBoxes: DeliveryBox[] = [];
-
   unitOfDimentionList = ['cm', 'inches'];
   waterproofList = ['Yes', 'No'];
+  // restaurantId: number = 1 if not entering from Bento
+  restaurantId: number = 1;
 
-  constructor(
-    private deliveryBoxService: DeliveryBoxService,
-    private message: NzMessageService
-  ) {}
-
-  //Have to make the restaurant id dynamic
-  @Input() restaurantId: number = 1;
+  constructor(private deliveryBoxService: DeliveryBoxService, private message: NzMessageService, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.getRestaurantId();
     this.subscribeToDeliveyBoxChanges();
-    this.loadAllDeliveryBoxes(this.restaurantId);
+    // this.loadAllDeliveryBoxes(this.restaurantId);
   }
 
   private subscribeToDeliveyBoxChanges() {
     this.deliveryBoxService.refreshNeeded$.subscribe(() => {
       this.loadAllDeliveryBoxes(this.restaurantId);
+    });
+  }
+
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        console.log('resId', data)
+        this.restaurantId = data.message;
+        this.loadAllDeliveryBoxes(this.restaurantId);
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
     });
   }
 
@@ -65,7 +76,7 @@ export class DeliveryBoxesComponent implements OnInit {
 
   createUpdateIngredient() {
     const newBox = {
-      restaurantId: 1,
+      restaurantId: this.restaurantId,
       boxName: this.boxName,
       currentStockQuantity: this.currentStockQuantity,
       reorderPoint: this.reorderPoint,

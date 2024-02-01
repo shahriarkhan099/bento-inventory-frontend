@@ -10,6 +10,7 @@ import { SupplierListService } from '../../services/supplier-list/supplier-list.
 import { Supplier } from '../../models/supplier.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-supplier-list',
@@ -18,7 +19,6 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 })
 export class SupplierListComponent implements OnInit {
   listOfSuppliers: Supplier[] = [];
-
   id!: number | any;
   name!: string;
   address!: string;
@@ -26,23 +26,33 @@ export class SupplierListComponent implements OnInit {
   email!: string;
   label!: string;
   labelList: string[] = ['Premium', 'Preferred', 'Standard', 'Budget', 'New'];
+  // restaurantId: number = 1 if not entering from Bento
+  restaurantId: number = 1;
 
-  constructor(
-    private supplierListService: SupplierListService,
-    private message: NzMessageService
-  ) {}
-
-  //Have to make the restaurant id dynamic
-  @Input() restaurantId: number = 1;
+  constructor(private supplierListService: SupplierListService, private message: NzMessageService, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.getRestaurantId();
     this.subscribeToSupplierChanges();
-    this.loadAllSuppliers(this.restaurantId);
   }
 
   private subscribeToSupplierChanges() {
     this.supplierListService.refreshNeeded$.subscribe(() => {
       this.loadAllSuppliers(this.restaurantId);
+    });
+  }
+
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        console.log('resId', data)
+        this.restaurantId = data.message;
+        this.loadAllSuppliers(this.restaurantId);
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
     });
   }
 
@@ -68,7 +78,7 @@ export class SupplierListComponent implements OnInit {
 
   createUpdateSupplier() {
     const newSupplier = {
-      restaurantId: 1,
+      restaurantId: this.restaurantId,
       name: this.name,
       address: this.address,
       contactNumber: this.contactNumber,

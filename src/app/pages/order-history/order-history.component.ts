@@ -8,6 +8,7 @@ import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { IngredientBatch } from '../../models/ingredient-batch.model';
 import { DeliveryBoxBatch } from '../../models/delivery-box-batch.model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-order-history',
@@ -18,20 +19,33 @@ export class OrderHistoryComponent implements OnInit {
   listOfOrder: Order[] = []; 
   listOfIngredientBatch: IngredientBatch[] = [];
   listOfDeliveryBoxBatch: DeliveryBoxBatch[] = [];
+  // restaurantId: number = 1 if not entering from Bento
+  restaurantId: number = 1;
 
-  constructor(private orderService: OrderService, private message: NzMessageService) {}
-
-  //Have to make the restaurant id dynamic
-  @Input() restaurantId: number = 1;
+  constructor(private orderService: OrderService, private message: NzMessageService, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.getRestaurantId();
     this.subscribeToIngredientChanges();
-    this.loadAllOrders(this.restaurantId);
   }
 
   private subscribeToIngredientChanges() {
     this.orderService.refreshNeeded$.subscribe(() => {
       this.loadAllOrders(this.restaurantId);
+    });
+  }
+
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        console.log('resId', data)
+        this.restaurantId = data.message;
+        this.loadAllOrders(this.restaurantId);
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
     });
   }
 

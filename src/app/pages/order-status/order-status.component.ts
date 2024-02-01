@@ -4,6 +4,7 @@ import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'n
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { VendorService } from '../../services/vendor/vendor.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-order-status',
@@ -13,15 +14,28 @@ import { VendorService } from '../../services/vendor/vendor.service';
 export class OrderStatusComponent implements OnInit {
   listOfProductOrders: any[] = []; 
   listOfProductBatches: any[] = [];
+  // restaurantId: number = 1 if not entering from Bento
+  restaurantId: number = 1;
 
-  constructor(private vendorOrderService: VendorService, private message: NzMessageService) {}
-
-  //Have to make the restaurant id dynamic
-  @Input() restaurantId: number = 1;
+  constructor(private vendorOrderService: VendorService, private message: NzMessageService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.loadAllOrders(this.restaurantId);
+    this.getRestaurantId();
     setInterval(() => this.calculateRemainingTime(this.listOfProductOrders), 1000);
+  }
+
+  private getRestaurantId() {
+    this.authService.getRestaurantId().subscribe({
+      next: (data) => {
+        console.log('resId', data)
+        this.restaurantId = data.message;
+        this.loadAllOrders(this.restaurantId);
+      },
+      error: (error) => {
+        console.error('Error fetching restaurant id', error);
+        this.message.error('Failed to fetch restaurant id. Please try again.');
+      },
+    });
   }
 
   private loadAllOrders(restaurantId: number) {
