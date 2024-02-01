@@ -31,6 +31,7 @@ export class InventoryIngredientsComponent implements OnInit {
       next: (data) => {
         console.log('resId', data)
         this.restaurantId = data.message;
+        this.loadAllIngredients(this.restaurantId);
       },
       error: (error) => {
         console.error('Error fetching restaurant id', error);
@@ -45,7 +46,6 @@ export class InventoryIngredientsComponent implements OnInit {
     this.subscribeToIngredientChanges();
     this.loadCategoriesFromAssests();
     this.loadIngredientsFromAssests();
-    this.loadAllIngredients(this.restaurantId);
   }
 
   private subscribeToIngredientChanges() {
