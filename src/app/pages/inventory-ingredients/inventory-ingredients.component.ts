@@ -21,7 +21,7 @@ export class InventoryIngredientsComponent implements OnInit {
   createdIngredients: Ingredient[] = []; 
   categoryList: GlobalCatgory[] = []; 
   ingredientList: GlobalIngredient[] = [];
-  restaurantId: number = 1;
+  restaurantId: number = 0;
 
   constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService, private authService: AuthService) {
   }
