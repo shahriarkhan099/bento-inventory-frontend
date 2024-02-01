@@ -49,11 +49,10 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
 import { SpashLogoComponent } from './component/spash-logo/spash-logo.component';
-import { AuthRedirectComponent } from './component/auth-redirect/auth-redirect.component';
+import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import {AuthInterceptorService} from './services/interceptors/auth/auth-interceptor.service';
-import {TokenInterceptorService} from './services/interceptors/token/token-interceptor.service';
-
+import { AuthInterceptorService } from './services/interceptors/auth/auth-interceptor.service';
+import { TokenInterceptorService } from './services/interceptors/token/token-interceptor.service';
 
 registerLocaleData(en);
 
@@ -73,7 +72,7 @@ registerLocaleData(en);
     HeaderComponent,
     DeliveryBoxesComponent,
     SpashLogoComponent,
-    AuthRedirectComponent
+    AuthRedirectComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,19 +98,20 @@ registerLocaleData(en);
     NzPopconfirmModule,
     NzPaginationModule,
     NzGridModule,
-    NzDropDownModule
+    NzDropDownModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{ provide: NZ_I18N, useValue: en_US },
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
