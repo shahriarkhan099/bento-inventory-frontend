@@ -10,7 +10,7 @@ import { SupplierListService } from '../../services/supplier-list/supplier-list.
 import { Supplier } from '../../models/supplier.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
-import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-supplier-list',
@@ -29,30 +29,21 @@ export class SupplierListComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private supplierListService: SupplierListService, private message: NzMessageService, private authService: AuthService) {}
+  constructor(private supplierListService: SupplierListService, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.getRestaurantId();
     this.subscribeToSupplierChanges();
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllSuppliers(this.restaurantId);
+    } else {
+      this.loadAllSuppliers(this.restaurantId);
+    }
   }
 
   private subscribeToSupplierChanges() {
     this.supplierListService.refreshNeeded$.subscribe(() => {
       this.loadAllSuppliers(this.restaurantId);
-    });
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllSuppliers(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
     });
   }
 

@@ -4,7 +4,7 @@ import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'n
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { VendorService } from '../../services/vendor/vendor.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-order-status',
@@ -17,25 +17,16 @@ export class OrderStatusComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private vendorOrderService: VendorService, private message: NzMessageService, private authService: AuthService) {}
+  constructor(private vendorOrderService: VendorService, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.getRestaurantId();
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllOrders(this.restaurantId);
+    } else {
+      this.loadAllOrders(this.restaurantId);
+    }
     setInterval(() => this.calculateRemainingTime(this.listOfProductOrders), 1000);
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllOrders(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
-    });
   }
 
   private loadAllOrders(restaurantId: number) {

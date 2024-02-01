@@ -4,7 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { generateAvailableTimeSlots, bookTimeSlot} from '../../utils/timeSlotUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { getRemainingHours } from '../../utils/timeCalculationUtils';
-import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-place-orders',
@@ -22,7 +22,7 @@ export class PlaceOrdersComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private vendorsService: VendorService, private message: NzMessageService, private authService: AuthService) {
+  constructor(private vendorsService: VendorService, private message: NzMessageService) {
     this.searchTerm = '';
     this.vendors = [];
     this.selectedVendorId = '';
@@ -33,20 +33,9 @@ export class PlaceOrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRestaurantId();
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
-    });
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+    }
   }
 
   searchVendors() {

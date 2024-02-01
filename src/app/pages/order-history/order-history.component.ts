@@ -8,7 +8,6 @@ import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { IngredientBatch } from '../../models/ingredient-batch.model';
 import { DeliveryBoxBatch } from '../../models/delivery-box-batch.model';
-import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class OrderHistoryComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private orderService: OrderService, private message: NzMessageService, private authService: AuthService) {}
+  constructor(private orderService: OrderService, private message: NzMessageService) {}
 
   ngOnInit(): void {
     this.subscribeToIngredientChanges();

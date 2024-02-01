@@ -10,7 +10,7 @@ import { WastageLogService } from '../../services/wastage-log/wastage-log.servic
 import { WasteLog } from '../../models/waste-log.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
-import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-track-wastage',
@@ -22,30 +22,21 @@ export class TrackWastageComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private wastageLogService: WastageLogService, private message: NzMessageService, private authService: AuthService) {}
+  constructor(private wastageLogService: WastageLogService, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    this.getRestaurantId();
     this.subscribeToIngredientChanges();
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllWasteLogs(this.restaurantId);
+    } else {
+      this.loadAllWasteLogs(this.restaurantId);
+    }
   }
 
   private subscribeToIngredientChanges() {
     this.wastageLogService.refreshNeeded$.subscribe(() => {
       this.loadAllWasteLogs(this.restaurantId);
-    });
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllWasteLogs(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
     });
   }
 

@@ -9,7 +9,6 @@ import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { DeliveryBox } from '../../models/delivery-box.model';
 import { DeliveryBoxService } from '../../services/delivery-box/delivery-box.service';
-import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
@@ -24,7 +23,7 @@ export class DeliveryBoxesComponent implements OnInit {
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private deliveryBoxService: DeliveryBoxService, private message: NzMessageService, private authService: AuthService) {}
+  constructor(private deliveryBoxService: DeliveryBoxService, private message: NzMessageService) {}
 
   ngOnInit(): void {
     this.subscribeToDeliveyBoxChanges();

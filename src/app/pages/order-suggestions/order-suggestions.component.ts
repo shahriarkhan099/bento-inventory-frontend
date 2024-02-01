@@ -13,7 +13,7 @@ import { formatDateToString } from '../../utils/formatDateUtils';
 import { GlobalCatgory } from '../../models/globalCategory.model';
 import { GlobalIngredient } from '../../models/globalIngredient,model';
 import { CategoryService } from '../../services/category/category.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-order-suggestions',
@@ -21,19 +21,24 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './order-suggestions.component.css',
 })
 export class OrderSuggestionsComponent implements OnInit {
-  createdIngredients: Ingredient[] = [];
-  createdIngredients2: Ingredient[] = []; 
+  createdIngredients2: Ingredient[] = [];
+  createdIngredients: Ingredient[] = []; 
   categoryList: GlobalCatgory[] = []; 
   ingredientList: GlobalIngredient[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService, private authService: AuthService) {
+  constructor(private ingredientService: IngredientService, private categoryService: CategoryService, private message: NzMessageService) {
   }
 
   ngOnInit() {
-    this.getRestaurantId();
     this.subscribeToIngredientChanges();
+    if (LocalStorageService.getRestaurantId()) {
+      this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllIngredients(this.restaurantId);
+    } else {
+      this.loadAllIngredients(this.restaurantId);
+    }
     this.loadCategoriesFromAssests();
     this.loadIngredientsFromAssests();
   }
@@ -41,20 +46,6 @@ export class OrderSuggestionsComponent implements OnInit {
   private subscribeToIngredientChanges() {
     this.ingredientService.refreshNeeded$.subscribe(() => {
       this.loadAllIngredients(this.restaurantId);
-    });
-  }
-
-  private getRestaurantId() {
-    this.authService.getRestaurantId().subscribe({
-      next: (data) => {
-        console.log('resId', data)
-        this.restaurantId = data.message;
-        this.loadAllIngredients(this.restaurantId);
-      },
-      error: (error) => {
-        console.error('Error fetching restaurant id', error);
-        this.message.error('Failed to fetch restaurant id. Please try again.');
-      },
     });
   }
 
