@@ -30,6 +30,7 @@ export class DeliveryBoxesComponent implements OnInit {
     this.subscribeToDeliveyBoxChanges();
     if (LocalStorageService.getRestaurantId()) {
       this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllDeliveryBoxes(this.restaurantId);
     } else {
       this.loadAllDeliveryBoxes(this.restaurantId);
     }

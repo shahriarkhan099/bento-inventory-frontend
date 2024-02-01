@@ -29,6 +29,7 @@ export class OrderHistoryComponent implements OnInit {
     this.subscribeToIngredientChanges();
     if (LocalStorageService.getRestaurantId()) {
       this.restaurantId = Number(LocalStorageService.getRestaurantId());
+      this.loadAllOrders(this.restaurantId);
     } else {
       this.loadAllOrders(this.restaurantId);
     }
