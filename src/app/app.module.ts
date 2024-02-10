@@ -21,18 +21,18 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
 // For Form
-import { NzFormModule } from 'ng-zorro-antd/form'; // For Form
-import { NzInputModule } from 'ng-zorro-antd/input'; // For Form
-import { NzUploadModule } from 'ng-zorro-antd/upload'; // For Form
-import { NzModalModule } from 'ng-zorro-antd/modal'; // For Form
+import { NzFormModule } from 'ng-zorro-antd/form'; 
+import { NzInputModule } from 'ng-zorro-antd/input'; 
+import { NzUploadModule } from 'ng-zorro-antd/upload'; 
+import { NzModalModule } from 'ng-zorro-antd/modal'; 
 
 // For Drawer
-import { NzDrawerModule } from 'ng-zorro-antd/drawer'; // For Drawer
-import { NzSelectModule } from 'ng-zorro-antd/select'; // For Drawer
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; // For Drawer
+import { NzDrawerModule } from 'ng-zorro-antd/drawer'; 
+import { NzSelectModule } from 'ng-zorro-antd/select'; 
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; 
 
 // For Popconfirm
-import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'; // For Popconfirm
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'; 
 
 // Pages
 import { AppComponent } from './app.component';
@@ -42,9 +42,7 @@ import { OrderSuggestionsComponent } from './pages/order-suggestions/order-sugge
 import { TrackWastageComponent } from './pages/track-wastage/track-wastage.component';
 import { PlaceOrdersComponent } from './pages/place-orders/place-orders.component';
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
-import { ScheduleOrderComponent } from './pages/schedule-order/schedule-order.component';
 import { SupplierListComponent } from './pages/supplier-list/supplier-list.component';
-import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-platform-supplier.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
@@ -65,9 +63,7 @@ registerLocaleData(en);
     TrackWastageComponent,
     PlaceOrdersComponent,
     OrderStatusComponent,
-    ScheduleOrderComponent,
     SupplierListComponent,
-    OnPlatformSupplierComponent,
     FooterComponent,
     HeaderComponent,
     DeliveryBoxesComponent,

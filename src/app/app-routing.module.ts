@@ -6,9 +6,7 @@ import { OrderSuggestionsComponent } from './pages/order-suggestions/order-sugge
 import { TrackWastageComponent } from './pages/track-wastage/track-wastage.component';
 import { PlaceOrdersComponent } from './pages/place-orders/place-orders.component';
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
-import { ScheduleOrderComponent } from './pages/schedule-order/schedule-order.component';
 import { SupplierListComponent } from './pages/supplier-list/supplier-list.component';
-import { OnPlatformSupplierComponent } from './pages/on-platform-supplier/on-platform-supplier.component';
 import { DeliveryBoxesComponent } from './pages/delivery-boxes/delivery-boxes.component';
 import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
 
@@ -24,11 +22,9 @@ const routes: Routes = [
   { path: 'place-orders', component: PlaceOrdersComponent },
   { path: 'order-history', component: OrderHistoryComponent },
   { path: 'order-status', component: OrderStatusComponent },
-  { path: 'schedule-order', component: ScheduleOrderComponent },
 
   //Manage Supplier Pages
   { path: 'supplier-list', component: SupplierListComponent },
-  { path: 'on-platform-suppliers', component: OnPlatformSupplierComponent },
 
   //Default Dashboard  Pages
   {
