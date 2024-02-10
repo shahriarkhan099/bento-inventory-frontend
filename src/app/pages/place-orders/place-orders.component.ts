@@ -48,7 +48,6 @@ export class PlaceOrdersComponent implements OnInit {
         this.selectedVendorId = '';
         this.vendorsService.searchVendorsByNameAndProducts(this.searchTerm).subscribe((vendors) => {
           this.vendors = vendors;
-          console.log('Vendors:', vendors);
         });
       }, 1000); 
     }
@@ -60,9 +59,6 @@ export class PlaceOrdersComponent implements OnInit {
     this.vendorsService.getVendorByIdWithProducts(vendorId).subscribe((vendorDetails) => {
       this.selectedVendor = vendorDetails;
       this.vendorProducts = vendorDetails.products;
-      console.log('Vendor details:', vendorDetails);
-      console.log('Vendor details:', this.vendorProducts);
-      console.log('Available Time Slots:', this.getAvailableTimeSlots());
     });
   }
 
@@ -104,14 +100,11 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     const productBatches = this.transformProductsToBatches(this.cartItems);
-    console.log(this.cartItems);
-    console.log(productBatches);
     
     let calculatedDeliveryDate = new Date();
     calculatedDeliveryDate.setHours(0, 0, 0, 0);
     calculatedDeliveryDate.setHours(calculatedDeliveryDate.getHours() + Number(this.selectedTimeSlot.split(':')[0]));
     calculatedDeliveryDate.setMinutes(calculatedDeliveryDate.getMinutes() + Number(this.selectedTimeSlot.split(':')[2]));
-    console.log(formatDateToString(calculatedDeliveryDate));
     
     const orderData = {
       totalPrice: this.calculateTotalPrice(),
@@ -121,8 +114,6 @@ export class PlaceOrdersComponent implements OnInit {
       selectedTimeSlot: this.selectedTimeSlot,
       productBatches: productBatches,
     };
-    
-    console.log(orderData);
 
     this.vendorsService.placeOrder(orderData).subscribe((orderResponse) => {
       console.log('Order placed successfully:', orderResponse);
@@ -138,9 +129,6 @@ export class PlaceOrdersComponent implements OnInit {
     this.visible = false;
     let TimeSlots = bookTimeSlot(this.selectedVendor.bookedTimeSlots, this.selectedTimeSlot); 
     this.selectedVendor.bookedTimeSlots = TimeSlots;
-    console.log('Booked Time Slots:', this.selectedVendor.bookedTimeSlots);
-    
-    console.log('Booked Time Slots:', this.selectedVendor);
 
     this.vendorsService.updateSupplier(this.selectedVendor).subscribe((vendorResponse) => {
       console.log('Vendor updated successfully:', vendorResponse);
