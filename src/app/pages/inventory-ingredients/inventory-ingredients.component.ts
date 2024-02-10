@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
 
 import { IngredientService } from '../../services/ingredient/ingredient.service';
 import { Ingredient } from '../../models/ingredient.model';
-import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { CategoryService } from '../../services/category/category.service';
 import { GlobalCatgory } from '../../models/globalCategory.model';
@@ -53,7 +52,6 @@ export class InventoryIngredientsComponent implements OnInit {
         console.log('resId', data);
         this.restaurantId = data.message;
         LocalStorageService.setRestaurantId(this.restaurantId);
-        // this.loadAllIngredients(this.restaurantId);
       },
       error: (error) => {
         console.error('Error fetching restaurant id', error);
@@ -72,9 +70,6 @@ export class InventoryIngredientsComponent implements OnInit {
           costPerUnit: ingredient.costPerUnit ? Number(ingredient.costPerUnit.toFixed(2)) : 0,
           updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
         }));
-
-        sortByCreatedAt(this.createdIngredients);
-        console.log('Ingredient data loaded', this.createdIngredients);
       },
       error: (error) => {
         console.error('Error fetching ingredient data', error);
@@ -94,7 +89,6 @@ export class InventoryIngredientsComponent implements OnInit {
   
         this.categoryService.addCategory(newCategory).subscribe({
           next: (res) => {
-            console.log(res);
             this.createUpdateIngredient();
           },
           error: (error) => {
@@ -114,7 +108,6 @@ export class InventoryIngredientsComponent implements OnInit {
     }
 
     const uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
-    console.log('uniqueIngredientId', uniqueIngredientId);
 
     if (!this.isIngredientExit(this.restaurantId, uniqueIngredientId) && !this.isEdit) {
       this.message.error('Ingredient already exists. Invalid request.');
@@ -137,14 +130,12 @@ export class InventoryIngredientsComponent implements OnInit {
   
     this.categoryService.getCategoryByName(this.restaurantId, this.categoryName).subscribe((category) => {
       if (category) {
-        console.log('Category already exists:', category);
         newIngredient.categoryId = category.id;
       }
   
       if (this.isEdit) {
         this.ingredientService.editIngredient(this.id, newIngredient).subscribe({
           next: (res) => {
-            console.log(res);
             this.message.success('Ingredient Updated successfully.');
           },
           error: (error) => {
@@ -155,7 +146,6 @@ export class InventoryIngredientsComponent implements OnInit {
       } else {
         this.ingredientService.addIngredient(newIngredient).subscribe({
           next: (res) => {
-            console.log(res);
             this.message.success('Ingredient Added successfully.');
           },
           error: (error) => {
