@@ -57,6 +57,13 @@ export class TrackWastageComponent implements OnInit {
 
         sortByCreatedAt(this.listOfWasteLog);
         console.log('WasteLog data loaded', this.listOfWasteLog);
+        if (this.listOfWasteLog.length > 0) {
+          this.totalNumberOfData = this.listOfWasteLog.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
         
       },
       error: (error) => {
@@ -77,11 +84,11 @@ export class TrackWastageComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Current Wastage Overview';
   tableFooter = '';
-  noResult = 'No Data Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 }

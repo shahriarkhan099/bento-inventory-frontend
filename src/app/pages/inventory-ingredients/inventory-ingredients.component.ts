@@ -70,6 +70,13 @@ export class InventoryIngredientsComponent implements OnInit {
           costPerUnit: ingredient.costPerUnit ? Number(ingredient.costPerUnit.toFixed(2)) : 0,
           updatedAt: formatDateToString(new Date(ingredient.updatedAt)),
         }));
+        if (this.createdIngredients.length > 0) {
+          this.totalNumberOfData = this.createdIngredients.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
       },
       error: (error) => {
         console.error('Error fetching ingredient data', error);
@@ -127,6 +134,7 @@ export class InventoryIngredientsComponent implements OnInit {
       restaurantId: this.restaurantId,
       categoryId: 0,
     };
+    
   
     this.categoryService.getCategoryByName(this.restaurantId, this.categoryName).subscribe((category) => {
       if (category) {
@@ -158,7 +166,6 @@ export class InventoryIngredientsComponent implements OnInit {
 
     this.visible = false;
   }
-  
 
   onDelete(id: number): void {
     this.ingredientService.deleteIngredient(id).subscribe({
@@ -254,7 +261,7 @@ export class InventoryIngredientsComponent implements OnInit {
     this.ingredientName = '';
     this.liquid = '';
     this.unitOfStock = '';
-    this.caloriesPerUnit = '';
+    this.caloriesPerUnit = 0;
     this.reorderPoint = '';
     this.perishable = '';
     this.description = '';
@@ -286,11 +293,11 @@ export class InventoryIngredientsComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Current Ingredients';
   tableFooter = '';
-  noResult = 'No Ingredient Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

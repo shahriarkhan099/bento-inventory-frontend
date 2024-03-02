@@ -54,6 +54,13 @@ export class DeliveryBoxesComponent implements OnInit {
 
         sortByCreatedAt(this.listOfBoxes);
         console.log('Ingredient data loaded', this.listOfBoxes);
+        if (this.listOfBoxes.length > 0) {
+          this.totalNumberOfData = this.listOfBoxes.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
       },
       error: (error) => {
         console.error('Error fetching ingredient data', error);
@@ -184,11 +191,11 @@ export class DeliveryBoxesComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Current Delivery Boxes';
   tableFooter = '';
-  noResult = 'No Delivery Box Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

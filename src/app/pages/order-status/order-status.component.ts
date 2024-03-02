@@ -46,6 +46,14 @@ export class OrderStatusComponent implements OnInit {
 
         sortByCreatedAt(this.listOfProductOrders);
         console.log('Order data loaded', this.listOfProductOrders);
+        if (this.listOfProductOrders.length > 0) {
+          this.totalNumberOfData = this.listOfProductOrders.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
+
       },
       error: (error) => {
         console.error('Error fetching order data', error);
@@ -65,11 +73,11 @@ export class OrderStatusComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Current Order Status';
   tableFooter = '';
-  noResult = 'No Data Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

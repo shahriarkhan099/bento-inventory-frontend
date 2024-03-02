@@ -53,6 +53,14 @@ export class OrderHistoryComponent implements OnInit {
 
         sortByCreatedAt(this.listOfOrder);
         console.log('Order data loaded', this.listOfOrder);
+        if (this.listOfOrder.length > 0) {
+          this.totalNumberOfData = this.listOfOrder.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
+
       },
       error: (error) => {
         console.error('Error fetching order data', error);
@@ -72,11 +80,11 @@ export class OrderHistoryComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Order History Overview';
   tableFooter = '';
-  noResult = 'No Data Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

@@ -57,6 +57,14 @@ export class SupplierListComponent implements OnInit {
 
         sortByCreatedAt(this.listOfSuppliers);
         console.log('Supplier data loaded', this.listOfSuppliers);
+        if (this.listOfSuppliers.length > 0) {
+          this.totalNumberOfData = this.listOfSuppliers.length;
+          this.loadingStatus = false;
+        } else {
+          this.noResult = 'No data found';
+          this.loadingStatus = false;
+        }
+
       },
       error: (error) => {
         console.error('Error fetching supplier data', error);
@@ -142,11 +150,11 @@ export class SupplierListComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'My Supplier List';
   tableFooter = '';
-  noResult = 'No Data Present';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

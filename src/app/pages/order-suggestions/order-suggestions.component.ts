@@ -287,7 +287,7 @@ export class OrderSuggestionsComponent implements OnInit {
 
   tableTitle = 'Current Ingredients';
   tableFooter = '';
-  noResult = 'No Ingredient Present';
+  noResult = 'No data found';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 
