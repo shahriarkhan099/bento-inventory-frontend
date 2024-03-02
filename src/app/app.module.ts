@@ -19,20 +19,21 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 // For Form
-import { NzFormModule } from 'ng-zorro-antd/form'; 
-import { NzInputModule } from 'ng-zorro-antd/input'; 
-import { NzUploadModule } from 'ng-zorro-antd/upload'; 
-import { NzModalModule } from 'ng-zorro-antd/modal'; 
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // For Drawer
-import { NzDrawerModule } from 'ng-zorro-antd/drawer'; 
-import { NzSelectModule } from 'ng-zorro-antd/select'; 
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; 
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 // For Popconfirm
-import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm'; 
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 // Pages
 import { AppComponent } from './app.component';
@@ -95,6 +96,8 @@ registerLocaleData(en);
     NzPaginationModule,
     NzGridModule,
     NzDropDownModule,
+    NzSpinModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

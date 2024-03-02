@@ -1,128 +1,202 @@
-<div nz-td [ngClass]="{ 'add-button-container': true }" (click)="directToShoppingCart()">
-    <span *ngIf="cartItems.length > 0" class="cart-notification">{{ cartItems.length }} </span>
-    <button nz-form [ngClass]="{ 'cart-button': true }">
-       <span nz-icon nzType="shopping-cart" nzTheme="outline"></span> 
-    </button>
+<div
+  nz-td
+  [ngClass]="{ 'add-button-container': true }"
+  (click)="directToShoppingCart()"
+>
+  <span *ngIf="cartItems.length > 0" class="cart-notification"
+    >{{ cartItems.length }}
+  </span>
+  <button nz-form [ngClass]="{ 'cart-button': true }">
+    <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+  </button>
 </div>
 
 <nz-drawer
-    [nzBodyStyle]="{ overflow: 'auto' }"
-    [nzMaskClosable]="false"
-    [nzWidth]="920"
-    [nzVisible]="visible"
-    nzTitle="Shopping Cart"
-    [nzFooter]="footerTpl"
-    (nzOnClose)="close()">
-    
-    <form nz-form *nzDrawerContent (ngSubmit)="placeOrder()">
-
-        <div *ngIf="cartItems.length > 0">
-            <h2>Shopping Cart</h2>
-            <div class="cart-container">
-              <div class="cart-item" *ngFor="let item of cartItems">
-                <div class="cart-item-details">
-                  <div class="item-name">{{ item.name }}</div>
-                  <div class="item-quantity">
-                    Qty: {{ item.minimumOrderAmount + item.qty }} {{ item.unitOfStock }}
-                  </div>
-                  <div class="item-price">
-                    Price: {{ (((item.price / item.minimumOrderAmount) * item.qty) + item.price).toFixed(2) | currency:'£' }}
-                  </div>
-                </div>
-              </div>
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="920"
+  [nzVisible]="visible"
+  nzTitle="Shopping Cart"
+  [nzFooter]="footerTpl"
+  (nzOnClose)="close()"
+>
+  <form nz-form *nzDrawerContent (ngSubmit)="placeOrder()">
+    <div *ngIf="cartItems.length > 0">
+      <h2>Shopping Cart</h2>
+      <div class="cart-container">
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <div class="cart-item-details">
+            <div class="item-name">{{ item.name }}</div>
+            <div class="item-quantity">
+              Qty: {{ item.minimumOrderAmount + item.qty }}
+              {{ item.unitOfStock }}
             </div>
-            <p class="total-price">Total Price: {{ calculateTotalPrice() | currency:'£' }}</p>
-
-            <div class="time-slot-container">
-                <label for="timeSlot">Select Delivery Slot: </label>
-                <select class="select-box" id="timeSlot"  name="timeSlot" [(ngModel)]="selectedTimeSlot">
-                  <option *ngFor="let slot of getAvailableTimeSlots()" [value]="slot">{{ slot }}</option>
-                </select>
+            <div class="item-price">
+              Price:
+              {{
+                (
+                  (item.price / item.minimumOrderAmount) * item.qty +
+                  item.price
+                ).toFixed(2) | currency : "£"
+              }}
             </div>
-
-        </div>    
-
-    </form>
-
-    <ng-template #footerTpl>
-        <div style="float: right">
-          <button nz-button style="margin-right: 8px" (click)="close()">Cancel</button>
-          <button nz-button nzType="primary" (click)="placeOrder()">Place Order</button>
+          </div>
         </div>
-    </ng-template>
+      </div>
+      <p class="total-price">
+        Total Price: {{ calculateTotalPrice() | currency : "£" }}
+      </p>
 
+      <div class="time-slot-container">
+        <label for="timeSlot">Select Delivery Slot: </label>
+        <select
+          class="select-box"
+          id="timeSlot"
+          name="timeSlot"
+          [(ngModel)]="selectedTimeSlot"
+        >
+          <option *ngFor="let slot of getAvailableTimeSlots()" [value]="slot">
+            {{ slot }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px" (click)="close()">
+        Cancel
+      </button>
+      <button nz-button nzType="primary" (click)="placeOrder()">
+        Place Order
+      </button>
+    </div>
+  </ng-template>
 </nz-drawer>
 
 <div class="search-container">
-    <div class="flex-container">
-        <input style="padding-left: 20px;" type="text" [(ngModel)]="searchTerm" (keyup)="searchVendors()" class="search-input" placeholder="Search Vendors" />
-        <button (click)="searchVendors()" class="search-button">
-            Search
-        </button>
-    </div>
+  <div class="flex-container">
+    <input
+      style="padding-left: 20px"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (keyup)="searchVendors()"
+      class="search-input"
+      placeholder="Search Vendors"
+    />
+    <button (click)="searchVendors()" class="search-button">Search</button>
+  </div>
 </div>
 
-<!-- <div *ngIf="vendors.length > 0">
-    <div class="vendor-container">
-        <div class="product-item" *ngFor="let vendor of vendors">
-            <div class="vendor-logo">
-                <img src="{{ vendor.logo }}" alt="{{ vendor.name }} Logo9b59b6" /> 
-                <div style="text-align: center; color: #fff; background-color: #26a366; padding: 10px; border-radius: 100px; font-weight: bold; font-family: 'Arial', sans-serif;">
-                    {{ vendor.name }}
-                </div>
-            </div>
-            <div class="vendor-button">
-                <button (click)="selectVendor(vendor.id)" class="view-product-button">View Products</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div *ngIf="vendors.length > 0"  class="vendor-container"  >
-    
-        <div *ngFor="let vendor of vendors"  class="vendorInfoDiv product-item" >
-            <div class="vendorImg">
-                <img src="../../../assets/photos and logos/shop.jpg" alt="" srcset="">
-            </div>
-            <div class="vendorInfo">
-                <p>{{ vendor.name }}</p>
-                <button (click)="selectVendor(vendor.id)"class="vendor-button">View Products</button>
-            </div>
-        </div>
-    
+<div *ngIf="backupVendors.length <= 0" class="loader-container">
+  <nz-spin 
+  style="text-align: center; margin-top: 6rem;"
+    [nzSpinning]="showLoader"
+    nzSimple
+    [nzSize]="'large'"
+    nzTip="Loading..."
+  ></nz-spin>
 </div>
 
-<div *ngIf="selectedVendorId">
-    <h2 style="margin-left: 1rem;">Products of {{ selectedVendor.name }}</h2>
+<div *ngIf="selectedVendorId && this.vendorProducts.length <= 0" class="loader-container">
+    <nz-spin 
+    style="text-align: center; margin-top: 6rem;"
+      [nzSpinning]="true"
+      nzSimple
+      [nzSize]="'large'"
+      nzTip="Loading..."
+    ></nz-spin>
+</div>
 
-      <nz-grid [nzGutter]="16" class="product-container">
-        <div class="product-item" *ngFor="let product of vendorProducts | slice: (currentPage - 1) * productsPerPage : currentPage * productsPerPage">
-            <div>
-                <input type="checkbox" (change)="getSelectedProducts()" [(ngModel)]="product.selected"/>
-                <div class="product-details">
-                    <span>{{ product.name }}</span><br>
-                    <span>Minimum Qty: {{ product.minimumOrderAmount }} {{ product.unitOfStock }}</span><br>
-                    <span>Price: {{ product.price | currency:'£' }}</span>
-                    <br><br>
-                    <span>Total Qty: {{ product.qty + product.minimumOrderAmount }} {{ product.unitOfStock }}</span> <br>
-                    <span>Total Price: {{ (((product.price/product.minimumOrderAmount) * product.qty) + product.price).toFixed(2) | currency:'£' }}</span><br>
-                </div>
-                <div class="button-container">
-                    <button class="minus-button" (click)="incrementQuantity(product)">+</button>
-                    <button class="plus-button" (click)="decrementQuantity(product)" [disabled]="product.qty <= 0">-</button>
-                </div>
-            </div>
+<div *ngIf="vendors.length > 0" class="vendor-container">
+  <div *ngFor="let vendor of vendors" class="vendorInfoDiv product-item">
+    <div class="vendorImg">
+      <img src="../../../assets/photos and logos/shop.jpg" alt="" srcset="" />
+    </div>
+    <div class="vendorInfo">
+      <p>{{ vendor.name }}</p>
+      <button (click)="selectVendor(vendor.id)" class="vendor-button">
+        View Products
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="vendorProducts.length > 0">
+  <h2 style="margin-left: 1rem">Products of {{ selectedVendor.name }}</h2>
+
+  <nz-grid [nzGutter]="16" class="product-container">
+    <div
+      class="product-item"
+      *ngFor="
+        let product of vendorProducts
+          | slice
+            : (currentPage - 1) * productsPerPage
+            : currentPage * productsPerPage
+      "
+    >
+      <div>
+        <input
+          type="checkbox"
+          (change)="getSelectedProducts()"
+          [(ngModel)]="product.selected"
+        />
+        <div class="product-details">
+          <span>{{ product.name }}</span
+          ><br />
+          <span
+            >Minimum Qty: {{ product.minimumOrderAmount }}
+            {{ product.unitOfStock }}</span
+          ><br />
+          <span>Price: {{ product.price | currency : "£" }}</span>
+          <br /><br />
+          <span
+            >Total Qty: {{ product.qty + product.minimumOrderAmount }}
+            {{ product.unitOfStock }}</span
+          >
+          <br />
+          <span
+            >Total Price:
+            {{
+              (
+                (product.price / product.minimumOrderAmount) * product.qty +
+                product.price
+              ).toFixed(2) | currency : "£"
+            }}</span
+          ><br />
         </div>
-      </nz-grid>
+        <div class="button-container">
+          <button class="minus-button" (click)="incrementQuantity(product)">
+            +
+          </button>
+          <button
+            class="plus-button"
+            (click)="decrementQuantity(product)"
+            [disabled]="product.qty <= 0"
+          >
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+  </nz-grid>
 
-      <div style="float: right; margin-right: 36px;">
-        <nz-pagination
-          [nzPageIndex]="currentPage"
-          [nzTotal]="vendorProducts.length"
-          [nzPageSize]="productsPerPage"
-          (nzPageIndexChange)="pageChanged($event)"
-        ></nz-pagination>
-      </div> <br>
+  <div style="float: right; margin-right: 36px">
+    <nz-pagination
+      [nzPageIndex]="currentPage"
+      [nzTotal]="vendorProducts.length"
+      [nzPageSize]="productsPerPage"
+      (nzPageIndexChange)="pageChanged($event)"
+    ></nz-pagination>
+  </div>
+  <br />
 
-    <button (click)="directToShoppingCart()" class="search-button" [disabled]="cartItems.length <= 0">Confirm Order</button>
+  <button
+    (click)="directToShoppingCart()"
+    class="search-button"
+    [disabled]="cartItems.length <= 0"
+  >
+    Confirm Order
+  </button>
 </div>
