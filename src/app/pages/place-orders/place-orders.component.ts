@@ -43,10 +43,10 @@ export class PlaceOrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadAllVendors();
     if (LocalStorageService.getRestaurantId()) {
       this.restaurantId = Number(LocalStorageService.getRestaurantId());
     }
-    this.loadAllVendors();
   }
 
   private loadAllVendors() {
@@ -55,7 +55,7 @@ export class PlaceOrdersComponent implements OnInit {
         this.vendors = data.map((vendor) => ({
           ...vendor,
         }));
-        this.backupVendors = this.vendors;
+        this.backupVendors = [...this.vendors];
         this.showLoader = false;
       },
       error: (error) => {
@@ -68,7 +68,7 @@ export class PlaceOrdersComponent implements OnInit {
   searchVendors() {
     let searchTerm = this.searchTerm.trim();
     if (searchTerm === '') {
-      this.vendors = this.backupVendors;
+      this.vendors = [...this.backupVendors];
       return;
     } else {
       this.vendorProducts = [];
