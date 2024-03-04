@@ -232,7 +232,7 @@ export class PlaceOrdersComponent implements OnInit {
   currentPage = 1;
   productsPerPage = 8;
 
-  pageChanged(page: number): void {
-    this.currentPage = page;
+  pageChanged(pageNumber: number): void {
+    this.currentPage = pageNumber;
   }
 }

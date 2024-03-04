@@ -116,7 +116,7 @@ export class InventoryIngredientsComponent implements OnInit {
 
     const uniqueIngredientId = this.ingredientService.getIngredientMappings()[this.ingredientName];
 
-    if (!this.isIngredientExit(this.restaurantId, uniqueIngredientId) && !this.isEdit) {
+    if (!this.ingredientAlreadyExit(this.restaurantId, uniqueIngredientId) && !this.isEdit) {
       this.message.error('Ingredient already exists. Invalid request.');
       return;
     }
@@ -286,8 +286,12 @@ export class InventoryIngredientsComponent implements OnInit {
   pageIndex = 1;
   pageSize = 10;
 
-  frontPagination = true;
-  showPagination = true;
+  pageChanged(pageNumber: number): void {
+    this.pageIndex = pageNumber;
+  }
+
+  frontPagination = false;
+  showPagination = false;
   paginationPosition: NzTablePaginationPosition = 'bottom';
   paginationType: NzTablePaginationType = 'small';
   showBorder = true;
@@ -306,42 +310,44 @@ export class InventoryIngredientsComponent implements OnInit {
   showAddButton = true;
 
   validateInput() {
-    if (!this.isInputDigit(this.caloriesPerUnit) || this.caloriesPerUnit < 0) {
+    if (!this.isInputPositiveNumberDigit(this.caloriesPerUnit) || this.caloriesPerUnit < 0) {
       this.message.error('Please provide a valid calories per unit.');
       return false;
     }
     if (this.reorderPoint === '') {
       this.reorderPoint = Number(0);
     }
-    if (!this.isInputDigit(this.reorderPoint) || this.reorderPoint < 0) {
+    if (!this.isInputPositiveNumberDigit(this.reorderPoint) || this.reorderPoint < 0) {
       this.message.error('Please provide a valid reorder point.');
       return false;
     }
-    if (!this.isInputDigit(this.idealStoringTemperature)) {
+    if (!this.isInputIntegers(this.idealStoringTemperature)) {
       this.message.error('Please provide a valid ideal storing temperature.');
       return false;
     }
     return true;
   }
 
-  isInputDigit(input: string): boolean {
-    return /^\d+$/.test(input);
-  }
-
-  isIngredientExit(restaurantId: number, uniqueIngredientId: number): boolean {
+  ingredientAlreadyExit(restaurantId: number, uniqueIngredientId: number): boolean {
     return this.createdIngredients.filter(ingredient => ingredient.restaurantId === restaurantId && ingredient.uniqueIngredientId === uniqueIngredientId).length === 0;
   }
 
-  searchValue = '';
-  listOfDisplayData = [...this.createdIngredients];
-  reset(): void {
-    this.searchValue = '';
-    this.search();
+  isInputPositiveNumberDigit(input: string): boolean {
+    return /^\d+$/.test(input);
   }
 
-  search(): void {
-    this.visible = false;
-    this.listOfDisplayData = this.createdIngredients.filter((item: Ingredient) => item.ingredientName.indexOf(this.searchValue) !== -1);
+  isInputIntegers(input: string): boolean {
+    return /^-?\d+$/.test(input);
+  }
+
+  searchTerm = '';
+  showSearchInput = false;
+  reset(): void {
+    this.searchTerm = '';
+    this.showSearchInput = false;
+  }
+  hide(): void {
+    this.showSearchInput = false;
   }
   
 }

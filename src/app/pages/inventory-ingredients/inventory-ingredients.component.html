@@ -226,15 +226,15 @@
   </ng-template>
 </nz-drawer>
 
+<div>
 <h2>{{ tableTitle }}</h2>
 <nz-table
-  #rowSelectionTable
   [nzData]="createdIngredients"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="totalNumberOfData"
   [nzPageIndex]="pageIndex"
   [nzPageSize]="pageSize"
-  [nzShowPagination]="showPagination"
+  (nzPageIndexChange)="pageChanged($event)"
   [nzPaginationPosition]="paginationPosition"
   [nzPaginationType]="paginationType"
   [nzBordered]="showBorder"
@@ -248,11 +248,15 @@
 >
   <thead>
     <tr>
-      <th>Ingredient Name</th>
+      <th nzCustomFilter>Ingredient Name
+        <nz-filter-trigger [(nzVisible)]="showSearchInput" [nzActive]="searchTerm.length > 0" [nzDropdownMenu]="menu">
+          <span nz-icon nzType="search"></span>
+        </nz-filter-trigger>
+      </th>
       <th>Current Stock</th>
       <th>UOM</th>
-      <!-- <th>Avg Cost Per Unit</th> -->
-      <th>Calories Per Unit</th>
+      <th>Unit Cost (Pence / Mili-Unit)</th>
+      <!-- <th>Calories Per Unit</th> -->
       <th>Reorder Point</th>
       <th>Description</th>
       <th>Storing Temperature (°C)</th>
@@ -262,12 +266,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of rowSelectionTable.data">
+    <tr *ngFor="
+    let data of createdIngredients | slice : (pageIndex - 1) * pageSize
+        : pageIndex * pageSize | filter :'ingredientName' : searchTerm">
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.currentStockQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>
-      <!-- <td>{{ data.costPerUnit }}</td> -->
-      <td>{{ data.caloriesPerUnit }}</td>
+      <td>{{ data.costPerUnit }}</td>
+      <!-- <td>{{ data.caloriesPerUnit }}</td> -->
       <td>{{ data.reorderPoint }}</td>
       <td style="width: 10vw;">{{ data.description }}</td>
       <td>{{ data.idealStoringTemperature }}</td>
@@ -285,3 +291,15 @@
     </tr>
   </tbody>
 </nz-table>
+
+<nz-dropdown-menu #menu="nzDropdownMenu" class="search-container">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchTerm" />
+      <button nz-button nzSize="small" nzType="default" (click)="hide()"  class="hide-button">Hide</button>
+      <button nz-button nzSize="small" nzType="primary" nzDanger (click)="reset()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>
+
+</div>

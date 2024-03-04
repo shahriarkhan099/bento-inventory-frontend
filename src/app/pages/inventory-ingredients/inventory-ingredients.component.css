@@ -1,4 +1,3 @@
-
 .delete-button,
 .edit-button,
 .add-button {
@@ -9,7 +8,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   color: white;
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .delete-button {
@@ -47,14 +46,37 @@ h2 {
 }
 
 nz-form-label {
- width: 200px;
- text-align: left;
+  width: 200px;
+  text-align: left;
 }
 
-textarea,input {
+textarea,
+input {
   width: 20vw;
 }
 
 nz-select {
-  width: 20vw !important
+  width: 20vw !important;
+}
+
+.search-box {
+  position: absolute;
+  background: white;
+  left: 60px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.hide-button {
+  margin-right: 8px;
 }
