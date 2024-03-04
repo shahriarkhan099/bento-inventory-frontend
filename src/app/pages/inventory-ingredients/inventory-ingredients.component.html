@@ -266,9 +266,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="
-    let data of createdIngredients | slice : (pageIndex - 1) * pageSize
-        : pageIndex * pageSize | filter :'ingredientName' : searchTerm">
+    <tr *ngFor="let data of filterIngredients() | slice : (pageIndex - 1) * pageSize : pageIndex * pageSize">
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.currentStockQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>

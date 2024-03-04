@@ -52,7 +52,6 @@ import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { AuthInterceptorService } from './services/interceptors/auth/auth-interceptor.service';
 import { TokenInterceptorService } from './services/interceptors/token/token-interceptor.service';
-import { SearchPipe } from './pipe/search.pipe';
 
 registerLocaleData(en);
 
@@ -71,7 +70,6 @@ registerLocaleData(en);
     DeliveryBoxesComponent,
     SpashLogoComponent,
     AuthRedirectComponent,
-    SearchPipe,
   ],
   imports: [
     BrowserModule,

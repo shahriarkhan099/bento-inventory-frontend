@@ -349,5 +349,11 @@ export class InventoryIngredientsComponent implements OnInit {
   hide(): void {
     this.showSearchInput = false;
   }
+
+  filterIngredients(): Ingredient[] {
+    return this.createdIngredients.filter(data =>
+      data.ingredientName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
   
 }
