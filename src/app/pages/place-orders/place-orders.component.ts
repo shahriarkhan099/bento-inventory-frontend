@@ -7,6 +7,7 @@ import {
 } from '../../utils/timeSlotUtils';
 import { getRemainingHours } from '../../utils/timeCalculationUtils';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { VendorDataService } from '../../services/Vendor-data/vendor-data.service';
 
 @Component({
   selector: 'app-place-orders',
@@ -29,7 +30,8 @@ export class PlaceOrdersComponent implements OnInit {
 
   constructor(
     private vendorsService: VendorService,
-    private message: NzMessageService
+    private vendorDataService: VendorDataService,
+    private message: NzMessageService,
   ) {
     this.searchTerm = '';
     this.vendors = [];
@@ -50,7 +52,7 @@ export class PlaceOrdersComponent implements OnInit {
   }
 
   private loadAllVendors() {
-    this.vendorsService.getSuppliers().subscribe({
+    this.vendorDataService.vendors$.subscribe({
       next: (data) => {
         this.vendors = data.map((vendor) => ({
           ...vendor,
