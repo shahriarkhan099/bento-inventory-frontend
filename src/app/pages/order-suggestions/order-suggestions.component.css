@@ -39,12 +39,18 @@ body {
   background-color: #039741;
 }
 
-.add-button-container {
+.switch-button-container {
   float: right;
+  display: flex;
 }
 
 h2 {
   font-size: 24px;
   color: #26a366;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.switch-button-container h3 {
+  color: #26a366;
+  margin-right: 10px;
 }

@@ -16,8 +16,6 @@ export class LocalStorageService {
   }
 
   static getRestaurantId() {
-    console.log("getRestaurantId was called", window.localStorage.getItem(ID));
-    
     return window.localStorage.getItem(ID);
   }
 

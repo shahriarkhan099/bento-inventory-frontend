@@ -1,13 +1,17 @@
-<div *ngIf="showAddButton" nz-td [ngClass]="{ 'add-button-container': true }">
-  <button (click)="onAdd()" nz-form [ngClass]="{ 'add-button': true }">
-    Add
-  </button>
+<div [ngClass]="{ 'switch-button-container': true }">
+  <h3>Autopilot</h3>
+  <nz-switch
+  [(ngModel)]="visible"
+  nzCheckedChildren="On"
+  nzUnCheckedChildren="Off"
+  (click)="switchClicked()"
+></nz-switch>
 </div>
 
 <h2>{{ tableTitle }}</h2>
 <nz-table
   #rowSelectionTable
-  [nzData]="createdIngredients2"
+  [nzData]="orderedIngredients"
   [nzFrontPagination]="frontPagination"
   [nzTotal]="totalNumberOfData"
   [nzPageIndex]="pageIndex"
@@ -29,9 +33,9 @@
       <th>Ingredient Name</th>
       <th>Total Amount</th>
       <th>UOM</th>
-      <th>Reorder Point</th>
-      <th>Description</th>
+      <th>Unit Cost</th>
       <th>Category</th>
+      <th>Purchased On</th>
     </tr>
   </thead>
   <tbody>
@@ -39,9 +43,9 @@
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.currentStockQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>
-      <td>{{ data.reorderPoint }}</td>
-      <td>{{ data.description }}</td>
+      <td>{{ data.costPerUnit }}</td>
       <td>{{ data.category.categoryName }}</td>
+      <td>{{ data.createdAt }}</td>
     </tr>
   </tbody>
 </nz-table>

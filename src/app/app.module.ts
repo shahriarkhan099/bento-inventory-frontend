@@ -11,8 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_US } from 'ng-zorro-antd/i18n';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -20,6 +18,13 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 // For Form
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -97,7 +102,9 @@ registerLocaleData(en);
     NzGridModule,
     NzDropDownModule,
     NzSpinModule,
-
+    ScrollingModule,
+    DragDropModule,
+    NzSwitchModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
