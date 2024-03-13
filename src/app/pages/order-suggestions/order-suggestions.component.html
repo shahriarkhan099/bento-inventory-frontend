@@ -1,7 +1,8 @@
 <div [ngClass]="{ 'switch-button-container': true }">
   <h3>Autopilot</h3>
   <nz-switch
-  [(ngModel)]="visible"
+  [nzControl]="true"
+  [(ngModel)]="autopilotStatus.autoPilotSwitch"
   nzCheckedChildren="On"
   nzUnCheckedChildren="Off"
   (click)="switchClicked()"

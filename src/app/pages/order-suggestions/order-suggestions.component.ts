@@ -16,13 +16,12 @@ import { autopilot } from '../../models/autopilot.model';
 })
 export class OrderSuggestionsComponent implements OnInit {
   orderedIngredients: Ingredient[] = []; 
-  autopilotStatus!: autopilot | null;
+  autopilotStatus!: autopilot;
 
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
   constructor(private autopilotService: AutopilotService) {
-    this.autopilotStatus = null;
   }
 
   ngOnInit() {
@@ -32,7 +31,6 @@ export class OrderSuggestionsComponent implements OnInit {
     } else {
       this.loadAutopilotStatus();
     }
-    this.getAutoPilotStatus();
   }
 
   loadAutopilotStatus() {
@@ -47,25 +45,17 @@ export class OrderSuggestionsComponent implements OnInit {
   }
 
   private createAutopilotStatus(restaurantId: number) {
-    this.autopilotService.createAutopilotStatus(restaurantId, 'Off').subscribe(() => {
+    this.autopilotService.createAutopilotStatus(restaurantId, false).subscribe(() => {
       this.loadAutopilotStatus();
     });
   }
 
   private updateAutopilotStatus(restaurantId: number) {
     if (this.autopilotStatus) {
-      let currentStatus = this.autopilotStatus.autoPilotSwitch === 'On' ? 'Off' : 'On';
-      this.getAutoPilotStatus();
+      let currentStatus = this.autopilotStatus.autoPilotSwitch === true ? false : true;
       this.autopilotService.updateAutopilotStatus(restaurantId, currentStatus).subscribe(() => {
       });
       this.autopilotStatus.autoPilotSwitch = currentStatus;
-      this.getAutoPilotStatus();
-    }
-  }
-
-  getAutoPilotStatus() {
-    if (this.autopilotStatus) {
-      this.visible = this.autopilotStatus.autoPilotSwitch === 'On' ? true : false;
     }
   }
 
@@ -73,7 +63,6 @@ export class OrderSuggestionsComponent implements OnInit {
     this.updateAutopilotStatus(this.restaurantId);
   }
 
-  visible = false;
   id!: number | any;
   ingredientName!: string;
   unitOfStock!: string;

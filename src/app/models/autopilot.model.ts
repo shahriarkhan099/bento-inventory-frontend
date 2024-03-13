@@ -1,6 +1,6 @@
 export interface autopilot {
     id: number;
-    autoPilotSwitch: string;
+    autoPilotSwitch: boolean;
     restaurantId: number;
   }
   
