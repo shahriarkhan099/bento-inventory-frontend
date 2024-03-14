@@ -45,7 +45,7 @@
       <td>{{ data.purchaseQuantity }}</td>
       <td>{{ data.unitOfStock }}</td>
       <td>{{ data.purchasePrice | currency:'£' }}</td>
-      <td>{{ data.purchasePrice / data.purchaseQuantity }}</td>
+      <td>{{ (data.purchasePrice / data.purchaseQuantity).toFixed(2) }}</td>
       <td>{{ data.expirationDate }}</td>
     </tr>
   </tbody>

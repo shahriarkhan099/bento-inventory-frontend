@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InventoryIngredientsComponent } from './pages/inventory-ingredients/inventory-ingredients.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
-import { OrderSuggestionsComponent } from './pages/order-suggestions/order-suggestions.component';
+import { OrderAutopilotComponent } from './pages/order-autopilot/order-autopilot.component';
 import { TrackWastageComponent } from './pages/track-wastage/track-wastage.component';
 import { PlaceOrdersComponent } from './pages/place-orders/place-orders.component';
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'auth-redirect', component: AuthRedirectComponent },
   //Manage Ingredients Pages
   { path: 'inventory-ingredients', component: InventoryIngredientsComponent },
-  { path: 'order-suggestions', component: OrderSuggestionsComponent },
+  { path: 'order-autopilot', component: OrderAutopilotComponent },
   { path: 'track-wastage', component: TrackWastageComponent },
   { path: 'delivery-boxes', component: DeliveryBoxesComponent },
 

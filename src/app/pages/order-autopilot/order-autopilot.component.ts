@@ -10,11 +10,11 @@ import { AutopilotService } from '../../services/autopilot/autopilot.service';
 import { autopilot } from '../../models/autopilot.model';
 
 @Component({
-  selector: 'app-order-suggestions',
-  templateUrl: './order-suggestions.component.html',
-  styleUrl: './order-suggestions.component.css',
+  selector: 'app-order-autopilot',
+  templateUrl: './order-autopilot.component.html',
+  styleUrl: './order-autopilot.component.css',
 })
-export class OrderSuggestionsComponent implements OnInit {
+export class OrderAutopilotComponent implements OnInit {
   orderedIngredients: Ingredient[] = []; 
   autopilotStatus!: autopilot;
 
@@ -41,7 +41,12 @@ export class OrderSuggestionsComponent implements OnInit {
         this.createAutopilotStatus(this.restaurantId);
       }
     });
-
+    if (this.autopilotStatus) {
+      this.loadingStatus = false;
+    } else {
+      this.noResult = 'No data found';
+      this.loadingStatus = false;
+    }
   }
 
   private createAutopilotStatus(restaurantId: number) {
@@ -80,11 +85,11 @@ export class OrderSuggestionsComponent implements OnInit {
   showBorder = true;
   outerBordered = true;
   sizeOfTable: NzTableSize = 'small';
-  loadingStatus = false;
+  loadingStatus = true;
 
   tableTitle = 'Ordered By Autopilot';
   tableFooter = '';
-  noResult = 'No data found';
+  noResult = 'Loading...';
   showQuickJumper = true;
   hidePaginationOnSinglePage = true;
 

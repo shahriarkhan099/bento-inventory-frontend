@@ -44,7 +44,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { AppComponent } from './app.component';
 import { InventoryIngredientsComponent } from './pages/inventory-ingredients/inventory-ingredients.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
-import { OrderSuggestionsComponent } from './pages/order-suggestions/order-suggestions.component';
+import { OrderAutopilotComponent } from './pages/order-autopilot/order-autopilot.component';
 import { TrackWastageComponent } from './pages/track-wastage/track-wastage.component';
 import { PlaceOrdersComponent } from './pages/place-orders/place-orders.component';
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
@@ -65,7 +65,7 @@ registerLocaleData(en);
     AppComponent,
     InventoryIngredientsComponent,
     OrderHistoryComponent,
-    OrderSuggestionsComponent,
+    OrderAutopilotComponent,
     TrackWastageComponent,
     PlaceOrdersComponent,
     OrderStatusComponent,
