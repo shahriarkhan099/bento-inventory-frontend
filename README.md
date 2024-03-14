@@ -58,6 +58,7 @@ The Bento inventory system, is designed to solve critical issues faced by invent
         └── utils
     └── assets
     └── environments
+```
 
 
 ## Getting Started
