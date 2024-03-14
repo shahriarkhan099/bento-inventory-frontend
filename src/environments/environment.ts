@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4000/v1',
+  inventoryApiUrl: 'http://localhost:4000',
+  vendorApiUrl: 'http://localhost:5000',
 };

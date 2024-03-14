@@ -17,10 +17,6 @@ export class CategoryService {
     this.loadCategoryMappings();
   }
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -43,12 +39,12 @@ export class CategoryService {
   }
 
   getCategoryByName(restaurantId: number, categoryName: string): Observable<any> {
-    return this.http.get<any>(`${this.getInventoryApiUrl()}/v1/category/restaurant/${restaurantId}/search/`, { params: { q: categoryName } })
+    return this.http.get<any>(`${this.configService.getInventoryApiUrl()}/v1/category/restaurant/${restaurantId}/search/`, { params: { q: categoryName } })
     .pipe(map((response) => response.categories));
   }
   
   addCategory(category: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/category/restaurant/${category.restaurantId}`, category).pipe(
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/category/restaurant/${category.restaurantId}`, category).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })

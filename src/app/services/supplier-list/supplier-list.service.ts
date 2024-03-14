@@ -14,10 +14,6 @@ export class SupplierListService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -25,13 +21,13 @@ export class SupplierListService {
   getSuppliers(restaurantId: number): Observable<Supplier[]> {
     return this.http
       .get<{ suppliers: Supplier[] }>(
-        `${this.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}`
+        `${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.suppliers));
   }
   
   addSupplier(supplier: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplier.restaurantId}`, supplier).pipe(
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${supplier.restaurantId}`, supplier).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -40,7 +36,7 @@ export class SupplierListService {
 
   editSupplier(supplierId: number, supplier: any): Observable<any> {
     return this.http
-      .put<void>(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`, supplier)
+      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`, supplier)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -49,13 +45,13 @@ export class SupplierListService {
   }
 
   deleteSupplier(supplierId: number): Observable<void> {
-    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`);
+    return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`);
   }
 
   searchSupplierByName(restaurantId: number, name: string): Observable<Supplier> {
     return this.http
       .get<{ supplier: Supplier }>(
-        `${this.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}/search/${name}`,
+        `${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.supplier));

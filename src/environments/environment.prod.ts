@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://production-api-url.com/api', 
+  inventoryApiUrl: 'https://inventory-server-klzl.onrender.com',
+  vendorApiUrl: 'https://bento-vendor.onrender.com',
 };

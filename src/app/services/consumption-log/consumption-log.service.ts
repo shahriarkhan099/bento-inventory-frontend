@@ -14,10 +14,6 @@ export class ConsumptionLogService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -25,13 +21,13 @@ export class ConsumptionLogService {
   getIngredients(restaurantId: number): Observable<Ingredient[]> {
     return this.http
       .get<{ ingredients: Ingredient[] }>(
-        `${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}`
+        `${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.ingredients));
   }
   
   addIngredient(ingredient: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredient.restaurantId}`, ingredient).pipe(
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredient.restaurantId}`, ingredient).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -40,7 +36,7 @@ export class ConsumptionLogService {
 
   editIngredient(ingredientId: number, ingredient: any): Observable<any> {
     return this.http
-      .put<void>(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`, ingredient)
+      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`, ingredient)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -49,13 +45,13 @@ export class ConsumptionLogService {
   }
 
   deleteIngredient(ingredientId: number): Observable<void> {
-    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`);
+    return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`);
   }
 
   searchIngredientByName(restaurantId: number, name: string): Observable<Ingredient> {
     return this.http
       .get<{ ingredient: Ingredient }>(
-        `${this.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}/search/${name}`,
+        `${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.ingredient));

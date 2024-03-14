@@ -14,22 +14,18 @@ export class DeliveryBoxService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
 
   getDeliveryBoxes(restaurantId: number): Observable<DeliveryBox[]> {
     return this.http
-      .get<{ deliveryBoxes: DeliveryBox[] }>(`${this.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${restaurantId}`)
+      .get<{ deliveryBoxes: DeliveryBox[] }>(`${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${restaurantId}`)
       .pipe(map((response) => response.deliveryBoxes));
   }
 
   addDeliveryBox(deliveryBox: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBox.restaurantId}`, deliveryBox).pipe(
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBox.restaurantId}`, deliveryBox).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -38,7 +34,7 @@ export class DeliveryBoxService {
 
   editDeliveryBox(deliveryBoxId: number, deliveryBox: any): Observable<any> {
     return this.http
-      .put<void>(`${this.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBoxId}`, deliveryBox)
+      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBoxId}`, deliveryBox)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -47,13 +43,13 @@ export class DeliveryBoxService {
   }
 
   deleteDeliveryBox(deliveryBoxId: number): Observable<void> {
-    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBoxId}`);
+    return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBoxId}`);
   }
 
   searchDeliveryBoxByName(restaurantId: number, name: string): Observable<DeliveryBox> {
     return this.http
       .get<{ deliveryBox: DeliveryBox }>(
-        `${this.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${restaurantId}/search/${name}`,
+        `${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.deliveryBox));

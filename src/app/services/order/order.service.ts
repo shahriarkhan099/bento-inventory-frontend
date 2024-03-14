@@ -14,27 +14,23 @@ export class OrderService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
 
   getOrders(restaurantId: number): Observable<Order[]> {
     return this.http
-      .get<{ orders: Order[] }>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}`).pipe(map((response) => response.orders));
+      .get<{ orders: Order[] }>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}`).pipe(map((response) => response.orders));
   }
   
   addOrder(orders: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orders.restaurantId}`, orders).pipe(tap(() => {this._refreshNeeded$.next();})
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${orders.restaurantId}`, orders).pipe(tap(() => {this._refreshNeeded$.next();})
     );
   }
 
   editOrder(orderId: number, orders: any): Observable<any> {
     return this.http
-      .put<void>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`, orders)
+      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`, orders)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -43,13 +39,13 @@ export class OrderService {
   }
 
   deleteOrder(orderId: number): Observable<void> {
-    return this.http.delete<void>(`${this.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`);
+    return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`);
   }
 
   searchOrderByName(restaurantId: number, name: string): Observable<Order> {
     return this.http
       .get<{ ingredient: Order }>(
-        `${this.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
+        `${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
   }
 
 }

@@ -14,10 +14,6 @@ export class WastageLogService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  getInventoryApiUrl(): string {
-    return this.configService.getInventoryApiUrl();
-  }
-
   get refreshNeeded$() {
     return this._refreshNeeded$;
   }
@@ -25,13 +21,13 @@ export class WastageLogService {
   getAllWasteLogs(restaurantId: number): Observable<WasteLog[]> {
     return this.http
       .get<{ wasteLogs: WasteLog[] }>(
-        `${this.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}`
+        `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.wasteLogs));
   }
 
   addWasteLog(wasteLogs: any): Observable<any> {
-    return this.http.post(`${this.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogs.restaurantId}`, wasteLogs).pipe(
+    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogs.restaurantId}`, wasteLogs).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
@@ -40,7 +36,7 @@ export class WastageLogService {
 
   editWasteLog(wasteLogId: number, wasteLogs: any): Observable<void> {
     return this.http
-      .put<void>(`${this.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogId}`, wasteLogs)
+      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogId}`, wasteLogs)
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -51,7 +47,7 @@ export class WastageLogService {
   searchWasteLogByName(restaurantId: number, name: string): Observable<WasteLog> {
     return this.http
       .get<{ wasteLogs: WasteLog }>(
-        `${this.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}/search/${name}`,
+        `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.wasteLogs));
