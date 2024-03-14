@@ -4,7 +4,7 @@ Welcome to Bento Inventory Client! This README.md file serves as a guide to unde
 
 ## Main Features
 
-The Bento inventory system, is designed to solve critical issues faced by inventory businesses. Here are the main features:
+The Bento inventory system is designed to solve critical issues faced by inventory businesses. Here are the main features:
 
 1. **Inventory Ingredients:** View current quantities of ingredients and other relevant details.
 2. **Delivery Boxes:** Monitor the quantities of delivery boxes and related features.
@@ -78,7 +78,7 @@ You can access the live version of the app at [Bento Inventory](https://bento-in
 
 ### Bento App Info
 
-Our Bento inventory system solves three main issues to avoid business loss. Firstly, it ensures enough ingredients to run restaurants without disabling menus of the restaurant due to insufficient ingredients. Secondly, it helps users to avoid overstocking ingredients which can lead to ingredients wastage. Finally, our inventory system provides on-platform suppliers which will help users to order high-quality ingredients with the lowest price. It prevents users stocking low-quality ingredients which can cause business loss.
+Our Bento inventory system solves three main issues to avoid business loss. Firstly, it ensures enough ingredients to run restaurants without disabling menus of the restaurant due to insufficient ingredients. Secondly, it helps users to avoid overstocking ingredients which can lead to ingredients wastage. Finally, our inventory system provides on-platform suppliers which will help users to order high-quality ingredients with the lowest price. It prevents users from stocking low-quality ingredients which can cause business loss.
 
 
 # Bento Inventory Client's Default Angular Info
