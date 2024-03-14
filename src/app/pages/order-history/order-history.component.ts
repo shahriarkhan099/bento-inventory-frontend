@@ -1,13 +1,17 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
+import {
+  NzTablePaginationPosition,
+  NzTablePaginationType,
+  NzTableSize,
+} from 'ng-zorro-antd/table';
 
 import { OrderService } from '../../services/order/order.service';
-import { Order } from '../../models/order.model';
+import { IOrder } from '../../models/order.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
-import { IngredientBatch } from '../../models/ingredient-batch.model';
-import { DeliveryBoxBatch } from '../../models/delivery-box-batch.model';
+import { IIngredientBatch } from '../../models/ingredientBatch.model';
+import { IDeliveryBoxBatch } from '../../models/deliveryBoxBatch.model';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
 @Component({
@@ -16,13 +20,16 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
   styleUrl: './order-history.component.css',
 })
 export class OrderHistoryComponent implements OnInit {
-  listOfOrder: Order[] = []; 
-  listOfIngredientBatch: IngredientBatch[] = [];
-  listOfDeliveryBoxBatch: DeliveryBoxBatch[] = [];
+  listOfOrder: IOrder[] = [];
+  listOfIngredientBatch: IIngredientBatch[] = [];
+  listOfDeliveryBoxBatch: IDeliveryBoxBatch[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private orderService: OrderService, private message: NzMessageService) {}
+  constructor(
+    private orderService: OrderService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeToIngredientChanges();
@@ -43,9 +50,14 @@ export class OrderHistoryComponent implements OnInit {
   private loadAllOrders(restaurantId: number) {
     this.orderService.getOrders(restaurantId).subscribe({
       next: (data) => {
-        this.listOfOrder = data.map(order => ({
+        this.listOfOrder = data.map((order) => ({
           ...order,
-          status: order.status === "delivered" ? "Received" : order.status === "cancelled" ? "Cancelled" : order.status,
+          status:
+            order.status === 'delivered'
+              ? 'Received'
+              : order.status === 'cancelled'
+              ? 'Cancelled'
+              : order.status,
           totalPrice: Number(order.totalPrice.toFixed(2)),
           orderDate: formatDateToString(new Date(order.orderDate)),
           deliveryDate: formatDateToString(new Date(order.deliveryDate)),
@@ -60,7 +72,6 @@ export class OrderHistoryComponent implements OnInit {
           this.noResult = 'No data found';
           this.loadingStatus = false;
         }
-
       },
       error: (error) => {
         console.error('Error fetching order data', error);
@@ -92,16 +103,30 @@ export class OrderHistoryComponent implements OnInit {
 
   visible = false;
 
-  onDetails(order: Order): void {
+  onDetails(order: IOrder): void {
     this.visible = true;
-    this.listOfIngredientBatch = order.ingredientBatches.map(ingredientBatch => ({
-      ...ingredientBatch,
-      purchasePrice: (ingredientBatch.purchasePrice / 100),
-      unitOfStock: ingredientBatch.unitOfStock === "gm" ? "kg" : ingredientBatch.unitOfStock === "ml" ? "litre" : ingredientBatch.unitOfStock,
-      purchaseQuantity: ingredientBatch.unitOfStock === "gm" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.unitOfStock === "ml" ? (ingredientBatch.purchaseQuantity / 1000) : ingredientBatch.purchaseQuantity,
-      expirationDate: formatDateToString(new Date(ingredientBatch.expirationDate)),
-      costPerUnit: Number(ingredientBatch.costPerUnit.toFixed(2)),
-    }));
+    this.listOfIngredientBatch = order.ingredientBatches.map(
+      (ingredientBatch) => ({
+        ...ingredientBatch,
+        purchasePrice: ingredientBatch.purchasePrice / 100,
+        unitOfStock:
+          ingredientBatch.unitOfStock === 'gm'
+            ? 'kg'
+            : ingredientBatch.unitOfStock === 'ml'
+            ? 'litre'
+            : ingredientBatch.unitOfStock,
+        purchaseQuantity:
+          ingredientBatch.unitOfStock === 'gm'
+            ? ingredientBatch.purchaseQuantity / 1000
+            : ingredientBatch.unitOfStock === 'ml'
+            ? ingredientBatch.purchaseQuantity / 1000
+            : ingredientBatch.purchaseQuantity,
+        expirationDate: formatDateToString(
+          new Date(ingredientBatch.expirationDate)
+        ),
+        costPerUnit: Number(ingredientBatch.costPerUnit.toFixed(2)),
+      })
+    );
     this.listOfDeliveryBoxBatch = order.deliveryBoxBatches;
     console.log(this.listOfIngredientBatch);
   }
@@ -109,5 +134,4 @@ export class OrderHistoryComponent implements OnInit {
   onBack(): void {
     this.visible = false;
   }
-
 }

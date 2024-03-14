@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { WasteLog } from '../../models/waste-log.model';
+import { IWasteLog } from '../../models/wasteLog.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WastageLogService {
-
   private _refreshNeeded$ = new Subject<void>();
 
   constructor(private http: HttpClient, private configService: ConfigService) {}
@@ -18,25 +17,22 @@ export class WastageLogService {
     return this._refreshNeeded$;
   }
 
-  getAllWasteLogs(restaurantId: number): Observable<WasteLog[]> {
+  getAllWasteLogs(restaurantId: number): Observable<IWasteLog[]> {
     return this.http
-      .get<{ wasteLogs: WasteLog[] }>(
+      .get<{ wasteLogs: IWasteLog[] }>(
         `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.wasteLogs));
   }
 
   addWasteLog(wasteLogs: any): Observable<any> {
-    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogs.restaurantId}`, wasteLogs).pipe(
-      tap(() => {
-        this._refreshNeeded$.next();
-      })
-    );
-  }
-
-  editWasteLog(wasteLogId: number, wasteLogs: any): Observable<void> {
     return this.http
-      .put<void>(`${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogId}`, wasteLogs)
+      .post(
+        `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${
+          wasteLogs.restaurantId
+        }`,
+        wasteLogs
+      )
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
@@ -44,13 +40,28 @@ export class WastageLogService {
       );
   }
 
-  searchWasteLogByName(restaurantId: number, name: string): Observable<WasteLog> {
+  editWasteLog(wasteLogId: number, wasteLogs: any): Observable<void> {
     return this.http
-      .get<{ wasteLogs: WasteLog }>(
+      .put<void>(
+        `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${wasteLogId}`,
+        wasteLogs
+      )
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
+  }
+
+  searchWasteLogByName(
+    restaurantId: number,
+    name: string
+  ): Observable<IWasteLog> {
+    return this.http
+      .get<{ wasteLogs: IWasteLog }>(
         `${this.configService.getInventoryApiUrl()}/v1/wasteLog/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )
       .pipe(map((response) => response.wasteLogs));
   }
-
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from './services/localStorage/local-storage.service';
 import { VendorService } from './services/vendor/vendor.service';
 import { VendorDataService } from './services/Vendor-data/vendor-data.service';
+import { ISupplierVendorSide } from './models/vendorSide.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { VendorDataService } from './services/Vendor-data/vendor-data.service';
 })
 export class AppComponent implements OnInit {
   isCollapsed = false;
-  vendors: any[];
+  vendors: ISupplierVendorSide[];
 
   constructor(private vendorsService: VendorService, private vendorDataService: VendorDataService) { 
     this.vendors = [];

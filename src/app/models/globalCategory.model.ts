@@ -1,4 +1,4 @@
-export interface GlobalCatgory {
+export interface IGlobalCatgory {
     uniqueCategoryId: number;
     categoryName: string;
 }

@@ -1,17 +1,17 @@
-export interface IngredientBatch {
+export interface IWasteLog {
   id: number;
   ingredientName: string;
   unitOfStock: string;
-  currentStockQuantity: number;
-  purchaseQuantity: number;
+  totalQuantity: number;
   unitOfPrice: string;
-  purchasePrice: number;
+  totalCost: number;
   costPerUnit: number;
-  receivedAt: Date;
+  boughtAt: string;
+  consumptionQuantity: number;
+  wastagePercentage: number;
   expirationDate: string;
-  supplierId: number;
+  shelfLifeInDays: number;
   ingredientId: number;
-  orderId: number;
   restaurantId: number;
   createdAt: string;
   updatedAt: string;

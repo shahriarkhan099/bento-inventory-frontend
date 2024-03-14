@@ -1,9 +1,9 @@
-export interface Supplier {
+export interface ISupplier {
   id: number;
   name: string;
+  email: string;
   address: string;
   contactNumber: string;
-  email: string;
   label: string;
   restaurantId: number;
   createdAt: string;

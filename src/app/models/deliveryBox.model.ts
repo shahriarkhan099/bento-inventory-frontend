@@ -1,4 +1,4 @@
-export interface DeliveryBox {
+export interface IDeliveryBox {
   id: number;
   boxName: string;
   currentStockQuantity: number;

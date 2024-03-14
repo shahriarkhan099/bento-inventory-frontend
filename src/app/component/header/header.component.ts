@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   
-  @Input() user : any | undefined;
+  @Input() user : IUser | undefined;
 
   logout () {
     localStorage.removeItem('accessToken');

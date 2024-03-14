@@ -34,7 +34,7 @@
     <tr *ngFor="let data of rowSelectionTable.data">
       <td>{{ data.ingredientName }}</td>
       <td>{{ data.totalQuantity }} {{ data.unitOfStock }}</td>
-      <td>{{ data.costPerUnit }}</td>
+      <td>{{ (data.costPerUnit).toFixed(3) }}</td>
       <td>{{ data.totalCost | currency:'£' }}</td>
       <td>{{ data.boughtAt }}</td>
       <td>{{ data.expirationDate }}</td>

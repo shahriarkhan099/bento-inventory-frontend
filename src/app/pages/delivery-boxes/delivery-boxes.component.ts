@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import {
   NzTablePaginationPosition,
@@ -7,7 +7,7 @@ import {
 } from 'ng-zorro-antd/table';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
-import { DeliveryBox } from '../../models/delivery-box.model';
+import { IDeliveryBox } from '../../models/deliveryBox.model';
 import { DeliveryBoxService } from '../../services/delivery-box/delivery-box.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
@@ -17,13 +17,16 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
   styleUrl: './delivery-boxes.component.css',
 })
 export class DeliveryBoxesComponent implements OnInit {
-  listOfBoxes: DeliveryBox[] = [];
+  listOfBoxes: IDeliveryBox[] = [];
   unitOfDimentionList = ['cm', 'inches'];
   waterproofList = ['Yes', 'No'];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private deliveryBoxService: DeliveryBoxService, private message: NzMessageService) {}
+  constructor(
+    private deliveryBoxService: DeliveryBoxService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeToDeliveyBoxChanges();
@@ -125,7 +128,7 @@ export class DeliveryBoxesComponent implements OnInit {
     });
   }
 
-  onEdit(deliveryBox: any): void {
+  onEdit(deliveryBox: IDeliveryBox): void {
     this.visible = true;
     this.isEdit = true;
 

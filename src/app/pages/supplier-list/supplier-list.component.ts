@@ -7,7 +7,7 @@ import {
 } from 'ng-zorro-antd/table';
 
 import { SupplierListService } from '../../services/supplier-list/supplier-list.service';
-import { Supplier } from '../../models/supplier.model';
+import { ISupplier } from '../../models/supplier.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
@@ -18,7 +18,7 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
   styleUrl: './supplier-list.component.css',
 })
 export class SupplierListComponent implements OnInit {
-  listOfSuppliers: Supplier[] = [];
+  listOfSuppliers: ISupplier[] = [];
   id!: number | any;
   name!: string;
   address!: string;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Order } from '../../models/order.model';
+import { IOrder } from '../../models/order.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -18,9 +18,9 @@ export class OrderService {
     return this._refreshNeeded$;
   }
 
-  getOrders(restaurantId: number): Observable<Order[]> {
+  getOrders(restaurantId: number): Observable<IOrder[]> {
     return this.http
-      .get<{ orders: Order[] }>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}`).pipe(map((response) => response.orders));
+      .get<{ orders: IOrder[] }>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}`).pipe(map((response) => response.orders));
   }
   
   addOrder(orders: any): Observable<any> {
@@ -42,9 +42,9 @@ export class OrderService {
     return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${orderId}`);
   }
 
-  searchOrderByName(restaurantId: number, name: string): Observable<Order> {
+  searchOrderByName(restaurantId: number, name: string): Observable<IOrder> {
     return this.http
-      .get<{ ingredient: Order }>(
+      .get<{ ingredient: IOrder }>(
         `${this.configService.getInventoryApiUrl()}/v1/order/restaurant/${restaurantId}/search/`, { params: { searchTerm: name } }).pipe(map((response) => response.ingredient));
   }
 

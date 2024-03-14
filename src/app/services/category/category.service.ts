@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Ingredient } from '../../models/ingredient.model';
+import { IIngredient } from '../../models/ingredient.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({

@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { VendorService } from '../../services/vendor/vendor.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { IOrderVendorSide, IProductBatchVendorSide } from '../../models/vendorSide.model';
 
 @Component({
   selector: 'app-order-status',
@@ -12,8 +13,8 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
   styleUrl: './order-status.component.css',
 })
 export class OrderStatusComponent implements OnInit {
-  listOfProductOrders: any[] = []; 
-  listOfProductBatches: any[] = [];
+  listOfProductOrders: IOrderVendorSide[] = []; 
+  listOfProductBatches: IProductBatchVendorSide[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
@@ -85,9 +86,9 @@ export class OrderStatusComponent implements OnInit {
 
   visible = false;
 
-  onDetails(productOrder: any): void {
+  onDetails(productOrder: IOrderVendorSide): void {
     this.visible = true;
-    this.listOfProductBatches = productOrder.productBatches.map((productBatch: any) => ({
+    this.listOfProductBatches = productOrder.productBatches.map((productBatch: IProductBatchVendorSide) => ({
       ...productBatch,
       purchasePrice: productBatch.purchasePrice,
       purchaseQuantity: productBatch.purchaseQuantity,
@@ -121,7 +122,7 @@ export class OrderStatusComponent implements OnInit {
     return '';
   }
   
-  isDeliveryExpired(order: any): boolean {
+  isDeliveryExpired(order: IOrderVendorSide): boolean {
     if (order && order.deliveryDate) {
       const deliveryDate = new Date(order.deliveryDate);
       const currentDate = new Date();

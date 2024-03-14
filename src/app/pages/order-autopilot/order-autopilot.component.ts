@@ -4,10 +4,10 @@ import {
   NzTablePaginationType,
   NzTableSize,
 } from 'ng-zorro-antd/table';
-import { Ingredient } from '../../models/ingredient.model';
+import { IIngredient } from '../../models/ingredient.model';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { AutopilotService } from '../../services/autopilot/autopilot.service';
-import { autopilot } from '../../models/autopilot.model';
+import { IAutopilot } from '../../models/autopilot.model';
 
 @Component({
   selector: 'app-order-autopilot',
@@ -15,8 +15,8 @@ import { autopilot } from '../../models/autopilot.model';
   styleUrl: './order-autopilot.component.css',
 })
 export class OrderAutopilotComponent implements OnInit {
-  orderedIngredients: Ingredient[] = []; 
-  autopilotStatus!: autopilot;
+  orderedIngredients: IIngredient[] = []; 
+  autopilotStatus!: IAutopilot;
 
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
@@ -34,8 +34,8 @@ export class OrderAutopilotComponent implements OnInit {
   }
 
   loadAutopilotStatus() {
-    this.autopilotService.getAutopilotDataOfRestaurant(this.restaurantId).subscribe((response: any) => {
-      this.autopilotStatus = response;
+    this.autopilotService.getAutopilotDataOfRestaurant(this.restaurantId).subscribe((response) => {
+      this.autopilotStatus = response as IAutopilot;
       console.log("this.autopilotStatus: ", this.autopilotStatus);
       if (this.autopilotStatus === null) {
         this.createAutopilotStatus(this.restaurantId);

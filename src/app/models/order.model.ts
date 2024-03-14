@@ -1,8 +1,8 @@
-import { IngredientBatch } from './ingredient-batch.model';
-import { DeliveryBoxBatch } from './delivery-box-batch.model';
-import { Supplier } from './supplier.model';
+import { IIngredientBatch } from './ingredientBatch.model';
+import { IDeliveryBoxBatch } from './deliveryBoxBatch.model';
+import { ISupplier } from './supplier.model';
 
-export interface Order {
+export interface IOrder {
   id: number;
   totalPrice: number;
   status: string;
@@ -13,7 +13,7 @@ export interface Order {
   restaurantId: number;
   createdAt: string;
   updatedAt: string;
-  ingredientBatches: IngredientBatch[];
-  deliveryBoxBatches: DeliveryBoxBatch[];
-  supplier: Supplier;
+  ingredientBatches: IIngredientBatch[];
+  deliveryBoxBatches: IDeliveryBoxBatch[];
+  supplier: ISupplier;
 }

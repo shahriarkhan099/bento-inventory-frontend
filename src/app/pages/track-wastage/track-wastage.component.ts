@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import {
   NzTablePaginationPosition,
@@ -7,7 +7,7 @@ import {
 } from 'ng-zorro-antd/table';
 
 import { WastageLogService } from '../../services/wastage-log/wastage-log.service';
-import { WasteLog } from '../../models/waste-log.model';
+import { IWasteLog } from '../../models/wasteLog.model';
 import { sortByCreatedAt } from '../../utils/sortUtils';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
@@ -18,11 +18,14 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
   styleUrl: './track-wastage.component.css',
 })
 export class TrackWastageComponent implements OnInit {
-  listOfWasteLog: WasteLog[] = [];
+  listOfWasteLog: IWasteLog[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
-  constructor(private wastageLogService: WastageLogService, private message: NzMessageService) {}
+  constructor(
+    private wastageLogService: WastageLogService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeToIngredientChanges();
@@ -46,8 +49,12 @@ export class TrackWastageComponent implements OnInit {
         this.listOfWasteLog = data.map((wastageLog) => ({
           ...wastageLog,
           totalCost: Number((wastageLog.totalCost / 100).toFixed(2)),
-          costPerUnit: Number((wastageLog.totalCost / 100).toFixed(2)) / wastageLog.totalQuantity,
-          shelfLifeInDays: (new Date(wastageLog.createdAt)).getDay() - (new Date(wastageLog.boughtAt)).getDay(),
+          costPerUnit:
+            Number((wastageLog.totalCost / 100).toFixed(2)) /
+            wastageLog.totalQuantity,
+          shelfLifeInDays:
+            new Date(wastageLog.createdAt).getDay() -
+            new Date(wastageLog.boughtAt).getDay(),
           boughtAt: formatDateToString(new Date(wastageLog.boughtAt)),
           expirationDate: formatDateToString(new Date(wastageLog.createdAt)),
         }));
@@ -61,11 +68,12 @@ export class TrackWastageComponent implements OnInit {
           this.noResult = 'No data found';
           this.loadingStatus = false;
         }
-        
       },
       error: (error) => {
         console.error('Error fetching wastageLog data', error);
-        this.message.error('Failed to fetch wastageLog data. Please try again.');
+        this.message.error(
+          'Failed to fetch wastageLog data. Please try again.'
+        );
       },
     });
   }

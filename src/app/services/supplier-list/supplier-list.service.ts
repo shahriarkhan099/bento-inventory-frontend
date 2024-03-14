@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Supplier } from '../../models/supplier.model';
+import { ISupplier } from '../../models/supplier.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -18,9 +18,9 @@ export class SupplierListService {
     return this._refreshNeeded$;
   }
 
-  getSuppliers(restaurantId: number): Observable<Supplier[]> {
+  getSuppliers(restaurantId: number): Observable<ISupplier[]> {
     return this.http
-      .get<{ suppliers: Supplier[] }>(
+      .get<{ suppliers: ISupplier[] }>(
         `${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}`
       )
       .pipe(map((response) => response.suppliers));
@@ -48,9 +48,9 @@ export class SupplierListService {
     return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${supplierId}`);
   }
 
-  searchSupplierByName(restaurantId: number, name: string): Observable<Supplier> {
+  searchSupplierByName(restaurantId: number, name: string): Observable<ISupplier> {
     return this.http
-      .get<{ supplier: Supplier }>(
+      .get<{ supplier: ISupplier }>(
         `${this.configService.getInventoryApiUrl()}/v1/supplier/restaurant/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )

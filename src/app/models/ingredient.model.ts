@@ -1,6 +1,6 @@
-import { Category } from './category.model';
+import { ICategory } from './category.model';
 
-export interface Ingredient {
+export interface IIngredient {
   id: number;
   uniqueIngredientId: number;
   ingredientName: string;
@@ -21,5 +21,5 @@ export interface Ingredient {
   restaurantId: number;
   createdAt: string;
   updatedAt: string;
-  category: Category;
+  category: ICategory;
 }

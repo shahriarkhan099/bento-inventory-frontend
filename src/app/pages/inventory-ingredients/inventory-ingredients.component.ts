@@ -3,11 +3,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
 
 import { IngredientService } from '../../services/ingredient/ingredient.service';
-import { Ingredient } from '../../models/ingredient.model';
+import { IIngredient } from '../../models/ingredient.model';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { CategoryService } from '../../services/category/category.service';
-import { GlobalCatgory } from '../../models/globalCategory.model';
-import { GlobalIngredient } from '../../models/globalIngredient,model';
+import { IGlobalCatgory } from '../../models/globalCategory.model';
+import { IGlobalIngredient } from '../../models/globalIngredient,model';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 
@@ -18,9 +18,9 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
 })
 
 export class InventoryIngredientsComponent implements OnInit {
-  createdIngredients: Ingredient[] = []; 
-  categoryList: GlobalCatgory[] = []; 
-  ingredientList: GlobalIngredient[] = [];
+  createdIngredients: IIngredient[] = []; 
+  categoryList: IGlobalCatgory[] = []; 
+  ingredientList: IGlobalIngredient[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 
@@ -182,7 +182,7 @@ export class InventoryIngredientsComponent implements OnInit {
     });
   }
 
-  onEdit(ingredient: any): void {
+  onEdit(ingredient: IIngredient): void {
     this.visible = true;
     this.isEdit = true;
 
@@ -350,7 +350,7 @@ export class InventoryIngredientsComponent implements OnInit {
     this.showSearchInput = false;
   }
 
-  filterIngredients(): Ingredient[] {
+  filterIngredients(): IIngredient[] {
     return this.createdIngredients.filter(data =>
       data.ingredientName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );

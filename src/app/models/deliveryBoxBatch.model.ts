@@ -1,4 +1,4 @@
-export interface DeliveryBoxBatch {
+export interface IDeliveryBoxBatch {
     id: number;
     boxName: string;
     currentStockQuantity: number;
