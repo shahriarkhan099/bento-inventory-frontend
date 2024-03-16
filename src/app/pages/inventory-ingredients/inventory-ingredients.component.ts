@@ -6,10 +6,9 @@ import { IngredientService } from '../../services/ingredient/ingredient.service'
 import { IIngredient } from '../../models/ingredient.model';
 import { formatDateToString } from '../../utils/formatDateUtils';
 import { CategoryService } from '../../services/category/category.service';
-import { IGlobalCatgory } from '../../models/globalCategory.model';
-import { IGlobalIngredient } from '../../models/globalIngredient,model';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
+import { ICategoryAsset, IIngredientAsset } from '../../models/assets.model';
 
 @Component({
   selector: 'app-inventory-ingredients',
@@ -19,8 +18,8 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
 
 export class InventoryIngredientsComponent implements OnInit {
   createdIngredients: IIngredient[] = []; 
-  categoryList: IGlobalCatgory[] = []; 
-  ingredientList: IGlobalIngredient[] = [];
+  categoryList: ICategoryAsset[] = []; 
+  ingredientList: IIngredientAsset[] = [];
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { IDeliveryBox } from '../../models/deliveryBox.model';
+import { IDeliveryBox, IDeliveryBoxCreation, IDeliveryBoxWithoutId } from '../../models/deliveryBox.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -25,9 +25,9 @@ export class DeliveryBoxService {
       .pipe(map((response) => response.deliveryBoxes));
   }
 
-  addDeliveryBox(deliveryBox: any): Observable<any> {
+  addDeliveryBox(deliveryBox: any): Observable<void> {
     return this.http
-      .post(
+      .post<void>(
         `${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${
           deliveryBox.restaurantId
         }`,
@@ -40,7 +40,7 @@ export class DeliveryBoxService {
       );
   }
 
-  editDeliveryBox(deliveryBoxId: number, deliveryBox: any): Observable<any> {
+  editDeliveryBox(deliveryBoxId: number, deliveryBox: any): Observable<void> {
     return this.http
       .put<void>(
         `${this.configService.getInventoryApiUrl()}/v1/deliveryBox/restaurant/${deliveryBoxId}`,

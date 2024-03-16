@@ -23,3 +23,17 @@ export interface IIngredient {
   updatedAt: string;
   category: ICategory;
 }
+
+export interface IIngredientCreation {
+  uniqueIngredientId: number;
+  ingredientName: string;
+  liquid: string;
+  unitOfStock: string;
+  caloriesPerUnit: number;
+  reorderPoint: number;
+  perishable: string;
+  description: string;
+  idealStoringTemperature: number;
+  restaurantId: number;
+  categoryId: number;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Ingredient } from '../../models/ingredient.model';
+import { IIngredient } from '../../models/ingredient.model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -18,9 +18,9 @@ export class OnPlatformSupplierService {
     return this._refreshNeeded$;
   }
 
-  getIngredients(restaurantId: number): Observable<Ingredient[]> {
+  getIngredients(restaurantId: number): Observable<IIngredient[]> {
     return this.http
-      .get<{ ingredients: Ingredient[] }>(
+      .get<{ ingredients: IIngredient[] }>(
         `${this.configService.getInventoryApiUrl()}/v1/on-platform-supplier/${restaurantId}/ingredients/categories`
       )
       .pipe(map((response) => response.ingredients));
@@ -48,9 +48,9 @@ export class OnPlatformSupplierService {
     return this.http.delete<void>(`${this.configService.getInventoryApiUrl()}/v1/on-platform-supplier/${ingredientId}`);
   }
 
-  searchIngredientByName(restaurantId: number, name: string): Observable<Ingredient> {
+  searchIngredientByName(restaurantId: number, name: string): Observable<IIngredient> {
     return this.http
-      .get<{ ingredient: Ingredient }>(
+      .get<{ ingredient: IIngredient }>(
         `${this.configService.getInventoryApiUrl()}/v1/on-platform-supplier/${restaurantId}/search/${name}`,
         { params: { searchTerm: name } }
       )

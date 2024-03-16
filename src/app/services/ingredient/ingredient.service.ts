@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { IIngredient } from '../../models/ingredient.model';
+import { IIngredient, IIngredientCreation } from '../../models/ingredient.model';
 import { ConfigService } from '../config/config.service';
+import { IIngredientAsset } from '../../models/assets.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class IngredientService {
     return this._refreshNeeded$;
   }
 
-  loadIngredients(): Observable<any[]> {
-    return this.http.get<any[]>('../../assets/ingredients.json');
+  loadIngredients(): Observable<IIngredientAsset[]> {
+    return this.http.get<IIngredientAsset[]>('../../assets/ingredients.json');
   }
 
   async loadIngredientMappings() {
@@ -46,15 +47,15 @@ export class IngredientService {
       .pipe(map((response) => response.ingredients));
   }
   
-  addIngredient(ingredient: any): Observable<any> {
-    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredient.restaurantId}`, ingredient).pipe(
+  addIngredient(ingredient: IIngredientCreation): Observable<void> {
+    return this.http.post<void>(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredient.restaurantId}`, ingredient).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
     );
   }
 
-  editIngredient(ingredientId: number, ingredient: any): Observable<any> {
+  editIngredient(ingredientId: number, ingredient: IIngredientCreation): Observable<void> {
     return this.http
       .put<void>(`${this.configService.getInventoryApiUrl()}/v1/ingredient/restaurant/${ingredientId}`, ingredient)
       .pipe(

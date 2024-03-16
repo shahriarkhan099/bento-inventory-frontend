@@ -16,3 +16,18 @@ export interface IDeliveryBox {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IDeliveryBoxWithoutId extends Omit<IDeliveryBox, 'id'> {
+  id: number;
+}
+
+export interface IDeliveryBoxCreation {
+  restaurantId: number;
+  boxName: string;
+  currentStockQuantity: number;
+  reorderPoint: number;
+  dimensions: string;
+  weightLimit: number;
+  temperatureLimit: number;
+  waterproof: boolean;
+}

@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { IIngredient } from '../../models/ingredient.model';
 import { ConfigService } from '../config/config.service';
+import { ICategoryAsset } from '../../models/assets.model';
+import { ICategory } from '../../models/category.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,8 @@ export class CategoryService {
     return this._refreshNeeded$;
   }
 
-  loadCategories(): Observable<any[]> {
-    return this.http.get<any[]>('../../assets/categories.json');
+  loadCategories(): Observable<ICategoryAsset[]> {
+    return this.http.get<ICategoryAsset[]>('../../assets/categories.json');
   }
 
   async loadCategoryMappings() {
@@ -43,8 +44,8 @@ export class CategoryService {
     .pipe(map((response) => response.categories));
   }
   
-  addCategory(category: any): Observable<any> {
-    return this.http.post(`${this.configService.getInventoryApiUrl()}/v1/category/restaurant/${category.restaurantId}`, category).pipe(
+  addCategory(category: ICategory): Observable<void> {
+    return this.http.post<void>(`${this.configService.getInventoryApiUrl()}/v1/category/restaurant/${category.restaurantId}`, category).pipe(
       tap(() => {
         this._refreshNeeded$.next();
       })
