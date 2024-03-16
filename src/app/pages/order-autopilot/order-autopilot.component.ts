@@ -68,10 +68,10 @@ export class OrderAutopilotComponent implements OnInit {
     this.updateAutopilotStatus(this.restaurantId);
   }
 
-  id!: number | any;
+  id!: number;
   ingredientName!: string;
   unitOfStock!: string;
-  categoryId!: number | any;
+  categoryId!: number;
   categoryName!: string;
 
   totalNumberOfData = 0;

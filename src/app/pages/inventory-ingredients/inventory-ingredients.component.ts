@@ -49,7 +49,6 @@ export class InventoryIngredientsComponent implements OnInit {
   private getRestaurantId() {
     this.authService.getRestaurantId().subscribe({
       next: (data) => {
-        console.log('resId', data);
         this.restaurantId = data.message;
         LocalStorageService.setRestaurantId(this.restaurantId);
       },
