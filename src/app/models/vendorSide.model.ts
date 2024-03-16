@@ -1,5 +1,5 @@
 export interface ISupplierVendorSide {
-  id: number;
+  id: string;
   name: string;
   email: string;
   logo: string;
@@ -8,8 +8,8 @@ export interface ISupplierVendorSide {
   vendorType: string;
   workingDays: string[];
   openingHours: {
-    startTime: string;
-    endTime: string;
+    start: string;
+    end: string;
   };
   orderProcessingTime: number;
   bookedTimeSlots: String[];
@@ -25,7 +25,7 @@ export interface IOrderVendorSide {
   deliveryDate: Date;
   vendorId: number;
   restaurantId: number;
-  vendorSide: ISupplierVendorSide;
+  vendor: ISupplierVendorSide;
   productBatches: IProductBatchVendorSide[];
   createdAt: string;
   updatedAt: string;

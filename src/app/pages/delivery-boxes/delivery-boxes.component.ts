@@ -86,8 +86,6 @@ export class DeliveryBoxesComponent implements OnInit {
       waterproof: this.waterproof,
     };
 
-    console.log(newBox);
-
     if (this.isEdit) {
       this.deliveryBoxService.editDeliveryBox(this.id, newBox).subscribe({
         next: (res) => {
@@ -162,7 +160,7 @@ export class DeliveryBoxesComponent implements OnInit {
   }
 
   refreshFields(): void {
-    this.id = '';
+    this.id = 0;
     this.boxName = '';
     this.currentStockQuantity = '';
     this.reorderPoint = '';
@@ -173,7 +171,7 @@ export class DeliveryBoxesComponent implements OnInit {
     this.waterproof = '';
   }
 
-  id!: number | any;
+  id!: number;
   boxName!: string;
   currentStockQuantity!: number | any;
   reorderPoint!: number | any;

@@ -96,7 +96,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
-      <td>{{ data.vendorSide.name }}</td>
+      <td>{{ data.vendor.name }}</td>
       <td>{{ data.status }}</td>
       <td>{{ data.totalPrice | currency:'£' }}</td>
       <td>{{ data.orderDate }}</td>

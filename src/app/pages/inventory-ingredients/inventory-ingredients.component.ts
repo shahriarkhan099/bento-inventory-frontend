@@ -257,7 +257,7 @@ export class InventoryIngredientsComponent implements OnInit {
   }
 
   refreshFields(): void {
-    this.id = '';
+    this.id = 0;
     this.ingredientName = '';
     this.liquid = '';
     this.unitOfStock = '';
@@ -270,7 +270,7 @@ export class InventoryIngredientsComponent implements OnInit {
     this.idealStoringTemperature = '';
   }
 
-  id!: number | any;
+  id!: number;
   ingredientName!: string;
   liquid!: string; 
   unitOfStock!: string;

@@ -8,6 +8,9 @@ import {
 import { getRemainingHours } from '../../utils/timeCalculationUtils';
 import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { VendorDataService } from '../../services/Vendor-data/vendor-data.service';
+import { IProductBatchVendorSide, ISupplierVendorSide } from '../../models/vendorSide.model';
+import { IProduct } from '../../models/product.model';
+import { IProductBatch } from '../../models/productBatch.model';
 
 @Component({
   selector: 'app-place-orders',
@@ -16,13 +19,13 @@ import { VendorDataService } from '../../services/Vendor-data/vendor-data.servic
 })
 export class PlaceOrdersComponent implements OnInit {
   searchTerm: string;
-  vendors: any[];
-  searchedVendors: any[];
-  backupVendors: any[];
+  vendors: ISupplierVendorSide[];
+  searchedVendors: ISupplierVendorSide[];
+  backupVendors: ISupplierVendorSide[];
   selectedVendorId: string;
-  selectedVendor: any;
-  vendorProducts: any[];
-  cartItems: any[];
+  selectedVendor!: ISupplierVendorSide;
+  vendorProducts: IProduct[];
+  cartItems: IProduct[];
   selectedTimeSlot: string;
   // restaurantId: number = 1 if not entering from Bento
   restaurantId: number = 1;
@@ -38,7 +41,6 @@ export class PlaceOrdersComponent implements OnInit {
     this.searchedVendors = [];
     this.backupVendors = [];
     this.selectedVendorId = '';
-    this.selectedVendor = '';
     this.vendorProducts = [];
     this.cartItems = [];
     this.selectedTimeSlot = '';
@@ -59,6 +61,8 @@ export class PlaceOrdersComponent implements OnInit {
         }));
         this.backupVendors = [...this.vendors];
         this.showLoader = false;
+        console.log(this.vendors);
+        
       },
       error: (error) => {
         console.error('Error fetching order data', error);
@@ -104,7 +108,7 @@ export class PlaceOrdersComponent implements OnInit {
     return Number(total.toFixed(2));
   }
 
-  getSelectedProducts(): any[] {
+  getSelectedProducts(): IProduct[] {
     this.cartItems = this.vendorProducts
       ? this.vendorProducts.filter((product) => product.selected)
       : [];
@@ -112,13 +116,13 @@ export class PlaceOrdersComponent implements OnInit {
     return this.cartItems;
   }
 
-  incrementQuantity(product: any): void {
+  incrementQuantity(product: IProduct): void {
     product.qty++;
     product.selected = true;
     this.getSelectedProducts();
   }
 
-  decrementQuantity(product: any): void {
+  decrementQuantity(product: IProduct): void {
     product.qty--;
   }
 
@@ -174,7 +178,7 @@ export class PlaceOrdersComponent implements OnInit {
     this.cartItems = [];
     this.visible = false;
     let TimeSlots = bookTimeSlot(
-      this.selectedVendor.bookedTimeSlots,
+      this.selectedVendor.bookedTimeSlots as string[],
       this.selectedTimeSlot
     );
     this.selectedVendor.bookedTimeSlots = TimeSlots;
@@ -187,17 +191,17 @@ export class PlaceOrdersComponent implements OnInit {
     this.selectedTimeSlot = '';
   }
 
-  transformProductsToBatches(selectedProducts: any[]) {
+  transformProductsToBatches(selectedProducts: IProduct[]) {
     return selectedProducts.map((product) => {
-      const productBatch: any = {
+      const productBatch: IProductBatch = {
         uniqueIngredientId: product.uniqueIngredientId,
         productName: product.name,
         purchaseQuantity: product.minimumOrderAmount + product.qty,
         unitOfStock: product.unitOfStock,
-        purchasePrice: (
+        purchasePrice: Number((
           (product.price / product.minimumOrderAmount) * product.qty +
           product.price
-        ).toFixed(2),
+        ).toFixed(2)),
         expirationDate: product.expiryDate,
         productId: product.id,
       };
@@ -224,7 +228,7 @@ export class PlaceOrdersComponent implements OnInit {
       return generateAvailableTimeSlots(
         this.selectedVendor.openingHours.start,
         this.selectedVendor.openingHours.end,
-        this.selectedVendor.bookedTimeSlots || [],
+        this.selectedVendor.bookedTimeSlots as string[] || [] as string[],
         15
       );
     }

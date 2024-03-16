@@ -19,7 +19,7 @@ import { LocalStorageService } from '../../services/localStorage/local-storage.s
 })
 export class SupplierListComponent implements OnInit {
   listOfSuppliers: ISupplier[] = [];
-  id!: number | any;
+  id!: number;
   name!: string;
   address!: string;
   contactNumber!: string;
@@ -127,7 +127,7 @@ export class SupplierListComponent implements OnInit {
     });
   }
 
-  onEdit(supplier: any): void {
+  onEdit(supplier: ISupplier): void {
     this.visible = true;
     this.isEdit = true;
 
