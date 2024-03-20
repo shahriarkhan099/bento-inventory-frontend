@@ -76,7 +76,7 @@ To run the app on your local machine, follow these steps:
 
 You can access the live version of the app at [Bento](https://getbento.vercel.app/home). 
 1. Go to login
-2. Click Sign in by providing email: shahriar.khan099@gmail.com and password: password
+2. Click Sign in by providing email: admin@gmail.com and password: password
 3. Finally, Click Inventory silo to access Bento Inventory
 
 ### Bento App Info
